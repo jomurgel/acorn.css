@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/acorn.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>acorn.css — A minimal classless CSS framework</title>
+    <style>
+      .acorn {
+        max-width: 3.125rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <img class="acorn" src="/acorn.svg" alt="abstracted and simlified acorn-shaped logo. Outline with an offset background fill." title="acorn.css logo" />
+        <span>acorn.css</span>
+      </h1>
+      <p>
+        A minimal classless CSS framework.<br/>
+        <a href="https://github.com/jomurgel/acorn.css">Github</a>
+      </p>
+      <nav>
+        <ul>
+          <li><a href="#content-sectioning">Content Sectioning</a></li>
+          <li><a href="#text-content">Text Content</a></li>
+          <li><a href="#inline">Inline Elements</a></li>
+          <li><a href="#media">Image &amp; Media</a></li>
+          <li><a href="#embeds">Embeds</a></li>
+          <li><a href="#interactive">Interactive Elements</a></li>
+          <li><a href="#forms">Form Elements</a></li>
+          <li><a href="#tables">Tables</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="content-sectioning">
+        <h2><a href="#content-sectioning" aria-label="Link to Content Sectioning Section">#</a> Content Sectioning</h2>
+        <p>Elements that allow organization of content into logical pieces.</p>
+
+        <section id="address">
+          <h3><a href="#address" aria-label="Link to Address Subsection">#</a> Address</h3>
+          <address>
+            Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br>
+            Visit us at:<br>
+            Example.com<br>
+            Box 564, Disneyland<br>
+            USA
+          </address>
+        </section>
+
+        <section id="aside">
+          <h3><a href="#aside" aria-label="Link to Aside Subsection">#</a> <aside></h3>
+
+          <p>My family and I visited The Epcot center this summer. The weather was nice, and Epcot was amazing! I had a great summer together with my family!</p>
+
+          <aside>
+            <h4>Epcot Center</h4>
+            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+          </aside>
+        </section>
+
+        <section id="headings">
+          <h3><a href="#headings" aria-label="Link to Headings Subsection">#</a> Headings</h3>
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+        </section>
+
+        <section id="navigation">
+          <h3><a href="#navigation" aria-label="Link to Navigation Subsecton">#</a> Navigation</h2>
+
+          <nav>
+            <ul>
+              <li><a href="#">Nav Item 1</a>
+                <ul>
+                  <li><a href="#">Sub Item 1</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Nav Item 2</a></li>
+            </ul>
+          </nav>
+        </section>
+      </section>
+
+      <section id="text-content">
+        <h2><a href="#text-content">#</a> Text Content</h2>
+        <p>...</p>
+      </section>
+
+      <section id="inline">
+        <h2><a href="#inline">#</a> Inline Elements</h2>
+        <p>...includes demarcating edits</p>
+      </section>
+
+      <section id="media">
+        <h2><a href="#media">#</a> Image &amp; Media</h2>
+        <p>...</p>
+      </section>
+
+      <section id="embeds">
+        <h2><a href="#embeds">#</a> Embeds</h2>
+        <p>...</p>
+      </section>
+
+      <section id="interactive">
+        <h2><a href="#interactive">#</a> Interactive Elements</h2>
+        <p>...</p>
+      </section>
+
+      <section id="forms">
+        <h2><a href="#forms">#</a> Form Elements</h2>
+        <p>...</p>
+      </section>
+
+      <section id="tables">
+        <h2><a href="#tables">#</a> Tables</h2>
+        <p>...</p>
+      </section>
+    </main>
+    <footer>
+      <a href="https://jomurgel.com" target="_blank" rel="noreferrer noopener">jomurgel</a> — &copy; 2023
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
