@@ -3,6 +3,7 @@ import path from "path";
 import autoprefixer from 'autoprefixer'
 
 export default defineConfig({
+  base: '/acorn.css/',
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/main.ts"),
