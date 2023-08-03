@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/acorn.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light dark" />
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/acorn.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>acorn.css —  A minimal (opinionated) classless CSS framework</title>
     <style>
       .acorn { margin-bottom: -0.5rem;  max-width: 3.125rem; }
       .github { font-size: 1.125rem; }
       .main-header { margin-bottom: 5.625rem; }
+      .github-corner { position:fixed;top:0;border:0;right:0 }
     </style>
   </head>
   <body>
+    <a href="https://your-url" class="github-corner" aria-label="View source on GitHub">
+      <img src="/github-corner.svg" alt="The GitHub Octocat in the a triangle nested in the corner." title="GitHub Octocat logo">
+    </a>
     <header class="main-header">
       <h1>
-        <img class="acorn" src="/acorn.svg" alt="abstracted and simlified acorn-shaped logo. Outline with an offset background fill." title="acorn.css logo" />
+        <img class="acorn" src="/acorn.svg" alt="abstracted and simlified acorn-shaped logo. Outline with an offset background fill." title="acorn.css logo">
         <span>acorn.css</span>
       </h1>
       <p>
         A minimal (opinionated) classless CSS framework.
-        <br/><br/>
+        <br><br>
         <a href="https://github.com/jomurgel/acorn.css" class="github" target="_blank" rel="noopener noreferrer" data-type="external">Github</a>
       </p>
       <nav data-type="inline">
@@ -30,7 +34,7 @@
           <li><a href="#interactive">Interactive Elements</a></li>
           <li><a href="#forms">Form Elements</a></li>
           <li><a href="#tables">Tables</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#info">Info</a></li>
         </ul>
       </nav>
     </header>
@@ -52,16 +56,16 @@
           </nav>
         </header>
 
-        <section id="headings">
+        <div id="headings">
           <h1>Heading 1</h1>
           <h2>Heading 2</h2>
           <h3>Heading 3</h3>
           <h4>Heading 4</h4>
           <h5>Heading 5</h5>
           <h6>Heading 6</h6>
-        </section>
+        </div>
 
-        <section id="paragraph">
+        <div id="paragraph">
           <p><em>The most significant things we can think about</em>, when we think about <strong>Apollo</strong>, is that it has opened for us, for us being the World, a challenge of the future. The door is now cracked, but the promise of that future lies <s>in the young people,</s> not just in America, but the young people all over the world.</p>
 
           <blockquote id="blockquote">
@@ -71,7 +75,7 @@
 
           <p>Learning to live and learning to work together. In order to remind all the peoples of the World, in so many countries throughout the world, that this is what we all are striving for in the future, Jack has picked up a very significant rock, typical of what we have here in the valley of <a href="https://en.wikipedia.org/wiki/Taurus%E2%80%93Littrow" target="_blank" rel="noopener noreferrer">Taurus Littrow External Link</a>. It's a rock composed of many fragments, of many sizes, and many shapes, probably from all parts of the Moon, perhaps billions of years old. <q cite="#">But a rock of all sizes and shapes, fragments of all sizes and shapes, and even colors that have grown together to become a cohesive rock outlasting the nature of Space, sort of living together in a very coherent, very peaceful manner.</q> When we return this rock or some of the others like it to Houston, we'd like to share a piece of this rock with so many of the countries throughout the world. We hope that this will be a symbol of what our feelings are, what the feelings of the <i>Apollo Program</i> are, and a symbol of mankind that we can live in peace and harmony in the future.</p>
 
-          <hr />
+          <hr>
 
           <p>The Earth is the only world known so far to harbor life for it has water. H<sub>2</sub>O. There is nowhere else, at least in the near future, to which our species could <u>migrat</u>. Visit, yes. Settle, not yet. Like it or not, for the moment the Earth is where we make our stand.</p>
 
@@ -83,18 +87,18 @@
           <p>You could also think about <code>background-color</code> or <code>text-color</code> changes to make this more interesting.</p>
 
           <p>In the last 24 hours we have seen facilities now being created for the greatest and most complex exploration in man's history. We have felt the ground shake and the air shattered by the testing of a <small>Saturn C-1 booster rocket</small>, many times as powerful as the Atlas which launched John Glenn<sup>1</sup>, generating power equivalent to 10,000 automobiles with their accelerators on the floor. We have seen the site where the F-1 rocket engines, each one as powerful as all eight engines of the Saturn combined, will be clustered together to make the advanced <b>Saturn missile</b>, assembled in a new building to be built at <mark>Cape Canaveral</mark> as tall as a 48 story structure, as wide as a city block, and as long as two lengths of this field.</p>
-        </section>
+        </div>
 
-        <section id="dd">
+        <div id="dd">
           <dl>
             <dt>Definition Term</dt>
             <dd>Description. Facilisi inceptos nunc convallis eros ullamcorper aenean tempor, risus class ridiculus sodales mi bibendum, himenaeos metus mus efficitur rutrum euismod.</dd>
             <dt>Tristique pretium suscipit</dt>
             <dd>Cras placerat eros pulvinar enim morbi taciti donec ex imperdiet metus augue convallis ultricies id, conubia inceptos erat commodo curabitur fermentum sem faucibus bibendum massa integer maecenas.</dd>
           </dl>
-        </section>
+        </div>
 
-        <section id="pre">
+        <div id="pre">
           <pre>
 
             /**
@@ -111,11 +115,11 @@
               return arg2;
             }
           </pre>
-        </section>
+        </div>
 
-        <section id="kbd">
+        <div id="kbd">
           <p><kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></p>
-        </section>
+        </div>
       </section>
 
       <section id="media">
@@ -134,23 +138,23 @@
           </nav>
         </header>
 
-        <section id="audio">
+        <div id="audio">
           <p>Standard <code>audio</code> embed.</p>
           <audio controls>
             <source src="#" type="audio/ogg">
             <source src="#" type="audio/mpeg">
             Your browser does not support the audio tag.
           </audio>
-        </section>
+        </div>
 
-        <section id="embed">
+        <div id="embed">
           <p>Standard <code>embed</code></p>
           <div data-wrapper data-media>
-            <embed type="video/mp4" src="/cross-a-mountain.mp4" width="400" height="300"></embed>
+            <embed type="video/mp4" src="/cross-a-mountain.mp4" width="400" height="300">
           </div>
-        </section>
+        </div>
 
-        <section id="figure">
+        <div id="figure">
           <p><strong>A group of various image handling.</strong> Luctus tempus congue ac leo etiam egestas imperdiet, dignissim diam ultricies duis tincidunt tristique vulputate, mollis aptent nulla iaculis ornare nascetur. Pharetra turpis imperdiet varius eget viverra consectetur sapien, nibh adipiscing ornare sem neque curae morbi, nulla aliquet nam dignissim lectus tempor. A aenean mus velit ante montes malesuada facilisis posuere, blandit venenatis mauris aptent dictum netus donec ultricies, et nascetur nullam class quam aliquet est. Platea diam iaculis natoque sodales adipiscing magna nisl habitasse ullamcorper, ornare rutrum ante quis vivamus dictum cubilia turpis, bibendum litora leo molestie felis consequat varius duis. Elit nulla tempus aliquam libero interdum gravida senectus tristique parturient, vehicula blandit a semper nec mi varius dolor, amet nibh ullamcorper eros taciti rhoncus ultrices morbi. Nullam neque sagittis malesuada blandit fringilla eros consectetur morbi in, non quis pellentesque vehicula varius iaculis felis luctus, libero viverra laoreet lobortis himenaeos phasellus finibus class. Odio velit nullam massa habitant suspendisse id molestie pretium imperdiet, iaculis vel dictumst hac sollicitudin mauris penatibus parturient, rutrum dignissim curabitur fusce inceptos dictum tempus accumsan. Ligula faucibus dolor integer porttitor blandit dis feugiat euismod augue, convallis accumsan bibendum in maecenas litora nascetur praesent nunc leo, amet fringilla aliquet porta dictum id enim montes.</p>
 
           <figure>
@@ -201,23 +205,23 @@
             </picture>
             <figcaption>Figcaption Text Caption<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
           </figure>
-        </section>
+        </div>
 
-        <section id="iframe">
+        <div id="iframe">
           <p>The <code>iframe</code> tag.</p>
           <div data-wrapper data-media>
-            <iframe src="/cross-a-mountain.mp4" title="Across a mountain arial" frameborder="0"></iframe>
+            <iframe src="/cross-a-mountain.mp4" title="Across a mountain arial"></iframe>
           </div>
-        </section>
+        </div>
 
-        <section id="object">
+        <div id="object">
           <p>The <code>object</code> tag.</p>
           <div data-wrapper data-media>
             <object data="/cross-a-mountain.mp4"></object>
           </div>
-        </section>
+        </div>
 
-        <section id="video">
+        <div id="video">
           <p>The <code>video</code> tag.</p>
           <div data-wrapper data-media>
             <video controls autoplay loop>
@@ -225,7 +229,7 @@
               Your browser does not support the video tag.
             </video>
           </div>
-        </section>
+        </div>
       </section>
 
       <section id="interactive">
@@ -239,7 +243,7 @@
           </nav>
         </header>
 
-        <section id="details">
+        <div id="details">
           <details>
             <summary>Ridiculus proin venenatis dapibus placerats</summary>
             <p>Hendrerit odio metus accumsan placerat et ultrices laoreet quisque, auctor risus id vestibulum turpis primis consequat volutpat, tristique aptent maecenas ipsum velit lobortis semper. Etiam orci nascetur neque, primis molestie imperdiet, taciti platea.</p>
@@ -254,7 +258,7 @@
             <summary>Penatibus nec netus varius porttitor ad suscipit nulla inceptos, ante consequat bibendum tortor mollis natoque risus</summary>
             <p>Vel congue arcu adipiscing potenti integer parturient facilisis, ridiculus inceptos suscipit odio velit lacus penatibus nisi, iaculis condimentum aenean lectus metus consequat. Diam nibh nascetur imperdiet quisque pellentesque senectus mattis et velit, fermentum vivamus egestas porttitor posuere cursus volutpat semper ultricies, odio integer risus vehicula porta purus ac commodo. Efficitur convallis euismod libero sociosqu tristique cras aenean potenti ad pretium dapibus mi arcu sagittis taciti torquent, tempus platea tincidunt odio feugiat montes vulputate adipiscing malesuada semper ultrices blandit a conubia. Orci dolor semper inceptos luctus platea porta, mollis condimentum nulla lacus sed nisi et, pharetra dignissim iaculis mauris fusce.</p>
           </details>
-        </section>
+        </div>
       </section>
 
       <section id="forms">
@@ -269,7 +273,7 @@
           </nav>
         </header>
 
-        <section id="form">
+        <div id="form">
           <form>
             <fieldset>
               <legend>Personal Information</legend>
@@ -293,7 +297,7 @@
               </label>
               <label for="telephone">
                 <span>Telephone</span>
-                <input type="tel" id="telephone" name="telephone" placeholder="Telephone">
+                <input type="tel" id="telephone" name="telephone" placeholder="(555) 555-5555">
               </label>
               <label for="range">
                 <span>Happiness Level</span>
@@ -301,7 +305,7 @@
               </label>
               <label for="temp">
                 <span>Number of cats (0-5)</span>
-                <input type="range" id="temp" name="temp" list="markers" step="25" value="50" />
+                <input type="range" id="temp" name="temp" list="markers" step="25" value="50">
                 <datalist id="markers">
                   <option value="0"></option>
                   <option value="25"></option>
@@ -371,10 +375,10 @@
                   <option value="WY">Wyoming</option>
                 </select>
               </label>
-              <label for="browsers">
+              <label for="browser-choice">
                 <span>Preferred Browser</span>
-                <input list="browsers">
-                <datalist id="browsers">
+                <input list="browser-options" id="browser-choice">
+                <datalist id="browser-options">
                   <option value="Internet Explorer">
                   <option value="Firefox">
                   <option value="Chrome">
@@ -382,47 +386,47 @@
                   <option value="Safari">
                 </datalist>
               </label>
-              <label for="animals">
-                <span>Favorite Animals</span>
-                <input type="checkbox" id="animals" name="animals" value="Dogs" checked />Dogs<br/>
-                <input type="checkbox" id="animals" name="animals" value="Cats" />Cats<br/>
-                <input type="checkbox" id="animals" name="animals" value="Fish" />Fish<br/>
-                <input type="checkbox" id="animals" name="animals" value="Reptiles" />Reptiles<br/>
-                <input type="checkbox" id="animals" name="animals" value="Bugs" />Bugs
-              </label>
-              <label for="dog_person">
-                <span>Dog Person?</span>
-                <input type="radio" id="dog_person" name="dog_person" value="yes" checked />Yes<br/>
-                <input type="radio" id="dog_person" name="dog_person" value="no" />No
-              </label>
+              <fieldset>
+                <legend>Favorite Animals</legend>
+                <input type="checkbox" name="animals" value="Dogs" checked>Dogs<br>
+                <input type="checkbox" name="animals" value="Cats">Cats<br>
+                <input type="checkbox" name="animals" value="Fish">Fish<br>
+                <input type="checkbox" name="animals" value="Reptiles">Reptiles<br>
+                <input type="checkbox" name="animals" value="Bugs">Bugs
+              </fieldset>
+              <fieldset>
+              <legend>Dog Person?</legend>
+                <input type="radio" name="dog_person" value="yes" checked>Yes<br>
+                <input type="radio" name="dog_person" value="no">No
+              </fieldset>
               <label for="resume">
                 <span>Resume</span>
-                <input type="file" id="resume" name="resume" accept=".pdf" />
+                <input type="file" id="resume" name="resume" accept=".pdf">
               </label>
               <label for="message">
-                <textarea name="message">Add an additional message...</textarea>
+                <textarea id="message" name="message">Add an additional message...</textarea>
               </label>
               <input type="submit" value="Submit">
             </fieldset>
           </form>
-        </section>
+        </div>
 
-        <section id="buttons">
+        <div id="buttons">
           <p>The <code>data-buttons</code> attribute for wrapping multiple buttons.</p>
-          <section data-wrapper data-buttons>
+          <div data-wrapper data-buttons>
             <button>Primary</button>
             <button disabled>Primary Disabled</button>
             <button data-variant="secondary">Secondary</button>
             <button disabled data-variant="secondary">Secondary Disabled</button>
             <button data-destructive>Destructive</button>
             <button data-destructive data-variant="secondary">Secondary Destructive</button>
-          </section>
+          </div>
 
           <p>Single buttons without a containing wrapper.</p>
           <button>Primary</button>
           <button data-variant="secondary">Secondary</button>
           <button data-destructive>Destructive</button>
-        </section>
+        </div>
       </section>
 
       <section id="tables">
@@ -460,9 +464,9 @@
         </div>
       </section>
 
-      <section id="about">
+      <section id="info">
         <header>
-          <h2><a href="#about" aria-label="Link to About Section">#</a> About</h2>
+          <h2><a href="#info" aria-label="Link to About Section">#</a> About</h2>
           <p>This framework was built with some opinions in mind and aimed to solve a few problems.</p>
         </header>
         <details open>
@@ -480,6 +484,14 @@
         <details open>
           <summary>Isn't using <code>data</code> attributes less performant?</summary>
           <p>While there has been some evidence to suggest that <code>data</code> attributes is less performance than classnames, we're using them here sparingly and browser performance in the last five years has improve so much that the difference in performance is negligable.</p>
+        </details>
+        <details open>
+          <summary>Why doesn't tabbing work in Safari?</summary>
+          <p>By default keyboard accessibility is turned off. To enable it for Safari you must open preferences and enable "Press Tab to highlight each item on a webpage".</p>
+        </details>
+        <details open>
+          <summary>Why don't some features work?</summary>
+          <p>This framework was built to attempt to accommodate as many browser features as possible. I'd suggest looking at <a href="https://caniuse.com" target="_blank">Can I Use</a> to make sure that you have browser support for a feature.</p>
         </details>
       </section>
     </main>
