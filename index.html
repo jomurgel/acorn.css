@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/acorn.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>acorn.css —  A minimal (opinionated) classless CSS framework</title>
+    <style>
+      .acorn { margin-bottom: -0.5rem;  max-width: 3.125rem; }
+      .github { font-size: 1.125rem; }
+      .main-header { margin-bottom: 5.625rem; }
+      .github-corner { position:fixed;top:0;border:0;right:0 }
+    
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4Lmh0bWwlM0ZodG1sLXByb3h5JmlubGluZS1jc3MmaW5kZXg9MC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtNQUNNLFNBQVMsc0JBQXNCLEdBQUcsbUJBQW1CLEVBQUU7TUFDdkQsVUFBVSxtQkFBbUIsRUFBRTtNQUMvQixlQUFlLHVCQUF1QixFQUFFO01BQ3hDLGlCQUFpQixjQUFjLENBQUMsS0FBSyxDQUFDLFFBQVEsQ0FBQyxRQUFRIiwiZmlsZSI6ImluZGV4Lmh0bWw/aHRtbC1wcm94eSZpbmxpbmUtY3NzJmluZGV4PTAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgICAuYWNvcm4geyBtYXJnaW4tYm90dG9tOiAtMC41cmVtOyAgbWF4LXdpZHRoOiAzLjEyNXJlbTsgfVxuICAgICAgLmdpdGh1YiB7IGZvbnQtc2l6ZTogMS4xMjVyZW07IH1cbiAgICAgIC5tYWluLWhlYWRlciB7IG1hcmdpbi1ib3R0b206IDUuNjI1cmVtOyB9XG4gICAgICAuZ2l0aHViLWNvcm5lciB7IHBvc2l0aW9uOmZpeGVkO3RvcDowO2JvcmRlcjowO3JpZ2h0OjAgfVxuICAgICJdfQ== */</style>
+    <script type="module" crossorigin src="/assets/index-2ba4fbae.js"></script>
+    <link rel="stylesheet" href="/assets/index-c6be67e9.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <a href="https://github.com/jomurgel/acorn.css" class="github-corner" aria-label="View source on GitHub">
+      <img src="/github-corner.svg" alt="The GitHub Octocat in the a triangle nested in the corner." title="GitHub Octocat logo">
+    </a>
+    <header class="main-header">
+      <h1>
+        <img class="acorn" src="/acorn.svg" alt="abstracted and simlified acorn-shaped logo. Outline with an offset background fill." title="acorn.css logo">
+        <span>acorn.css</span>
+      </h1>
+      <p>
+        A minimal (opinionated) classless CSS framework.
+        <br><br>
+        <a href="https://github.com/jomurgel/acorn.css" class="github" target="_blank" rel="noopener noreferrer" data-type="external">Github</a>
+      </p>
+      <nav data-type="inline">
+        <ul>
+          <li><a href="#content-elements">Content Elements</a></li>
+          <li><a href="#media">Image &amp; Media</a></li>
+          <li><a href="#interactive">Interactive Elements</a></li>
+          <li><a href="#forms">Form Elements</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#info">Info</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="content-elements">
+        <header>
+          <h2><a href="#content-elements" aria-label="Link to Content Sectioning Section">#</a> Content Elements</h2>
+          <p>Content elements that would fall between the opening and closing <code>&lt;body&gt;</code> tags.</p>
+          <nav data-type="inline" data-variant="small">
+            <ul>
+              <li><a href="#headings">Headings</a></li>
+              <li><a href="#paragraph">Paragraph &amp; Inline Text</a></li>
+              <li><a href="#blockquote">Blockquote</a></li>
+              <li><a href="#dd">Definitions</a></li>
+              <li><a href="#pre">Preformatted</a></li>
+              <li><a href="#kbd">Keyboard</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div id="headings">
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+        </div>
+
+        <div id="paragraph">
+          <p><em>The most significant things we can think about</em>, when we think about <strong>Apollo</strong>, is that it has opened for us, for us being the World, a challenge of the future. The door is now cracked, but the promise of that future lies <s>in the young people,</s> not just in America, but the young people all over the world.</p>
+
+          <blockquote id="blockquote">
+            <strong>Blockquote</strong> We choose to go to the moon. We choose to go to the moon in this decade and do the other things, not because they are easy, but because they are hard, because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one which we intend to win, and the others, too.
+            <cite>John F. Kennedy</cite>
+          </blockquote>
+
+          <p>Learning to live and learning to work together. In order to remind all the peoples of the World, in so many countries throughout the world, that this is what we all are striving for in the future, Jack has picked up a very significant rock, typical of what we have here in the valley of <a href="https://en.wikipedia.org/wiki/Taurus%E2%80%93Littrow" target="_blank" rel="noopener noreferrer">Taurus Littrow External Link</a>. It's a rock composed of many fragments, of many sizes, and many shapes, probably from all parts of the Moon, perhaps billions of years old. <q cite="#">But a rock of all sizes and shapes, fragments of all sizes and shapes, and even colors that have grown together to become a cohesive rock outlasting the nature of Space, sort of living together in a very coherent, very peaceful manner.</q> When we return this rock or some of the others like it to Houston, we'd like to share a piece of this rock with so many of the countries throughout the world. We hope that this will be a symbol of what our feelings are, what the feelings of the <i>Apollo Program</i> are, and a symbol of mankind that we can live in peace and harmony in the future.</p>
+
+          <hr>
+
+          <p>The Earth is the only world known so far to harbor life for it has water. H<sub>2</sub>O. There is nowhere else, at least in the near future, to which our species could <u>migrat</u>. Visit, yes. Settle, not yet. Like it or not, for the moment the Earth is where we make our stand.</p>
+
+          <blockquote data-type="pullquote">
+            <strong>Blockquote Pullquote Variant</strong> Rutrum viverra ipsum sed risus lacinia sollicitudin ultrices neque mattis maecenas turpis leo, iaculis facilisis nibh primis fusce venenatis cursus finibus diam dolor.
+            <cite>Pullquote Citation</cite>
+          </blockquote>
+
+          <p>You could also think about <code>background-color</code> or <code>text-color</code> changes to make this more interesting.</p>
+
+          <p>In the last 24 hours we have seen facilities now being created for the greatest and most complex exploration in man's history. We have felt the ground shake and the air shattered by the testing of a <small>Saturn C-1 booster rocket</small>, many times as powerful as the Atlas which launched John Glenn<sup>1</sup>, generating power equivalent to 10,000 automobiles with their accelerators on the floor. We have seen the site where the F-1 rocket engines, each one as powerful as all eight engines of the Saturn combined, will be clustered together to make the advanced <b>Saturn missile</b>, assembled in a new building to be built at <mark>Cape Canaveral</mark> as tall as a 48 story structure, as wide as a city block, and as long as two lengths of this field.</p>
+        </div>
+
+        <div id="dd">
+          <dl>
+            <dt>Definition Term</dt>
+            <dd>Description. Facilisi inceptos nunc convallis eros ullamcorper aenean tempor, risus class ridiculus sodales mi bibendum, himenaeos metus mus efficitur rutrum euismod.</dd>
+            <dt>Tristique pretium suscipit</dt>
+            <dd>Cras placerat eros pulvinar enim morbi taciti donec ex imperdiet metus augue convallis ultricies id, conubia inceptos erat commodo curabitur fermentum sem faucibus bibendum massa integer maecenas.</dd>
+          </dl>
+        </div>
+
+        <div id="pre">
+          <pre>
+
+            /**
+             * Docblock comment.
+             *
+             * @param {string} argument 1.
+             * @param {string} argument 2.
+             */
+            const functionName = (arg1, arg2) => {
+              if ( condition ) {
+                return arg1;
+              }
+
+              return arg2;
+            }
+          </pre>
+        </div>
+
+        <div id="kbd">
+          <p><kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></p>
+        </div>
+      </section>
+
+      <section id="media">
+        <header>
+          <h2><a href="#media" aria-label="Link to the Image &amp; Media Elements Section">#</a> Image &amp; Media</h2>
+          <p>Multimedia resources such as images, audio, and vide.</p>
+          <nav data-type="inline" data-variant="small">
+            <ul>
+              <li><a href="#audio">Audio</a></li>
+              <li><a href="#embed">Embed</a></li>
+              <li><a href="#figure">Figure &amp; Images</a></li>
+              <li><a href="#iframe">iFrame</a></li>
+              <li><a href="#object">Object</a></li>
+              <li><a href="#video">Video</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div id="audio">
+          <p>Standard <code>audio</code> embed.</p>
+          <audio controls>
+            <source src="#" type="audio/ogg">
+            <source src="#" type="audio/mpeg">
+            Your browser does not support the audio tag.
+          </audio>
+        </div>
+
+        <div id="embed">
+          <p>Standard <code>embed</code></p>
+          <div data-wrapper data-media>
+            <embed type="video/mp4" src="/cross-a-mountain.mp4" width="400" height="300">
+          </div>
+        </div>
+
+        <div id="figure">
+          <p><strong>A group of various image handling.</strong> Luctus tempus congue ac leo etiam egestas imperdiet, dignissim diam ultricies duis tincidunt tristique vulputate, mollis aptent nulla iaculis ornare nascetur. Pharetra turpis imperdiet varius eget viverra consectetur sapien, nibh adipiscing ornare sem neque curae morbi, nulla aliquet nam dignissim lectus tempor. A aenean mus velit ante montes malesuada facilisis posuere, blandit venenatis mauris aptent dictum netus donec ultricies, et nascetur nullam class quam aliquet est. Platea diam iaculis natoque sodales adipiscing magna nisl habitasse ullamcorper, ornare rutrum ante quis vivamus dictum cubilia turpis, bibendum litora leo molestie felis consequat varius duis. Elit nulla tempus aliquam libero interdum gravida senectus tristique parturient, vehicula blandit a semper nec mi varius dolor, amet nibh ullamcorper eros taciti rhoncus ultrices morbi. Nullam neque sagittis malesuada blandit fringilla eros consectetur morbi in, non quis pellentesque vehicula varius iaculis felis luctus, libero viverra laoreet lobortis himenaeos phasellus finibus class. Odio velit nullam massa habitant suspendisse id molestie pretium imperdiet, iaculis vel dictumst hac sollicitudin mauris penatibus parturient, rutrum dignissim curabitur fusce inceptos dictum tempus accumsan. Ligula faucibus dolor integer porttitor blandit dis feugiat euismod augue, convallis accumsan bibendum in maecenas litora nascetur praesent nunc leo, amet fringilla aliquet porta dictum id enim montes.</p>
+
+          <figure>
+            <img src="/carina-nebula-webb.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
+            <figcaption>Figcaption Text Caption<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
+          </figure>
+
+          <p>Eget hac lectus vestibulum et himenaeos primis ultricies quam imperdiet fames duis, auctor ornare sodales mus netus dui interdum felis massa nisi, dis parturient arcu gravida velit enim dictum pulvinar semper suscipit. Nostra id urna curae conubia orci sodales egestas litora, himenaeos imperdiet rutrum bibendum rhoncus quis mauris ad dignissim, scelerisque tincidunt in dictum senectus posuere enim. Sapien habitant pharetra non per nunc arcu vitae id ut gravida, inceptos primis cursus velit elementum amet dui morbi tristique, quam dapibus iaculis ridiculus ultrices tincidunt sodales risus volutpat.M</p>
+
+          <figure data-align="wide">
+            <img src="/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
+            <figcaption>Classless image alignment: [data-align='wide']<cite>Image Citation: NASA's Webb Captures Dying Star's Final 'Performance' in Fine Detail</cite></figcaption>
+          </figure>
+
+          <p>Suspendisse sociosqu ornare sollicitudin facilisis diam placerat primis viverra, donec gravida dolor ipsum leo pellentesque urna lacus taciti, potenti integer metus himenaeos vestibulum lobortis rutrum. Eu senectus eget hendrerit maximus ornare dictum ut curabitur ad, libero purus nascetur leo dignissim torquent orci aliquet, id mi fusce nunc massa placerat pellentesque cubilia. Efficitur conubia magnis congue magna sit hac parturient primis bibendum, dictum dui ac dignissim velit facilisi dictumst volutpat ridiculus orci, fermentum lobortis dapibus ut consequat accumsan eu et. Potenti in aenean eget elit aliquet enim inceptos eros justo, porta leo vehicula congue pharetra nulla tempor volutpat dictumst habitasse, malesuada id orci aptent ligula duis lectus praesent.</p>
+
+          <figure>
+            <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
+            <figcaption>Default alignment for smaller than max images.<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
+          </figure>
+
+          <p>Praesent ipsum lacus aliquam eu et vel sollicitudin habitasse, malesuada phasellus ac finibus sodales netus accumsan ad, sit integer hac elit consectetur sem amet. Blandit vel dis integer aliquet et maecenas condimentum fermentum egestas scelerisque lobortis, donec consectetur amet montes adipiscing enim lacinia libero hendrerit venenatis, a nibh pellentesque nisi vulputate euismod sed sem leo ad. Curae vel eros ex diam sociosqu potenti purus fringilla, congue habitasse ullamcorper scelerisque tellus maecenas nisi tortor, aenean nulla magnis tristique sollicitudin conubia vulputate.</p>
+
+          <figure data-align="right">
+            <img src="/carina-nebula-webb-square-neg.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
+            <figcaption>Classless image alignment: [data-align="right"]<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
+          </figure>
+
+          <p>Id enim pharetra faucibus ex urna nostra accumsan, gravida parturient leo arcu natoque sed donec, eget luctus risus sapien phasellus nisl. Semper adipiscing est luctus integer vel cras ultricies penatibus phasellus lacinia torquent, leo curae elementum a sagittis fermentum dictum ligula velit. Dictumst eros montes orci massa tincidunt potenti luctus habitant purus est pretium ultrices lobortis mauris, cubilia nostra penatibus conubia hac metus et donec blandit ornare praesent mus ridiculus. Vitae ante id maecenas parturient neque dui commodo class lorem, cras mollis quis tristique proin morbi netus.</p>
+
+          <p>Inceptos malesuada euismod tincidunt pellentesque erat tempor ac, dapibus gravida volutpat aliquam commodo proin quisque, auctor magna class quis at hendrerit. Platea ultrices consectetur netus sed quisque, augue ligula auctor luctus mi morbi, porta convallis eleifend amet. Cubilia dui sollicitudin pellentesque feugiat tristique maecenas euismod habitant praesent, fusce consequat vitae ipsum lacus finibus pulvinar dictum, diam ante sem commodo urna velit quis id. Cubilia penatibus mus semper mollis tristique adipiscing pharetra conubia tempus erat, in consectetur sapien pretium amet torquent malesuada hendrerit.</p>
+
+          <figure data-align="left">
+            <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
+            <figcaption>Classless image alignment: [data-align="left"]<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
+          </figure>
+
+          <p>Id enim pharetra faucibus ex urna nostra accumsan, gravida parturient leo arcu natoque sed donec, eget luctus risus sapien phasellus nisl. Semper adipiscing est luctus integer vel cras ultricies penatibus phasellus lacinia torquent, leo curae elementum a sagittis fermentum dictum ligula velit. Dictumst eros montes orci massa tincidunt potenti luctus habitant purus est pretium ultrices lobortis mauris, cubilia nostra penatibus conubia hac metus et donec blandit ornare praesent mus ridiculus. Vitae ante id maecenas parturient neque dui commodo class lorem, cras mollis quis tristique proin morbi netus.</p>
+
+          <p>Convallis mi adipiscing finibus lacinia nec, sociosqu tortor laoreet imperdiet volutpat, posuere risus duis hac. Elit posuere proin malesuada sociosqu bibendum eleifend etiam quisque sed amet, placerat laoreet nostra tortor ad nam taciti praesent mus mauris ultricies, interdum et tincidunt risus fames hac diam pellentesque purus. Et torquent lacus dui ligula luctus cursus purus fusce suspendisse nostra dictum, gravida euismod inceptos nisl tristique porttitor viverra volutpat convallis condimentum, elementum pharetra nascetur arcu id curabitur rhoncus vehicula vel vivamus. Maximus curabitur libero semper inceptos integer dapibus venenatis dis, massa suscipit cubilia arcu dictum risus iaculis, lacus bibendum id convallis ad mus proin duis, odio himenaeos augue justo litora laoreet.</p>
+
+          <p>The <code>picture</code> tag.</p>
+          <figure>
+            <picture>
+              <source media="(min-width:53.125rem)" srcset="/carina-nebula-webb-neg.jpg">
+              <source media="(min-width:29.0625rem)" srcset="/carina-nebula-webb.jpg">
+              <img src="/carina-nebula-webb.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
+            </picture>
+            <figcaption>Figcaption Text Caption<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
+          </figure>
+        </div>
+
+        <div id="iframe">
+          <p>The <code>iframe</code> tag.</p>
+          <div data-wrapper data-media>
+            <iframe src="/cross-a-mountain.mp4" title="Across a mountain arial"></iframe>
+          </div>
+        </div>
+
+        <div id="object">
+          <p>The <code>object</code> tag.</p>
+          <div data-wrapper data-media>
+            <object data="/cross-a-mountain.mp4"></object>
+          </div>
+        </div>
+
+        <div id="video">
+          <p>The <code>video</code> tag.</p>
+          <div data-wrapper data-media>
+            <video controls autoplay loop>
+              <source src="/cross-a-mountain.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section id="interactive">
+        <header>
+          <h2><a href="#interactive" aria-label="Link to Content Sectioning Section">#</a> Interactive Elements</h2>
+          <p>Elements (that are widely supported cross-browser) to allow for a more interactive user interface.</p>
+          <nav data-type="inline" data-variant="small">
+            <ul>
+              <li><a href="#details">Details</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div id="details">
+          <details>
+            <summary>Ridiculus proin venenatis dapibus placerats</summary>
+            <p>Hendrerit odio metus accumsan placerat et ultrices laoreet quisque, auctor risus id vestibulum turpis primis consequat volutpat, tristique aptent maecenas ipsum velit lobortis semper. Etiam orci nascetur neque, primis molestie imperdiet, taciti platea.</p>
+          </details>
+
+          <details>
+            <summary>Tellus magnis accumsan maecenas</summary>
+            <p>Purus iaculis montes cras in magna vivamus facilisis congue eget, fringilla nunc per justo convallis eu litora.</p>
+          </details>
+
+          <details>
+            <summary>Penatibus nec netus varius porttitor ad suscipit nulla inceptos, ante consequat bibendum tortor mollis natoque risus</summary>
+            <p>Vel congue arcu adipiscing potenti integer parturient facilisis, ridiculus inceptos suscipit odio velit lacus penatibus nisi, iaculis condimentum aenean lectus metus consequat. Diam nibh nascetur imperdiet quisque pellentesque senectus mattis et velit, fermentum vivamus egestas porttitor posuere cursus volutpat semper ultricies, odio integer risus vehicula porta purus ac commodo. Efficitur convallis euismod libero sociosqu tristique cras aenean potenti ad pretium dapibus mi arcu sagittis taciti torquent, tempus platea tincidunt odio feugiat montes vulputate adipiscing malesuada semper ultrices blandit a conubia. Orci dolor semper inceptos luctus platea porta, mollis condimentum nulla lacus sed nisi et, pharetra dignissim iaculis mauris fusce.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="forms">
+        <header>
+          <h2><a href="#forms" aria-label="Link to Form Elements Section">#</a> Form Elements</h2>
+          <p>Standard fieldset, form elements, and buttons.</p>
+          <nav data-type="inline" data-variant="small">
+            <ul>
+              <li><a href="#form">Forms</a></li>
+              <li><a href="#buttons">Buttons</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div id="form">
+          <form>
+            <fieldset>
+              <legend>Personal Information</legend>
+              <div data-wrapper data-input>
+                <label for="fname">
+                  <span>First Name</span>
+                  <input type="text" id="fname" name="fname" placeholder="First Name">
+                </label>
+                <label for="lname">
+                  <span>Last Name</span>
+                  <input type="text" id="lname" name="lname" placeholder="Last Name">
+                </label>
+              </div>
+              <label for="password">
+                <span>Password</span>
+                <input type="password" id="password" name="password" placeholder="Password">
+              </label>
+              <label for="email">
+                <span>Email</span>
+                <input type="email" id="email" name="email" placeholder="Email">
+              </label>
+              <label for="telephone">
+                <span>Telephone</span>
+                <input type="tel" id="telephone" name="telephone" placeholder="(555) 555-5555">
+              </label>
+              <label for="range">
+                <span>Happiness Level</span>
+                <input type="range" id="range" name="range" min="0" max="10" value="5">
+              </label>
+              <label for="temp">
+                <span>Number of cats (0-5)</span>
+                <input type="range" id="temp" name="temp" list="markers" step="25" value="50">
+                <datalist id="markers">
+                  <option value="0"></option>
+                  <option value="25"></option>
+                  <option value="50"></option>
+                  <option value="75"></option>
+                  <option value="100"></option>
+                </datalist>
+              </label>
+              <label for="birthday">
+                <span>Birthday</span>
+                <input type="date" id="birthday" name="birthday">
+              </label>
+              <label for="state">
+                <span>State</span>
+                <select id="state" name="state">
+                  <option value="">Select a State</option>
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District Of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
+              </label>
+              <label for="browser-choice">
+                <span>Preferred Browser</span>
+                <input list="browser-options" id="browser-choice">
+                <datalist id="browser-options">
+                  <option value="Internet Explorer">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </datalist>
+              </label>
+              <fieldset>
+                <legend>Favorite Animals</legend>
+                <input type="checkbox" name="animals" value="Dogs" checked>Dogs<br>
+                <input type="checkbox" name="animals" value="Cats">Cats<br>
+                <input type="checkbox" name="animals" value="Fish">Fish<br>
+                <input type="checkbox" name="animals" value="Reptiles">Reptiles<br>
+                <input type="checkbox" name="animals" value="Bugs">Bugs
+              </fieldset>
+              <fieldset>
+              <legend>Dog Person?</legend>
+                <input type="radio" name="dog_person" value="yes" checked>Yes<br>
+                <input type="radio" name="dog_person" value="no">No
+              </fieldset>
+              <label for="resume">
+                <span>Resume</span>
+                <input type="file" id="resume" name="resume" accept=".pdf">
+              </label>
+              <label for="message">
+                <textarea id="message" name="message">Add an additional message...</textarea>
+              </label>
+              <input type="submit" value="Submit">
+            </fieldset>
+          </form>
+        </div>
+
+        <div id="buttons">
+          <p>The <code>data-buttons</code> attribute for wrapping multiple buttons.</p>
+          <div data-wrapper data-buttons>
+            <button>Primary</button>
+            <button disabled>Primary Disabled</button>
+            <button data-variant="secondary">Secondary</button>
+            <button disabled data-variant="secondary">Secondary Disabled</button>
+            <button data-destructive>Destructive</button>
+            <button data-destructive data-variant="secondary">Secondary Destructive</button>
+          </div>
+
+          <p>Single buttons without a containing wrapper.</p>
+          <button>Primary</button>
+          <button data-variant="secondary">Secondary</button>
+          <button data-destructive>Destructive</button>
+        </div>
+      </section>
+
+      <section id="tables">
+        <header>
+          <h2><a href="#tables" aria-label="Link to Tables Section">#</a> Tables</h2>
+          <p>Uses the <code>data-table</code> attribute to allow for responsive scrolling tables.</p>
+        </header>
+        <div data-wrapper data-table>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Long Strings</th>
+                <th>Moons</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Saturn</td>
+                <td>Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius of about nine and a half times that of Earth.</td>
+                <td>83</td>
+              </tr>
+              <tr>
+                <td>Neptune</td>
+                <td>Neptune is the eighth planet from the Sun and the farthest known planet in the Solar System.</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>Pluto</td>
+                <td>Pluto is a dwarf planet in the Kuiper belt, a ring of bodies beyond the orbit of Neptune. It is the ninth-largest and tenth-most-massive known object to directly orbit the Sun.</td>
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="info">
+        <header>
+          <h2><a href="#info" aria-label="Link to About Section">#</a> About</h2>
+          <p>This framework was built with some opinions in mind and aimed to solve a few problems.</p>
+        </header>
+        <details open>
+          <summary>What's the benefit of being classless?</summary>
+          <p>In my experience, a lot of projects kick off without ever having the most basic building blocks of the site or app taken care of. A site cannot be entirely classless, but this is a great starting point.</p>
+        </details>
+        <details open>
+          <summary>What's with the <code>data</code> attributes?</summary>
+          <p>Building with data attributes instead of classes for basic frameworks serve two purposes:</p>
+          <ol>
+            <li>Prove direct access to the data attribute values in CSS.</li>
+            <li>Easily setup your website for a clean JavaScript implementation with best practices in mind.</li>
+          </ol>
+        </details>
+        <details open>
+          <summary>Isn't using <code>data</code> attributes less performant?</summary>
+          <p>While there has been some evidence to suggest that <code>data</code> attributes is less performance than classnames, we're using them here sparingly and browser performance in the last five years has improve so much that the difference in performance is negligable.</p>
+        </details>
+        <details open>
+          <summary>Why doesn't tabbing work in Safari?</summary>
+          <p>By default keyboard accessibility is turned off. To enable it for Safari you must open preferences and enable "Press Tab to highlight each item on a webpage".</p>
+        </details>
+        <details open>
+          <summary>Why don't some features work?</summary>
+          <p>This framework was built to attempt to accommodate as many browser features as possible. I'd suggest looking at <a href="https://caniuse.com" target="_blank">Can I Use</a> to make sure that you have browser support for a feature.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://jomurgel.com" target="_blank" rel="noreferrer noopener">jomurgel</a> — &copy; 2023
+    </footer>
+    
+  </body>
+</html>
