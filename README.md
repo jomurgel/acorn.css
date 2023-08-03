@@ -1,2 +1,2 @@
 # acorn.css
-A minimal classless CSS framework
+A minimal classless CSS framework.
