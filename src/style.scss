@@ -50,30 +50,30 @@
   --warning: #ffcc00;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    // Dark Mode Monotone.
-    --black: #f5f5f5;
-    --white: #151513;
-    --off-white: #242424;
-    --dark-gray: #b7b5b5;
-    --gray: #747171;
-    --light-gray: #3a3636;
-    // Dark Mode Colors.
-    --primary: #41aaea;
-    --primary-dark: #6ec3f8;
-    --primary-light: #186797;
-    --secondary: #e0a81e;
-    --secondary-light: #edc151;
-    --accent: #ee2d6d;
-    --accent-dark: #f4759f;
-    --accent-light: #7f062e;
-    // Dark Mode Utility Colors.
-    --error: #ff003e;
-    --success: #00c807;
-    --warning: #ffcc00;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     // Dark Mode Monotone.
+//     --black: #f5f5f5;
+//     --white: #151513;
+//     --off-white: #242424;
+//     --dark-gray: #b7b5b5;
+//     --gray: #747171;
+//     --light-gray: #3a3636;
+//     // Dark Mode Colors.
+//     --primary: #41aaea;
+//     --primary-dark: #6ec3f8;
+//     --primary-light: #186797;
+//     --secondary: #e0a81e;
+//     --secondary-light: #edc151;
+//     --accent: #ee2d6d;
+//     --accent-dark: #f4759f;
+//     --accent-light: #7f062e;
+//     // Dark Mode Utility Colors.
+//     --error: #ff003e;
+//     --success: #00c807;
+//     --warning: #ffcc00;
+//   }
+// }
 
 //-----------------------------------------
 // Breakpoint map
@@ -749,11 +749,13 @@ input[type="range"] {
     justify-content: space-between;
 
     option {
-      transform: scale(0.5);
       background-color: var(--primary);
       display: inline-block;
+      height: 100%;
       margin-top: -14px;
       text-align: center;
+      transform: scale(0.5);
+      width: 2px;
       z-index: 0;
 
       &:first-child {
@@ -770,26 +772,25 @@ input[type="range"] {
   }
 
   &::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 5px;
-    cursor: pointer;
-    animate: 0.2s;
-    box-shadow: 0px 0px 0px var(--black);
     background: var(--primary);
     border-radius: 1px;
     border: 0px solid var(--black);
+    box-shadow: 0px 0px 0px var(--black);
+    cursor: pointer;
+    height: 5px;
+    width: 100%;
   }
 
   &::-webkit-slider-thumb {
-    box-shadow: 0px 0px 0px var(--black);
-    border: 1px solid var(--primary);
-    height: 18px;
-    width: 18px;
-    border-radius: 25px;
-    background: var(--primary);
-    cursor: pointer;
     -webkit-appearance: none;
+    background: var(--primary);
+    border-radius: 25px;
+    border: 1px solid var(--primary);
+    box-shadow: 0px 0px 0px var(--black);
+    cursor: pointer;
+    height: 18px;
     margin-top: -7px;
+    width: 18px;
   }
 
   &:focus::-webkit-slider-runnable-track {
@@ -801,59 +802,59 @@ input[type="range"] {
   }
 
   &::-moz-range-track {
-    width: 100%;
-    height: 5px;
-    cursor: pointer;
     animate: 0.2s;
-    box-shadow: 0px 0px 0px var(--black);
     background: var(--primary);
     border-radius: 1px;
     border: 0px solid var(--black);
+    box-shadow: 0px 0px 0px var(--black);
+    cursor: pointer;
+    height: 5px;
+    width: 100%;
   }
 
   &::-moz-range-thumb {
-    box-shadow: 0px 0px 0px var(--black);
+    background: var(--primary);
+    border-radius: 25px;
     border: 1px solid var(--primary);
+    box-shadow: 0px 0px 0px var(--black);
+    cursor: pointer;
     height: 18px;
     width: 18px;
-    border-radius: 25px;
-    background: var(--primary);
-    cursor: pointer;
   }
 
   &::-ms-track {
-    width: 100%;
-    height: 5px;
-    cursor: pointer;
     animate: 0.2s;
     background: transparent;
     border-color: transparent;
     color: transparent;
+    cursor: pointer;
+    height: 5px;
+    width: 100%;
   }
 
   &::-ms-fill-lower {
     background: var(--primary);
-    border: 0px solid var(--black);
     border-radius: 2px;
+    border: 0px solid var(--black);
     box-shadow: 0px 0px 0px var(--black);
   }
 
   &::-ms-fill-upper {
     background: var(--primary);
-    border: 0px solid var(--black);
     border-radius: 2px;
+    border: 0px solid var(--black);
     box-shadow: 0px 0px 0px var(--black);
   }
 
   &::-ms-thumb {
-    margin-top: 1px;
-    box-shadow: 0px 0px 0px var(--black);
-    border: 1px solid var(--primary);
-    height: 18px;
-    width: 18px;
-    border-radius: 25px;
     background: var(--primary);
+    border-radius: 25px;
+    border: 1px solid var(--primary);
+    box-shadow: 0px 0px 0px var(--black);
     cursor: pointer;
+    height: 1.125rem;
+    margin-top: 1px;
+    width: 1.125rem;
   }
 
   &:focus::-ms-fill-lower {
@@ -900,17 +901,15 @@ input[type="checkbox"] {
 
 input[type="checkbox"],
 input[type="radio"] {
-  height: 20px;
-  width: 20px;
-  -webkit-appearance: none;
   -moz-appearance: none;
+  -webkit-appearance: none;
   appearance: none;
-  outline: none;
   border: 1px solid var(--primary);
-  transition-duration: 0.3s;
-  transition-property: all;
   cursor: pointer;
+  height: 1.25rem;
+  outline: none;
   vertical-align: middle;
+  width: 1.25rem;
 
   &:checked {
     position: relative;
@@ -932,8 +931,8 @@ input[type="checkbox"]:checked::after {
   border: 4px solid var(--primary);
   border-width: 0 4px 4px 0;
   height: 13px;
-  left: 6px;
-  top: 1px;
+  left: 7px;
+  top: 2px;
   transform: rotate(45deg);
   width: 7px;
 }
@@ -958,9 +957,6 @@ input[type="file"] {
   }
 }
 
-input[type="range"] {
-}
-
 [data-input] {
   display: flex;
   flex-flow: row nowrap;
@@ -974,18 +970,32 @@ input[type="range"] {
   }
 }
 
+//-----------------------------------------
+// Buttons
+//-----------------------------------------
+[data-buttons] {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--pad);
+
+  input[type="submit"],
+  button {
+    margin: 0;
+  }
+}
+
 input[type="submit"],
 button {
   appearance: none;
   background-color: var(--primary);
   border-radius: var(--border-radius);
   border: 1px solid var(--primary);
+  color: var(--white);
+  cursor: pointer;
   display: inline-table;
   font-size: calc(var(--font-size) * 0.75);
   font-weight: 600;
-  color: var(--white);
   margin-bottom: var(--pad);
-  cursor: pointer;
   padding: var(--pad);
 
   &[data-destructive] {
@@ -1016,21 +1026,11 @@ button {
   }
 }
 
-[data-buttons] {
-  display: flex;
-  flex-flow: row wrap;
-  gap: var(--pad);
-
-  input[type="submit"],
-  button {
-    margin: 0;
-  }
-}
-
 //-----------------------------------------
 // Tables.
 //-----------------------------------------
 [data-table] {
+  // Provide optional overflow features.
   overflow-x: auto;
 }
 
@@ -1052,8 +1052,5 @@ table {
 
   td {
     white-space: pre-line;
-  }
-
-  caption {
   }
 }
