@@ -5,15 +5,16 @@
     <link rel="icon" type="image/svg+xml" href="/acorn.css/acorn.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <title>acorn.css —  A minimal (opinionated) classless CSS framework</title>
+    <title>acorn.css —  A minimal (slightly-opinionated) classless CSS framework</title>
     <style>
       .acorn { margin-bottom: -0.5rem;  max-width: 3.125rem; }
       .github { font-size: 1.125rem; }
       .main-header { margin-bottom: 5.625rem; }
-      .github-corner { position:fixed;top:0;border:0;right:0 }
+      .github-corner { position:fixed; top:0; border:0; right:0 }
+      .buffer { margin-bottom: var(--pad-3)}
     </style>
-    <script type="module" crossorigin src="/acorn.css/assets/index-2ba4fbae.js"></script>
-    <link rel="stylesheet" href="/acorn.css/assets/index-c6be67e9.css">
+    <script type="module" crossorigin src="/acorn.css/assets/index-ee3c12b5.js"></script>
+    <link rel="stylesheet" href="/acorn.css/assets/index-34e394d0.css">
   </head>
   <body>
     <div id="app"></div>
@@ -30,7 +31,7 @@
         <br><br>
         <a href="https://github.com/jomurgel/acorn.css" class="github" target="_blank" rel="noopener noreferrer" data-type="external">Github</a>
       </p>
-      <nav data-type="inline">
+      <nav data-type="inline" class="buffer">
         <ul>
           <li><a href="#content-elements">Content Elements</a></li>
           <li><a href="#media">Image &amp; Media</a></li>
@@ -47,7 +48,7 @@
         <header>
           <h2><a href="#content-elements" aria-label="Link to Content Sectioning Section">#</a> Content Elements</h2>
           <p>Content elements that would fall between the opening and closing <code>&lt;body&gt;</code> tags.</p>
-          <nav data-type="inline" data-variant="small">
+          <nav data-type="inline" class="buffer">
             <ul>
               <li><a href="#headings">Headings</a></li>
               <li><a href="#paragraph">Paragraph &amp; Inline Text</a></li>
@@ -103,7 +104,6 @@
 
         <div id="pre">
           <pre>
-
             /**
              * Docblock comment.
              *
@@ -129,7 +129,7 @@
         <header>
           <h2><a href="#media" aria-label="Link to the Image &amp; Media Elements Section">#</a> Image &amp; Media</h2>
           <p>Multimedia resources such as images, audio, and vide.</p>
-          <nav data-type="inline" data-variant="small">
+          <nav data-type="inline" class="buffer">
             <ul>
               <li><a href="#audio">Audio</a></li>
               <li><a href="#embed">Embed</a></li>
@@ -188,6 +188,11 @@
 
           <p>Id enim pharetra faucibus ex urna nostra accumsan, gravida parturient leo arcu natoque sed donec, eget luctus risus sapien phasellus nisl. Semper adipiscing est luctus integer vel cras ultricies penatibus phasellus lacinia torquent, leo curae elementum a sagittis fermentum dictum ligula velit. Dictumst eros montes orci massa tincidunt potenti luctus habitant purus est pretium ultrices lobortis mauris, cubilia nostra penatibus conubia hac metus et donec blandit ornare praesent mus ridiculus. Vitae ante id maecenas parturient neque dui commodo class lorem, cras mollis quis tristique proin morbi netus.</p>
 
+          <figure data-align="full">
+            <img src="/acorn.css/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
+            <figcaption>Classless image alignment: [data-align='full']<cite>Image Citation: NASA's Webb Captures Dying Star's Final 'Performance' in Fine Detail</cite></figcaption>
+          </figure>
+
           <p>Inceptos malesuada euismod tincidunt pellentesque erat tempor ac, dapibus gravida volutpat aliquam commodo proin quisque, auctor magna class quis at hendrerit. Platea ultrices consectetur netus sed quisque, augue ligula auctor luctus mi morbi, porta convallis eleifend amet. Cubilia dui sollicitudin pellentesque feugiat tristique maecenas euismod habitant praesent, fusce consequat vitae ipsum lacus finibus pulvinar dictum, diam ante sem commodo urna velit quis id. Cubilia penatibus mus semper mollis tristique adipiscing pharetra conubia tempus erat, in consectetur sapien pretium amet torquent malesuada hendrerit.</p>
 
           <figure data-align="left">
@@ -210,27 +215,20 @@
           </figure>
         </div>
 
+        <div id="video" data-align="wide">
+          <p>The <code>video</code> tag with <code>[data-align="wide"]</code>.</p>
+          <div data-wrapper data-media>
+            <video controls loop>
+              <source src="/acorn.css/cross-a-mountain.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
         <div id="iframe">
           <p>The <code>iframe</code> tag.</p>
           <div data-wrapper data-media>
             <iframe src="/cross-a-mountain.mp4" title="Across a mountain arial"></iframe>
-          </div>
-        </div>
-
-        <div id="object">
-          <p>The <code>object</code> tag.</p>
-          <div data-wrapper data-media>
-            <object data="/cross-a-mountain.mp4"></object>
-          </div>
-        </div>
-
-        <div id="video">
-          <p>The <code>video</code> tag.</p>
-          <div data-wrapper data-media>
-            <video controls autoplay loop>
-              <source src="/acorn.css/cross-a-mountain.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </section>
@@ -239,7 +237,7 @@
         <header>
           <h2><a href="#interactive" aria-label="Link to Content Sectioning Section">#</a> Interactive Elements</h2>
           <p>Elements (that are widely supported cross-browser) to allow for a more interactive user interface.</p>
-          <nav data-type="inline" data-variant="small">
+          <nav data-type="inline" class="buffer">
             <ul>
               <li><a href="#details">Details</a></li>
             </ul>
@@ -268,7 +266,7 @@
         <header>
           <h2><a href="#forms" aria-label="Link to Form Elements Section">#</a> Form Elements</h2>
           <p>Standard fieldset, form elements, and buttons.</p>
-          <nav data-type="inline" data-variant="small">
+          <nav data-type="inline" class="buffer">
             <ul>
               <li><a href="#form">Forms</a></li>
               <li><a href="#buttons">Buttons</a></li>
@@ -500,7 +498,7 @@
     </main>
 
     <footer>
-      <a href="https://jomurgel.com" target="_blank" rel="noreferrer noopener">jomurgel</a> — &copy; 2023
+      <a href="https://jomurgel.com" target="_blank" rel="noreferrer noopener">jomurgel</a> — &copy; 2024
     </footer>
     
   </body>
