@@ -140,7 +140,7 @@ html {
   margin: auto;
   min-height: 100%;
   overflow-x: hidden;
-  padding: var(--pad-2) 3vw;
+  padding: var(--pad-2) var(--pad);
   tab-size: var(--tab-size);
   text-decoration-skip-ink: "auto";
   text-size-adjust: 100%;
@@ -154,6 +154,7 @@ body {
   color: var(--black);
   cursor: default;
   font-weight: 400;
+  margin: 0 auto;
   padding: 0;
   word-wrap: break-word;
 
@@ -207,7 +208,6 @@ section {
 }
 
 nav {
-  font-size: var(--font-size);
 
   &[data-type="inline"] {
     -ms-overflow-style: none;
@@ -224,11 +224,6 @@ nav {
     ul {
       flex-flow: row nowrap;
     }
-  }
-
-  &[data-variant="small"] {
-    font-size: 1rem;
-    line-height: 1;
   }
 
   ul {
@@ -255,11 +250,16 @@ blockquote {
   font-style: italic;
   line-height: calc(var(--font-size) * 1.75);
   padding: 0 0 0 var(--pad-2);
+  position: relative;
 
   > cite {
-    @extend em;
+    color: var(--gray);
+    font-size: 85%;
+    font-style: italic;
 
-    font-size: 80%;
+    :is(em, strong, i, b) {
+      color: var(--gray);
+    }
 
     &::before {
       content: "— ";
@@ -273,7 +273,7 @@ blockquote {
     margin: var(--pad-3) auto;
 
     @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      max-width: 70%;
+      max-width: 85%;
     }
   }
 }
@@ -302,9 +302,13 @@ cite,
 caption,
 figcaption {
   color: var(--gray);
-  font-size: 0.8125rem;
+  font-size: 85%;
   line-height: 1.5;
   display: block;
+
+  > p {
+    margin-bottom: 0;
+  }
 }
 
 dl {
@@ -324,6 +328,7 @@ dl {
   }
 }
 
+h1,
 h2,
 h3,
 h4,
@@ -334,38 +339,39 @@ h6 {
 }
 
 h1 {
-  font-size: 3.052rem;
-  letter-spacing: -0.15rem;
-  line-height: 1;
+  font-size: 225%;
+  letter-spacing: -0.05rem;
+  line-height: 1.125;
+  text-shadow: 0 0 10px var(--white);
 }
 
 h2 {
-  font-size: 2.441rem;
-  letter-spacing: -0.12rem;
+  font-size: 180%;
+  letter-spacing: -0.05rem;
   line-height: 1.2;
 }
 
 h3 {
-  font-size: 1.953rem;
-  letter-spacing: -0.09rem;
+  font-size: 150%;
+  letter-spacing: -0.05rem;
   line-height: 1.2;
 }
 
 h4 {
-  font-size: 1.563rem;
-  letter-spacing: -0.06rem;
+  font-size: 130%;
+  letter-spacing: -0.03rem;
   line-height: 1.3;
 }
 
 h5 {
-  font-size: 1.25rem;
-  letter-spacing: -0.03rem;
+  font-size: 110%;
+  letter-spacing: 0rem;
   line-height: 1.4;
 }
 
 h6 {
-  font-size: 1rem;
-  letter-spacing: 0;
+  font-size: 100%;
+  letter-spacing: -0.02rem;
   line-height: 1.5;
 }
 
@@ -477,7 +483,7 @@ s {
 sub,
 sup,
 small {
-  font-size: 70%;
+  font-size: 85%;
 }
 
 sub {
@@ -501,33 +507,33 @@ hr {
 }
 
 // Shared text content element margins.
-dl,
-[data-wrapper],
-blockquote,
-audio,
-details,
-embed,
-figure,
-iframe,
-object,
-video,
-table,
-details,
-[data-table],
-[data-align="wide"],
 [data-align="center"],
 [data-align="full"],
+[data-align="wide"],
+[data-table],
+[data-wrapper],
+audio,
+blockquote,
+details,
+details,
+dl,
+embed,
+figure,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-p,
-pre,
-ul,
+iframe,
+object,
 ol,
-p + img {
+p,
+p + img,
+pre,
+table,
+ul,
+video {
   margin-bottom: var(--pad-2);
   margin-top: 0;
 
@@ -549,47 +555,6 @@ video {
 
   img {
     height: auto;
-  }
-}
-
-[data-align="full"] {
-  left: 50%;
-  max-width: calc(100vw - (var(--pad) * 2));
-  position: relative;
-  transform: translateX(-50%);
-  width: 100vw;
-}
-
-[data-align="wide"] {
-  left: 50%;
-  max-width: var(--max-width);
-  position: relative;
-  transform: translateX(-50%);
-  width: 100vw;
-}
-
-
-[data-align="left"] {
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    float: left;
-    margin-right: var(--pad-2);
-  }
-}
-
-[data-align="right"] {
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    float: right;
-    margin-left: var(--pad-2);
-  }
-}
-
-[data-align="left"],
-[data-align="right"] {
-  margin-bottom: var(--pad-2);
-  margin-top: calc(var(--pad) / 2);
-
-  @media screen and (min-width: map.get($breakpoints, "media-md")) {
-    max-width: calc(40% - var(--pad-2));
   }
 }
 
@@ -629,6 +594,10 @@ video {
   }
 }
 
+img {
+  border-radius: var(--border-radius);
+}
+
 figure {
   display: table;
 }
@@ -640,6 +609,52 @@ figcaption {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--container);
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
+//-----------------------------------------
+// Alignments
+//-----------------------------------------
+[data-align="full"] {
+  left: 50%;
+  max-width: calc(100vw - (var(--pad) * 2));
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+[data-align="wide"] {
+  left: 50%;
+  max-width: var(--max-width);
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+
+[data-align="left"] {
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    float: left;
+    margin-right: var(--pad-2);
+  }
+}
+
+[data-align="right"] {
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    float: right;
+    margin-left: var(--pad-2);
+  }
+}
+
+[data-align="left"],
+[data-align="right"] {
+  margin-bottom: var(--pad-2);
+  margin-top: calc(var(--pad) / 2);
+
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    max-width: calc(40% - var(--pad-2));
+  }
 }
 
 //-----------------------------------------
