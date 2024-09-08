@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
 import autoprefixer from 'autoprefixer'
 
-export default defineConfig((test) => {
-  // Update base to '/' for dev/local preview.
+export default defineConfig(({ mode }) => {
   const config = {
-    base: '/acorn.css/',
+    base: mode === 'development' ? '/' : '/acorn.css/',
     css: {
       postcss: {
         plugins: [

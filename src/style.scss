@@ -12,7 +12,7 @@
   --font-sans-serif: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     Cantarell, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
-  --font-size: 1.125rem;
+  --font-size: 1rem;
   --font-monospace: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
     "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
     "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
@@ -93,11 +93,24 @@ $breakpoints: (
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
-  color: var(--black);
   font-family: var(--font-sans-serif);
   font-smoothing: antialiased;
   max-width: 100%;
   text-rendering: geometricPrecision;
+
+  a,
+  a:visited {
+    color: var(--primary);
+
+    &:active,
+    &:hover {
+      color: var(--secondary);
+    }
+
+    &:focus {
+      color: var(--primary-light);
+    }
+  }
 }
 
 ::selection {
@@ -196,7 +209,6 @@ section {
 
 nav {
   font-size: var(--font-size);
-  margin-bottom: var(--pad-3);
 
   &[data-type="inline"] {
     -ms-overflow-style: none;
@@ -231,20 +243,6 @@ nav {
     li {
       display: inline-block;
       flex: 0 0 auto;
-    }
-  }
-
-  a,
-  a:visited {
-    color: var(--black);
-
-    &:active,
-    &:hover {
-      color: var(--primary);
-    }
-
-    &:focus {
-      color: var(--primary-light);
     }
   }
 }
@@ -513,14 +511,24 @@ embed,
 figure,
 iframe,
 object,
-video h1,
+video,
+table,
+details,
+[data-table],
+[data-align="wide"],
+[data-align="center"],
+[data-align="full"],
+h1,
 h2,
 h3,
 h4,
 h5,
 h6,
 p,
-pre {
+pre,
+ul,
+ol,
+p + img {
   margin-bottom: var(--pad-2);
   margin-top: 0;
 
@@ -542,6 +550,47 @@ video {
 
   img {
     height: auto;
+  }
+}
+
+[data-align="full"] {
+  left: 50%;
+  max-width: calc(100vw - (var(--pad) * 2));
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+[data-align="wide"] {
+  left: 50%;
+  max-width: var(--max-width);
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+
+[data-align="left"] {
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    float: left;
+    margin-right: var(--pad-2);
+  }
+}
+
+[data-align="right"] {
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    float: right;
+    margin-left: var(--pad-2);
+  }
+}
+
+[data-align="left"],
+[data-align="right"] {
+  margin-bottom: var(--pad-2);
+  margin-top: calc(var(--pad) / 2);
+
+  @media screen and (min-width: map.get($breakpoints, "media-md")) {
+    max-width: calc(40% - var(--pad-2));
   }
 }
 
@@ -583,44 +632,15 @@ video {
 
 figure {
   display: table;
-
-  &[data-align="wide"] {
-    left: 50%;
-    max-width: var(--max-width);
-    position: relative;
-    transform: translateX(-50%);
-    width: 100vw;
-  }
-
-  &[data-align="left"] {
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      float: left;
-      margin-right: var(--pad-2);
-    }
-  }
-
-  &[data-align="right"] {
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      float: right;
-      margin-left: var(--pad-2);
-    }
-  }
-
-  &[data-align="left"],
-  &[data-align="right"] {
-    margin-bottom: var(--pad-2);
-    margin-top: calc(var(--pad) / 2);
-
-    @media screen and (min-width: map.get($breakpoints, "media-md")) {
-      max-width: calc(40% - var(--pad-2));
-    }
-  }
 }
 
 figcaption {
   caption-side: bottom;
   color: var(--dark-gray);
   display: table-caption;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--container);
 }
 
 //-----------------------------------------
