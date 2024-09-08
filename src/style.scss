@@ -91,7 +91,6 @@ $breakpoints: (
 * {
   -moz-osx-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   font-family: var(--font-sans-serif);
   font-smoothing: antialiased;
@@ -498,7 +497,7 @@ hr {
   border-style: solid;
   border-width: 2px 0 0 0;
   margin: var(--pad-3) auto;
-  max-width: 25vw;
+  max-width: 15%;
 }
 
 // Shared text content element margins.
