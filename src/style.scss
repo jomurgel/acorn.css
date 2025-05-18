@@ -3,7 +3,6 @@
 //--------------------------------------------------------------
 
 @use "sass:map";
-
 //-----------------------------------------
 // Root tokens.
 //-----------------------------------------
@@ -79,11 +78,49 @@
 // Breakpoint map
 //-----------------------------------------
 $breakpoints: (
-  media-sm: 567px,
+  media-sm: 542px,
   media-md: 768px,
-  media-lg: 992px,
+  media-lg: 1084px,
   media-xl: 1200px,
+  media-xxl: 1440px,
 );
+
+// Mixin for media queries
+@mixin media($key) {
+  @media screen and (min-width: map.get($breakpoints, $key)) {
+    @content;
+  }
+}
+
+//-----------------------------------------
+// Color map
+//-----------------------------------------
+$colors: (
+  error: --error,
+  primary-alt: --primary-alt,
+  primary: --primary,
+  senary-dark: --senary-dark,
+  senary: --senary,
+  tertiary: --tertiary,
+  secondary: --secondary,
+  warning: --warning,
+  alt-primary-light: --alt-primary-light,
+  alt-primary: --alt-primary,
+  accent: --accent,
+  accent-dark: --accent-dark,
+  quaternary: --quaternary,
+  quinary-light: --quinary-light,
+  quinary: --quinary,
+  quinary-dark: --quinary-dark,
+  dark-gray: --dark-gray,
+  gray: --gray,
+);
+
+@each $color, $value in $colors {
+  [data-color=#{$color}] {
+    color: var(#{$value});
+  }
+}
 
 //-----------------------------------------
 // All elements.
@@ -135,7 +172,7 @@ $breakpoints: (
 //-----------------------------------------
 html {
   background-color: var(--white);
-  font-size: var(--font-size); // 18px;
+  font-size: var(--font-size);
   line-height: calc(var(--font-size) * 1.75);
   margin: auto;
   min-height: 100%;
@@ -226,6 +263,18 @@ nav {
     }
   }
 
+  &[data-variant="small"] {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  &[data-style="plain"] {
+
+    a {
+      text-decoration: none;
+    }
+  }
+
   ul {
     display: flex;
     flex-flow: row wrap;
@@ -237,6 +286,34 @@ nav {
     li {
       display: inline-block;
       flex: 0 0 auto;
+    }
+  }
+
+  a,
+  a:visited {
+    color: var(--accent);
+
+    &:active,
+    &:hover {
+      color: var(--primary);
+
+      &.current {
+        text-decoration: line-through;
+      }
+    }
+
+    &:focus {
+      color: var(--primary-light);
+
+      &.current {
+        text-decoration: line-through;
+      }
+    }
+
+    &.current {
+      color: var(--dark-gray);
+      font-style: italic;
+      pointer-events: none;
     }
   }
 }
@@ -251,6 +328,17 @@ blockquote {
   line-height: calc(var(--font-size) * 1.75);
   padding: 0 0 0 var(--pad-2);
   position: relative;
+
+  &::before {
+    color: var(--primary-alt);
+    content: '\201C';
+    font-family: var(--font-serif);
+    font-size: 300%;
+    left: calc(-1 * var(--pad) / 3);
+    line-height: 1;
+    position: absolute;
+    top: calc(-1 * var(--pad) / 2);
+  }
 
   > cite {
     color: var(--gray);
@@ -267,10 +355,13 @@ blockquote {
   }
 
   &[data-type="pullquote"] {
-    border-top: 2px solid var(--primary);
-    border-left: 0;
-    padding: var(--pad-2) 0 0 0;
+    border-left: 2px solid var(--primary);
+    padding: 0 0 0 var(--pad-2);
     margin: var(--pad-3) auto;
+
+    &::before {
+      content: ''
+    }
 
     @media screen and (min-width: map.get($breakpoints, "media-md")) {
       max-width: 85%;
@@ -392,6 +483,29 @@ pre {
   }
 }
 
+
+
+*:not(pre) > code {
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+*:not(pre) > code,
+samp {
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  color: var(--dark-gray);
+  padding: calc(var(--pad) / 2);
+}
+
+*:not(pre) > code,
+samp {
+  font-family: var(--font-monospace);
+  font-size: var(--font-size-monospace);
+}
+
+
 code,
 samp {
   background-color: var(--off-white);
@@ -508,6 +622,7 @@ hr {
 
 // Shared text content element margins.
 [data-align="center"],
+[data-align="content"],
 [data-align="full"],
 [data-align="wide"],
 [data-table],
@@ -632,6 +747,12 @@ figcaption {
   width: 100vw;
 }
 
+[data-align="content"] {
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
 
 [data-align="left"] {
   @media screen and (min-width: map.get($breakpoints, "media-md")) {
@@ -1019,6 +1140,7 @@ input[type="file"] {
 }
 
 input[type="submit"],
+a[data-button],
 button {
   appearance: none;
   background-color: var(--primary);
@@ -1031,6 +1153,10 @@ button {
   font-weight: 600;
   margin-bottom: var(--pad);
   padding: var(--pad);
+
+  &:hover {
+    opacity: 0.7;
+  }
 
   &[data-destructive] {
     background-color: var(--accent);

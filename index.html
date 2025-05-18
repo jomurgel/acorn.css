@@ -10,7 +10,8 @@
       .acorn { margin-bottom: -0.5rem;  max-width: 3.125rem; }
       .github { font-size: 1.125rem; }
       .main-header { margin-bottom: 5.625rem; }
-      .github-corner { position:fixed; top:0; border:0; right:0 }
+      .github-corner { position:fixed; top:0; border:0; right:0; z-index: 100;}
+      .github-corner img { border-radius: 0;}
       .buffer { margin-bottom: var(--pad-3)}
     </style>
   </head>
@@ -102,20 +103,19 @@
 
         <div id="pre">
           <pre>
-            /**
-             * Docblock comment.
-             *
-             * @param {string} argument 1.
-             * @param {string} argument 2.
-             */
-            const functionName = (arg1, arg2) => {
-              if ( condition ) {
-                return arg1;
-              }
+/**
+  * Docblock comment.
+  *
+  * @param {string} argument 1.
+  * @param {string} argument 2.
+  */
+const functionName = (arg1, arg2) => {
+  if ( condition ) {
+    return arg1;
+  }
 
-              return arg2;
-            }
-          </pre>
+  return arg2;
+}</pre>
         </div>
 
         <div id="kbd">
@@ -214,7 +214,7 @@
         </div>
 
         <div id="video" data-align="wide">
-          <p>The <code>video</code> tag with <code>[data-align="wide"]</code>.</p>
+          <p data-align="content">The <code>video</code> tag with <code>[data-align="wide"]</code>.</p>
           <div data-wrapper data-media>
             <video controls loop>
               <source src="/cross-a-mountain.mp4" type="video/mp4">
@@ -496,7 +496,7 @@
     </main>
 
     <footer>
-      <a href="https://jomurgel.com" target="_blank" rel="noreferrer noopener">jomurgel</a> — &copy; 2024
+      <a href="https://jomurgel.com" target="_blank" rel="noreferrer noopener">jomurgel</a> — &copy; 2022-2025
     </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
