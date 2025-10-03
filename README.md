@@ -4,6 +4,9 @@
 
 A lightweight, semantic HTML framework. Just ~18KB of thoughtful CSS (3.8KB gzipped).
 
+[![npm version](https://badge.fury.io/js/acorn.css.svg)](https://www.npmjs.com/package/acorn.css)
+[![Bundle Size](https://img.shields.io/badge/bundle%20size-18%20KB%20gzipped-brightgreen)]()
+
 - **Lightweight**: ~18KB uncompressed, 3.8KB gzipped
 - **Semantic**: Style HTML elements directly without classes
 - **Customizable**: Simple CSS custom properties for everything
