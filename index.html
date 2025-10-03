@@ -1,503 +1,874 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/acorn.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
-    <title>acorn.css —  A minimal (slightly-opinionated) classless CSS framework</title>
-    <style>
-      .acorn { margin-bottom: -0.5rem;  max-width: 3.125rem; }
-      .github { font-size: 1.125rem; }
-      .main-header { margin-bottom: 5.625rem; }
-      .github-corner { position:fixed; top:0; border:0; right:0; z-index: 100;}
-      .github-corner img { border-radius: 0;}
-      .buffer { margin-bottom: var(--pad-3)}
-    </style>
-  </head>
-  <body>
-    <div id="app"></div>
-    <a href="https://github.com/jomurgel/acorn.css" class="github-corner" aria-label="View source on GitHub">
-      <img src="/github-corner.svg" alt="The GitHub Octocat in the a triangle nested in the corner." title="GitHub Octocat logo">
-    </a>
-    <header class="main-header">
-      <h1>
-        <img class="acorn" src="/acorn.svg" alt="abstracted and simlified acorn-shaped logo. Outline with an offset background fill." title="acorn.css logo">
-        <span>acorn.css</span>
-      </h1>
-      <p>
-        A minimal (opinionated) classless CSS framework.
-        <br><br>
-        <a href="https://github.com/jomurgel/acorn.css" class="github" target="_blank" rel="noopener noreferrer" data-type="external">Github</a>
-      </p>
-      <nav data-type="inline" class="buffer">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/acorn.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Acorn CSS - A Generative Classless Framework</title>
+
+  <style>
+    .demo-header {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    .github-corner {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    .github-corner img {
+      border-radius: 0;
+      width: 80px;
+      height: 80px;
+    }
+
+    .acorn-logo {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto var(--space-2);
+    }
+
+    [data-dialog-trigger] {
+      margin-bottom: var(--space-3);
+    }
+
+    /* Dark mode toggle */
+    .theme-toggle {
+      bottom: var(--space-3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      justify-content: center;
+      position: fixed;
+      right: var(--space-3);
+      transition: transform 0.2s ease;
+      z-index: 100;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" data-skip-link>Skip to main content</a>
+
+  <!-- GitHub corner -->
+  <a href="https://github.com/jomurgel/acorn.css" class="github-corner" aria-label="View source on GitHub">
+    <img src="/github-corner.svg" alt="GitHub corner" title="View on GitHub">
+  </a>
+
+  <!-- Dark mode toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <span id="theme-icon">Dark Mode</span>
+  </button>
+
+  <header data-container="narrow" class="demo-header">
+    <img src="/acorn.svg" alt="Acorn CSS Logo" class="acorn-logo">
+    <h1>Acorn CSS</h1>
+    <p>A generative classless CSS framework built for customization</p>
+
+    <!-- Main navigation -->
+    <nav data-scroll="horizontal">
+      <ul>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#navigation">Navigation</a></li>
+        <li><a href="#layout">Layout</a></li>
+        <li><a href="#interactive">Interactive</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#grid">Grid</a></li>
+        <li><a href="#documentation">Docs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Getting Started Section -->
+    <section id="getting-started">
+      <header>
+        <h2><a href="#getting-started" aria-label="Link to Getting Started section">#</a> Getting Started</h2>
+        <p>A lightweight CSS framework that makes semantic HTML beautiful. Just ~18KB of thoughtful CSS.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#principles">Core Principles</a></li>
+            <li><a href="#customization">Customization</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="installation"><a href="#installation" aria-label="Link to Installation section">#</a> Installation</h3>
+        <p><em>Coming soon:</em> npm package, CDN links, and direct download options.</p>
+
+        <pre><code>/* Quick start - customize with CSS variables */
+:root {
+  --primary: #41aaea;
+  --space-2: 1rem;
+  --text-base: 1rem;
+  --container-default: 60rem;
+  --border-radius: 0.25rem;
+}</code></pre>
+
+        <h3 id="principles"><a href="#principles" aria-label="Link to Core Principles section">#</a> Core Principles
+        </h3>
         <ul>
-          <li><a href="#content-elements">Content Elements</a></li>
-          <li><a href="#media">Image &amp; Media</a></li>
-          <li><a href="#interactive">Interactive Elements</a></li>
-          <li><a href="#forms">Form Elements</a></li>
-          <li><a href="#tables">Tables</a></li>
-          <li><a href="#info">Info</a></li>
+          <li><strong>Lightweight:</strong> ~18KB of CSS (3.8KB gzipped), no JavaScript required</li>
+          <li><strong>Semantic:</strong> Style HTML elements directly without classes</li>
+          <li><strong>Customizable:</strong> Simple CSS custom properties for everything</li>
+          <li><strong>Accessible:</strong> WCAG compliant with proper focus management</li>
+          <li><strong>Responsive:</strong> Mobile-first with sensible defaults</li>
         </ul>
-      </nav>
-    </header>
 
-    <main>
-      <section id="content-elements">
-        <header>
-          <h2><a href="#content-elements" aria-label="Link to Content Sectioning Section">#</a> Content Elements</h2>
-          <p>Content elements that would fall between the opening and closing <code>&lt;body&gt;</code> tags.</p>
-          <nav data-type="inline" class="buffer">
-            <ul>
-              <li><a href="#headings">Headings</a></li>
-              <li><a href="#paragraph">Paragraph &amp; Inline Text</a></li>
-              <li><a href="#blockquote">Blockquote</a></li>
-              <li><a href="#dd">Definitions</a></li>
-              <li><a href="#pre">Preformatted</a></li>
-              <li><a href="#kbd">Keyboard</a></li>
-            </ul>
-          </nav>
-        </header>
+        <h3 id="customization"><a href="#customization" aria-label="Link to Customization section">#</a> Customization
+        </h3>
+        <p>Customize the framework using straightforward CSS custom properties:</p>
 
-        <div id="headings">
-          <h1>Heading 1</h1>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <h4>Heading 4</h4>
-          <h5>Heading 5</h5>
-          <h6>Heading 6</h6>
-        </div>
+        <dl>
+          <dt><code>--primary</code>, <code>--secondary</code>, <code>--accent</code></dt>
+          <dd>Brand colors with light/dark variants for your design system.</dd>
 
-        <div id="paragraph">
-          <p><em>The most significant things we can think about</em>, when we think about <strong>Apollo</strong>, is that it has opened for us, for us being the World, a challenge of the future. The door is now cracked, but the promise of that future lies <s>in the young people,</s> not just in America, but the young people all over the world.</p>
+          <dt><code>--space-1</code> through <code>--space-5</code></dt>
+          <dd>Spacing scale using rule of 2: 8px, 16px, 32px, 64px, 128px.</dd>
 
-          <blockquote id="blockquote">
-            <strong>Blockquote</strong> We choose to go to the moon. We choose to go to the moon in this decade and do the other things, not because they are easy, but because they are hard, because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one which we intend to win, and the others, too.
-            <cite>John F. Kennedy</cite>
-          </blockquote>
+          <dt><code>--text-xs</code> through <code>--text-3xl</code></dt>
+          <dd>Typography scale (1.25 ratio) for consistent text sizing.</dd>
 
-          <p>Learning to live and learning to work together. In order to remind all the peoples of the World, in so many countries throughout the world, that this is what we all are striving for in the future, Jack has picked up a very significant rock, typical of what we have here in the valley of <a href="https://en.wikipedia.org/wiki/Taurus%E2%80%93Littrow" target="_blank" rel="noopener noreferrer">Taurus Littrow External Link</a>. It's a rock composed of many fragments, of many sizes, and many shapes, probably from all parts of the Moon, perhaps billions of years old. <q cite="#">But a rock of all sizes and shapes, fragments of all sizes and shapes, and even colors that have grown together to become a cohesive rock outlasting the nature of Space, sort of living together in a very coherent, very peaceful manner.</q> When we return this rock or some of the others like it to Houston, we'd like to share a piece of this rock with so many of the countries throughout the world. We hope that this will be a symbol of what our feelings are, what the feelings of the <i>Apollo Program</i> are, and a symbol of mankind that we can live in peace and harmony in the future.</p>
+          <dt><code>--container-narrow/default/wide</code></dt>
+          <dd>Container widths: 45rem (reading), 60rem (default), 80rem (wide).</dd>
 
-          <hr>
+          <dt><code>--border-radius</code></dt>
+          <dd>Base border radius applied to buttons, inputs, and interactive elements.</dd>
+        </dl>
 
-          <p>The Earth is the only world known so far to harbor life for it has water. H<sub>2</sub>O. There is nowhere else, at least in the near future, to which our species could <u>migrat</u>. Visit, yes. Settle, not yet. Like it or not, for the moment the Earth is where we make our stand.</p>
+        <h4>Dark Mode</h4>
+        <p>The framework includes built-in dark mode support using the <code>data-theme</code> attribute:</p>
 
-          <blockquote data-type="pullquote">
-            <strong>Blockquote Pullquote Variant</strong> Rutrum viverra ipsum sed risus lacinia sollicitudin ultrices neque mattis maecenas turpis leo, iaculis facilisis nibh primis fusce venenatis cursus finibus diam dolor.
-            <cite>Pullquote Citation</cite>
-          </blockquote>
+        <pre><code><!-- Manual theme switching -->
+&lt;html data-theme="light"&gt; &lt;!-- Light mode (default) --&gt;
+&lt;html data-theme="dark"&gt;  &lt;!-- Dark mode --&gt;</code></pre>
 
-          <p>You could also think about <code>background-color</code> or <code>text-color</code> changes to make this more interesting.</p>
+        <p>For automatic theme detection based on user preferences, you can use CSS media queries instead:</p>
 
-          <p>In the last 24 hours we have seen facilities now being created for the greatest and most complex exploration in man's history. We have felt the ground shake and the air shattered by the testing of a <small>Saturn C-1 booster rocket</small>, many times as powerful as the Atlas which launched John Glenn<sup>1</sup>, generating power equivalent to 10,000 automobiles with their accelerators on the floor. We have seen the site where the F-1 rocket engines, each one as powerful as all eight engines of the Saturn combined, will be clustered together to make the advanced <b>Saturn missile</b>, assembled in a new building to be built at <mark>Cape Canaveral</mark> as tall as a 48 story structure, as wide as a city block, and as long as two lengths of this field.</p>
-        </div>
-
-        <div id="dd">
-          <dl>
-            <dt>Definition Term</dt>
-            <dd>Description. Facilisi inceptos nunc convallis eros ullamcorper aenean tempor, risus class ridiculus sodales mi bibendum, himenaeos metus mus efficitur rutrum euismod.</dd>
-            <dt>Tristique pretium suscipit</dt>
-            <dd>Cras placerat eros pulvinar enim morbi taciti donec ex imperdiet metus augue convallis ultricies id, conubia inceptos erat commodo curabitur fermentum sem faucibus bibendum massa integer maecenas.</dd>
-          </dl>
-        </div>
-
-        <div id="pre">
-          <pre>
-/**
-  * Docblock comment.
-  *
-  * @param {string} argument 1.
-  * @param {string} argument 2.
-  */
-const functionName = (arg1, arg2) => {
-  if ( condition ) {
-    return arg1;
+        <pre><code>/* Auto dark mode using prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Apply dark mode colors automatically */
+    --primary: #6ec3f8;
+    --white: #151513;
+    --black: #f5f5f5;
+    /* ... other dark mode variables */
   }
+}</code></pre>
 
-  return arg2;
-}</pre>
-        </div>
+        <p>Or implement with JavaScript to respect system preferences while allowing manual override:</p>
 
-        <div id="kbd">
-          <p><kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></p>
-        </div>
-      </section>
+        <pre><code>// Auto mode with system preference detection
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+const savedTheme = localStorage.getItem('theme');
 
-      <section id="media">
-        <header>
-          <h2><a href="#media" aria-label="Link to the Image &amp; Media Elements Section">#</a> Image &amp; Media</h2>
-          <p>Multimedia resources such as images, audio, and vide.</p>
-          <nav data-type="inline" class="buffer">
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+} else if (prefersDark.matches) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+}</code></pre>
+
+        <p><strong>Note:</strong> This demo uses manual theme switching with the toggle button in the bottom-right
+          corner. Your implementation can choose manual control, automatic detection, or both!</p>
+      </article>
+    </section>
+
+    <!-- Typography Examples -->
+    <section id="typography">
+      <header>
+        <h2><a href="#typography" aria-label="Link to Typography section">#</a> Typography</h2>
+        <p>All heading and text elements styled automatically with mathematical type scale.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#headings">Headings</a></li>
+            <li><a href="#text-elements">Text Elements</a></li>
+            <li><a href="#lists">Lists</a></li>
+            <li><a href="#quotes">Quotes</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="headings"><a href="#headings" aria-label="Link to Headings section">#</a> Heading Hierarchy</h3>
+        <h1>Heading 1 - Main Title</h1>
+        <h2>Heading 2 - Section Title</h2>
+        <h3>Heading 3 - Subsection</h3>
+        <h4>Heading 4 - Article Title</h4>
+        <h5>Heading 5 - Subheading</h5>
+        <h6>Heading 6 - Minor Heading</h6>
+
+        <h3 id="text-elements"><a href="#text-elements" aria-label="Link to Text Elements section">#</a> Inline Text
+          Elements</h3>
+        <p>This is a paragraph with <strong>bold text</strong>, <em>italic text</em>, and <a href="#">a link</a>. The
+          framework provides consistent spacing and typography that scales beautifully across devices.</p>
+
+        <p>You can use <code>inline code</code>, <kbd>Cmd</kbd> + <kbd>C</kbd> keyboard shortcuts, <mark>highlighted
+            text</mark>, <small>small text</small>, and text with various other formatting options including
+          <sup>superscript</sup> and <sub>subscript</sub>.
+        </p>
+
+        <p>Additional semantic elements: <abbr title="HyperText Markup Language">HTML</abbr>, <dfn>definition
+            terms</dfn>, <var>variables</var>, <time datetime="2025-01-20">January 20, 2025</time>, and <q>inline
+            quotations</q>.</p>
+
+        <h3 id="quotes"><a href="#quotes" aria-label="Link to Quotes section">#</a> Blockquotes</h3>
+
+        <blockquote>
+          <p>The best frameworks get out of your way and let you focus on content. This blockquote demonstrates how
+            semantic HTML just works.</p>
+          <cite>Framework Philosophy</cite>
+        </blockquote>
+
+        <hr>
+
+        <h3 id="lists"><a href="#lists" aria-label="Link to Lists section">#</a> Lists and Definitions</h3>
+        <p>Unordered and ordered lists work perfectly:</p>
+
+        <ul>
+          <li>Automatic styling for list items</li>
+          <li>Proper spacing and indentation
             <ul>
-              <li><a href="#audio">Audio</a></li>
-              <li><a href="#embed">Embed</a></li>
-              <li><a href="#figure">Figure &amp; Images</a></li>
-              <li><a href="#iframe">iFrame</a></li>
-              <li><a href="#object">Object</a></li>
-              <li><a href="#video">Video</a></li>
+              <li>Nested lists work too</li>
+              <li>Multiple levels supported</li>
             </ul>
-          </nav>
-        </header>
+          </li>
+          <li>Mobile-friendly responsive design</li>
+        </ul>
 
-        <div id="audio">
-          <p>Standard <code>audio</code> embed.</p>
-          <audio controls>
-            <source src="#" type="audio/ogg">
-            <source src="#" type="audio/mpeg">
-            Your browser does not support the audio tag.
-          </audio>
+        <ol>
+          <li>Install the framework</li>
+          <li>Write semantic HTML</li>
+          <li>Customize with CSS variables</li>
+        </ol>
+
+        <dl>
+          <dt>Classless Framework</dt>
+          <dd>A CSS framework that styles HTML elements without requiring class names.</dd>
+          <dt>Generative Design</dt>
+          <dd>A system where changing one parameter affects the entire design systematically.</dd>
+          <dt>Container Queries</dt>
+          <dd>CSS feature allowing styles based on container size rather than viewport size.</dd>
+        </dl>
+      </article>
+    </section>
+
+    <!-- Navigation Examples -->
+    <section id="navigation">
+      <header>
+        <h2><a href="#navigation" aria-label="Link to Navigation section">#</a> Navigation Patterns</h2>
+        <p>Various navigation patterns built into the framework.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#basic-nav">Basic Navigation</a></li>
+            <li><a href="#horizontal-nav">Horizontal Scroll</a></li>
+            <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="#pagination">Pagination</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="basic-nav"><a href="#basic-nav" aria-label="Link to Basic Navigation section">#</a> Basic Navigation
+        </h3>
+        <p>Standard navigation with current page indication:</p>
+
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services" aria-current="page">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <h3 id="horizontal-nav"><a href="#horizontal-nav" aria-label="Link to Horizontal Scroll section">#</a>
+          Horizontal Scrolling Navigation</h3>
+        <p>Long navigation lists that scroll horizontally on mobile:</p>
+
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#section1">Introduction</a></li>
+            <li><a href="#section2">Getting Started</a></li>
+            <li><a href="#section3">Advanced Features</a></li>
+            <li><a href="#section4">API Reference</a></li>
+            <li><a href="#section5">Examples</a></li>
+            <li><a href="#section6">Troubleshooting</a></li>
+            <li><a href="#section7">Contributing</a></li>
+          </ul>
+        </nav>
+
+        <h3 id="breadcrumbs"><a href="#breadcrumbs" aria-label="Link to Breadcrumbs section">#</a> Breadcrumb Navigation
+        </h3>
+        <nav aria-label="Breadcrumb">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/docs/components">Components</a></li>
+            <li><a aria-current="page" href="/docs/components/navigation">Navigation</a></li>
+          </ul>
+        </nav>
+
+        <h3 id="pagination"><a href="#pagination" aria-label="Link to Pagination section">#</a> Pagination</h3>
+        <nav aria-label="Pagination">
+          <ul>
+            <li><a href="#prev" aria-label="Previous page">←</a></li>
+            <li><a href="#page1">1</a></li>
+            <li><a href="#page2">2</a></li>
+            <li><a href="#page3" aria-current="page">3</a></li>
+            <li><a href="#page4">4</a></li>
+            <li><a href="#page5">5</a></li>
+            <li><a href="#next" aria-label="Next page">→</a></li>
+          </ul>
+        </nav>
+      </article>
+    </section>
+
+    <!-- Layout Examples -->
+    <section id="layout">
+      <header>
+        <h2><a href="#layout" aria-label="Link to Layout section">#</a> Layout & Sectioning</h2>
+        <p>Semantic HTML5 sectioning elements with responsive container behavior.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#containers">Containers</a></li>
+            <li><a href="#sectioning">Sectioning Elements</a></li>
+            <li><a href="#content-flow">Content Flow</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="containers"><a href="#containers" aria-label="Link to Containers section">#</a> Container System</h3>
+        <p>The framework provides four container widths:</p>
+
+        <ul>
+          <li><code>data-container="text"</code> - 720px optimal reading width</li>
+          <li><code>data-container="max"</code> - 1200px max content width</li>
+          <li><code>data-container="wide"</code> - 1440px wide layouts</li>
+          <li><code>data-container="full"</code> - 100vw full viewport</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3 id="content-flow"><a href="#content-flow" aria-label="Link to Content Flow section">#</a> Content Flow
+          Utilities</h3>
+        <p>Stack and cluster utilities for content organization:</p>
+
+        <p>Content flow uses default margin-bottom spacing for consistent vertical rhythm.</p>
+
+        <div style="display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap;">
+          <button>Button 1</button>
+          <button data-variant="secondary">Button 2</button>
+          <button data-destructive>Button 3</button>
         </div>
+      </article>
 
-        <div id="embed">
-          <p>Standard <code>embed</code></p>
-          <div data-wrapper data-media>
-            <embed type="video/mp4" src="/cross-a-mountain.mp4" width="400" height="300">
-          </div>
-        </div>
-
-        <div id="figure">
-          <p><strong>A group of various image handling.</strong> Luctus tempus congue ac leo etiam egestas imperdiet, dignissim diam ultricies duis tincidunt tristique vulputate, mollis aptent nulla iaculis ornare nascetur. Pharetra turpis imperdiet varius eget viverra consectetur sapien, nibh adipiscing ornare sem neque curae morbi, nulla aliquet nam dignissim lectus tempor. A aenean mus velit ante montes malesuada facilisis posuere, blandit venenatis mauris aptent dictum netus donec ultricies, et nascetur nullam class quam aliquet est. Platea diam iaculis natoque sodales adipiscing magna nisl habitasse ullamcorper, ornare rutrum ante quis vivamus dictum cubilia turpis, bibendum litora leo molestie felis consequat varius duis. Elit nulla tempus aliquam libero interdum gravida senectus tristique parturient, vehicula blandit a semper nec mi varius dolor, amet nibh ullamcorper eros taciti rhoncus ultrices morbi. Nullam neque sagittis malesuada blandit fringilla eros consectetur morbi in, non quis pellentesque vehicula varius iaculis felis luctus, libero viverra laoreet lobortis himenaeos phasellus finibus class. Odio velit nullam massa habitant suspendisse id molestie pretium imperdiet, iaculis vel dictumst hac sollicitudin mauris penatibus parturient, rutrum dignissim curabitur fusce inceptos dictum tempus accumsan. Ligula faucibus dolor integer porttitor blandit dis feugiat euismod augue, convallis accumsan bibendum in maecenas litora nascetur praesent nunc leo, amet fringilla aliquet porta dictum id enim montes.</p>
-
-          <figure>
-            <img src="/carina-nebula-webb.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
-            <figcaption>Figcaption Text Caption<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
-          </figure>
-
-          <p>Eget hac lectus vestibulum et himenaeos primis ultricies quam imperdiet fames duis, auctor ornare sodales mus netus dui interdum felis massa nisi, dis parturient arcu gravida velit enim dictum pulvinar semper suscipit. Nostra id urna curae conubia orci sodales egestas litora, himenaeos imperdiet rutrum bibendum rhoncus quis mauris ad dignissim, scelerisque tincidunt in dictum senectus posuere enim. Sapien habitant pharetra non per nunc arcu vitae id ut gravida, inceptos primis cursus velit elementum amet dui morbi tristique, quam dapibus iaculis ridiculus ultrices tincidunt sodales risus volutpat.M</p>
-
-          <figure data-align="wide">
-            <img src="/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
-            <figcaption>Classless image alignment: [data-align='wide']<cite>Image Citation: NASA's Webb Captures Dying Star's Final 'Performance' in Fine Detail</cite></figcaption>
-          </figure>
-
-          <p>Suspendisse sociosqu ornare sollicitudin facilisis diam placerat primis viverra, donec gravida dolor ipsum leo pellentesque urna lacus taciti, potenti integer metus himenaeos vestibulum lobortis rutrum. Eu senectus eget hendrerit maximus ornare dictum ut curabitur ad, libero purus nascetur leo dignissim torquent orci aliquet, id mi fusce nunc massa placerat pellentesque cubilia. Efficitur conubia magnis congue magna sit hac parturient primis bibendum, dictum dui ac dignissim velit facilisi dictumst volutpat ridiculus orci, fermentum lobortis dapibus ut consequat accumsan eu et. Potenti in aenean eget elit aliquet enim inceptos eros justo, porta leo vehicula congue pharetra nulla tempor volutpat dictumst habitasse, malesuada id orci aptent ligula duis lectus praesent.</p>
-
-          <figure>
-            <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
-            <figcaption>Default alignment for smaller than max images.<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
-          </figure>
-
-          <p>Praesent ipsum lacus aliquam eu et vel sollicitudin habitasse, malesuada phasellus ac finibus sodales netus accumsan ad, sit integer hac elit consectetur sem amet. Blandit vel dis integer aliquet et maecenas condimentum fermentum egestas scelerisque lobortis, donec consectetur amet montes adipiscing enim lacinia libero hendrerit venenatis, a nibh pellentesque nisi vulputate euismod sed sem leo ad. Curae vel eros ex diam sociosqu potenti purus fringilla, congue habitasse ullamcorper scelerisque tellus maecenas nisi tortor, aenean nulla magnis tristique sollicitudin conubia vulputate.</p>
-
-          <figure data-align="right">
-            <img src="/carina-nebula-webb-square-neg.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
-            <figcaption>Classless image alignment: [data-align="right"]<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
-          </figure>
-
-          <p>Id enim pharetra faucibus ex urna nostra accumsan, gravida parturient leo arcu natoque sed donec, eget luctus risus sapien phasellus nisl. Semper adipiscing est luctus integer vel cras ultricies penatibus phasellus lacinia torquent, leo curae elementum a sagittis fermentum dictum ligula velit. Dictumst eros montes orci massa tincidunt potenti luctus habitant purus est pretium ultrices lobortis mauris, cubilia nostra penatibus conubia hac metus et donec blandit ornare praesent mus ridiculus. Vitae ante id maecenas parturient neque dui commodo class lorem, cras mollis quis tristique proin morbi netus.</p>
-
-          <figure data-align="full">
-            <img src="/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
-            <figcaption>Classless image alignment: [data-align='full']<cite>Image Citation: NASA's Webb Captures Dying Star's Final 'Performance' in Fine Detail</cite></figcaption>
-          </figure>
-
-          <p>Inceptos malesuada euismod tincidunt pellentesque erat tempor ac, dapibus gravida volutpat aliquam commodo proin quisque, auctor magna class quis at hendrerit. Platea ultrices consectetur netus sed quisque, augue ligula auctor luctus mi morbi, porta convallis eleifend amet. Cubilia dui sollicitudin pellentesque feugiat tristique maecenas euismod habitant praesent, fusce consequat vitae ipsum lacus finibus pulvinar dictum, diam ante sem commodo urna velit quis id. Cubilia penatibus mus semper mollis tristique adipiscing pharetra conubia tempus erat, in consectetur sapien pretium amet torquent malesuada hendrerit.</p>
-
-          <figure data-align="left">
-            <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
-            <figcaption>Classless image alignment: [data-align="left"]<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
-          </figure>
-
-          <p>Id enim pharetra faucibus ex urna nostra accumsan, gravida parturient leo arcu natoque sed donec, eget luctus risus sapien phasellus nisl. Semper adipiscing est luctus integer vel cras ultricies penatibus phasellus lacinia torquent, leo curae elementum a sagittis fermentum dictum ligula velit. Dictumst eros montes orci massa tincidunt potenti luctus habitant purus est pretium ultrices lobortis mauris, cubilia nostra penatibus conubia hac metus et donec blandit ornare praesent mus ridiculus. Vitae ante id maecenas parturient neque dui commodo class lorem, cras mollis quis tristique proin morbi netus.</p>
-
-          <p>Convallis mi adipiscing finibus lacinia nec, sociosqu tortor laoreet imperdiet volutpat, posuere risus duis hac. Elit posuere proin malesuada sociosqu bibendum eleifend etiam quisque sed amet, placerat laoreet nostra tortor ad nam taciti praesent mus mauris ultricies, interdum et tincidunt risus fames hac diam pellentesque purus. Et torquent lacus dui ligula luctus cursus purus fusce suspendisse nostra dictum, gravida euismod inceptos nisl tristique porttitor viverra volutpat convallis condimentum, elementum pharetra nascetur arcu id curabitur rhoncus vehicula vel vivamus. Maximus curabitur libero semper inceptos integer dapibus venenatis dis, massa suscipit cubilia arcu dictum risus iaculis, lacus bibendum id convallis ad mus proin duis, odio himenaeos augue justo litora laoreet.</p>
-
-          <p>The <code>picture</code> tag.</p>
-          <figure>
-            <picture>
-              <source media="(min-width:53.125rem)" srcset="/carina-nebula-webb-neg.jpg">
-              <source media="(min-width:29.0625rem)" srcset="/carina-nebula-webb.jpg">
-              <img src="/carina-nebula-webb.jpg" alt="Carina Nebula photo taken with the James Webb telescope.">
-            </picture>
-            <figcaption>Figcaption Text Caption<cite>Image Citation: NASA, ESA, CSA, and STScI</cite></figcaption>
-          </figure>
-        </div>
-
-        <div id="video" data-align="wide">
-          <p data-align="content">The <code>video</code> tag with <code>[data-align="wide"]</code>.</p>
-          <div data-wrapper data-media>
-            <video controls loop>
-              <source src="/cross-a-mountain.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-        <div id="iframe">
-          <p>The <code>iframe</code> tag.</p>
-          <div data-wrapper data-media>
-            <iframe src="/cross-a-mountain.mp4" title="Across a mountain arial"></iframe>
-          </div>
-        </div>
+      <section data-container="wide">
+        <h3 id="wide-content"><a href="#wide-content" aria-label="Link to Wide Content section">#</a> Wide Container
+          Section</h3>
+        <p>This section uses <code>data-container="wide"</code> to break out wider than normal content. Perfect for
+          showcasing images, data visualizations, or content that needs more breathing room.</p>
       </section>
+    </section>
 
-      <section id="interactive">
-        <header>
-          <h2><a href="#interactive" aria-label="Link to Content Sectioning Section">#</a> Interactive Elements</h2>
-          <p>Elements (that are widely supported cross-browser) to allow for a more interactive user interface.</p>
-          <nav data-type="inline" class="buffer">
-            <ul>
-              <li><a href="#details">Details</a></li>
-            </ul>
-          </nav>
-        </header>
+    <!-- Interactive Elements -->
+    <section id="interactive">
+      <header>
+        <h2><a href="#interactive" aria-label="Link to Interactive Elements section">#</a> Interactive Elements</h2>
+        <p>Modern HTML5 interactive elements with built-in accessibility.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#disclosure">Disclosure Widgets</a></li>
+            <li><a href="#progress">Progress & Meter</a></li>
+            <li><a href="#dialog">Dialogs</a></li>
+            <li><a href="#tooltips">Tooltips</a></li>
+          </ul>
+        </nav>
+      </header>
 
-        <div id="details">
-          <details>
-            <summary>Ridiculus proin venenatis dapibus placerats</summary>
-            <p>Hendrerit odio metus accumsan placerat et ultrices laoreet quisque, auctor risus id vestibulum turpis primis consequat volutpat, tristique aptent maecenas ipsum velit lobortis semper. Etiam orci nascetur neque, primis molestie imperdiet, taciti platea.</p>
-          </details>
+      <article>
+        <h3 id="disclosure"><a href="#disclosure" aria-label="Link to Disclosure Widgets section">#</a> Disclosure
+          Widgets</h3>
+        <details>
+          <summary>What makes this framework different?</summary>
+          <p>Unlike utility-first frameworks, Acorn is designed to style semantic HTML out of the box. You write markup
+            the way it was intended, and the framework makes it look great.</p>
+        </details>
 
-          <details>
-            <summary>Tellus magnis accumsan maecenas</summary>
-            <p>Purus iaculis montes cras in magna vivamus facilisis congue eget, fringilla nunc per justo convallis eu litora.</p>
-          </details>
+        <details>
+          <summary>How does the generative system work?</summary>
+          <p>The framework uses mathematical relationships to generate entire color palettes, spacing scales, and
+            typography hierarchies from just 5 core variables. Change the hue from 210 to 160, and your entire site
+            shifts from blue to green while maintaining perfect color relationships.</p>
+        </details>
 
-          <details>
-            <summary>Penatibus nec netus varius porttitor ad suscipit nulla inceptos, ante consequat bibendum tortor mollis natoque risus</summary>
-            <p>Vel congue arcu adipiscing potenti integer parturient facilisis, ridiculus inceptos suscipit odio velit lacus penatibus nisi, iaculis condimentum aenean lectus metus consequat. Diam nibh nascetur imperdiet quisque pellentesque senectus mattis et velit, fermentum vivamus egestas porttitor posuere cursus volutpat semper ultricies, odio integer risus vehicula porta purus ac commodo. Efficitur convallis euismod libero sociosqu tristique cras aenean potenti ad pretium dapibus mi arcu sagittis taciti torquent, tempus platea tincidunt odio feugiat montes vulputate adipiscing malesuada semper ultrices blandit a conubia. Orci dolor semper inceptos luctus platea porta, mollis condimentum nulla lacus sed nisi et, pharetra dignissim iaculis mauris fusce.</p>
-          </details>
-        </div>
-      </section>
+        <details open>
+          <summary>Can I customize everything?</summary>
+          <p>Absolutely! While the framework provides sensible defaults, every aspect can be customized through CSS
+            variables. The generative approach means your customizations propagate throughout the entire system
+            automatically.</p>
+        </details>
 
-      <section id="forms">
-        <header>
-          <h2><a href="#forms" aria-label="Link to Form Elements Section">#</a> Form Elements</h2>
-          <p>Standard fieldset, form elements, and buttons.</p>
-          <nav data-type="inline" class="buffer">
-            <ul>
-              <li><a href="#form">Forms</a></li>
-              <li><a href="#buttons">Buttons</a></li>
-            </ul>
-          </nav>
-        </header>
+        <h3 id="progress"><a href="#progress" aria-label="Link to Progress section">#</a> Progress Indicators</h3>
+        <p>Upload progress: <progress value="67" max="100">67%</progress></p>
+        <p>Storage usage: <meter min="0" max="1" low="0.3" high="0.7" optimum="0.2" value="0.6">60% used</meter></p>
+        <p>Disk space: <meter min="0" max="100" low="20" high="80" optimum="10" value="85">85% used</meter></p>
+        <p>Battery level: <meter min="0" max="100" low="20" high="80" optimum="90" value="15">15% remaining</meter></p>
 
-        <div id="form">
-          <form>
+        <h3 id="dialog"><a href="#dialog" aria-label="Link to Dialog section">#</a> Dialog Example</h3>
+        <button data-dialog-trigger onclick="document.getElementById('demo-dialog').showModal()">Open Dialog</button>
+
+        <dialog id="demo-dialog" data-dialog-target>
+          <header>
+            <h4>Example Dialog</h4>
+            <button onclick="document.getElementById('demo-dialog').close()" data-close aria-label="Close">×</button>
+          </header>
+          <div>
+            <p>This is a native HTML dialog element styled by the framework. It includes backdrop blur and proper focus
+              management.</p>
+          </div>
+          <footer>
+            <button data-variant="secondary" onclick="document.getElementById('demo-dialog').close()">Cancel</button>
+            <button onclick="document.getElementById('demo-dialog').close()">Confirm</button>
+          </footer>
+        </dialog>
+
+        <h3 id="interaction-state"><a href="#interaction-state" aria-label="Link to Interaction State section">#</a>
+          Interaction State</h3>
+        <p>Loading state: <span data-loading>Processing...</span></p>
+        <p>Success state: <span data-success>✓ Saved successfully</span></p>
+        <p>Error state: <span data-error>✗ Something went wrong</span></p>
+      </article>
+    </section>
+
+    <!-- Forms -->
+    <section id="forms">
+      <header>
+        <h2><a href="#forms" aria-label="Link to Forms section">#</a> Forms</h2>
+        <p>Complete form styling with accessibility and mobile-first design.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#form-elements">Form Elements</a></li>
+            <li><a href="#button-variants">Button Variants</a></li>
+            <li><a href="#form-layouts">Form Layouts</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="form-elements"><a href="#form-elements" aria-label="Link to Form Elements section">#</a> Complete Form
+          Example</h3>
+
+        <form>
+          <fieldset>
+            <legend>Contact Information</legend>
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="website">Website (optional)</label>
+            <input type="url" id="website" name="website">
+          </fieldset>
+
+          <fieldset>
+            <legend>Preferences</legend>
+
+            <label for="framework">Favorite Framework</label>
+            <select id="framework" name="framework">
+              <option value="">Choose one...</option>
+              <option value="acorn">Acorn CSS</option>
+              <option value="other">Something else</option>
+            </select>
+
+            <label for="experience">Experience Level</label>
+            <input data-accent type="range" id="experience" name="experience" min="1" max="10" value="5">
+
             <fieldset>
-              <legend>Personal Information</legend>
-              <div data-wrapper data-input>
-                <label for="fname">
-                  <span>First Name</span>
-                  <input type="text" id="fname" name="fname" placeholder="First Name">
-                </label>
-                <label for="lname">
-                  <span>Last Name</span>
-                  <input type="text" id="lname" name="lname" placeholder="Last Name">
-                </label>
-              </div>
-              <label for="password">
-                <span>Password</span>
-                <input type="password" id="password" name="password" placeholder="Password">
-              </label>
-              <label for="email">
-                <span>Email</span>
-                <input type="email" id="email" name="email" placeholder="Email">
-              </label>
-              <label for="telephone">
-                <span>Telephone</span>
-                <input type="tel" id="telephone" name="telephone" placeholder="(555) 555-5555">
-              </label>
-              <label for="range">
-                <span>Happiness Level</span>
-                <input type="range" id="range" name="range" min="0" max="10" value="5">
-              </label>
-              <label for="temp">
-                <span>Number of cats (0-5)</span>
-                <input type="range" id="temp" name="temp" list="markers" step="25" value="50">
-                <datalist id="markers">
-                  <option value="0"></option>
-                  <option value="25"></option>
-                  <option value="50"></option>
-                  <option value="75"></option>
-                  <option value="100"></option>
-                </datalist>
-              </label>
-              <label for="birthday">
-                <span>Birthday</span>
-                <input type="date" id="birthday" name="birthday">
-              </label>
-              <label for="state">
-                <span>State</span>
-                <select id="state" name="state">
-                  <option value="">Select a State</option>
-                  <option value="AL">Alabama</option>
-                  <option value="AK">Alaska</option>
-                  <option value="AZ">Arizona</option>
-                  <option value="AR">Arkansas</option>
-                  <option value="CA">California</option>
-                  <option value="CO">Colorado</option>
-                  <option value="CT">Connecticut</option>
-                  <option value="DE">Delaware</option>
-                  <option value="DC">District Of Columbia</option>
-                  <option value="FL">Florida</option>
-                  <option value="GA">Georgia</option>
-                  <option value="HI">Hawaii</option>
-                  <option value="ID">Idaho</option>
-                  <option value="IL">Illinois</option>
-                  <option value="IN">Indiana</option>
-                  <option value="IA">Iowa</option>
-                  <option value="KS">Kansas</option>
-                  <option value="KY">Kentucky</option>
-                  <option value="LA">Louisiana</option>
-                  <option value="ME">Maine</option>
-                  <option value="MD">Maryland</option>
-                  <option value="MA">Massachusetts</option>
-                  <option value="MI">Michigan</option>
-                  <option value="MN">Minnesota</option>
-                  <option value="MS">Mississippi</option>
-                  <option value="MO">Missouri</option>
-                  <option value="MT">Montana</option>
-                  <option value="NE">Nebraska</option>
-                  <option value="NV">Nevada</option>
-                  <option value="NH">New Hampshire</option>
-                  <option value="NJ">New Jersey</option>
-                  <option value="NM">New Mexico</option>
-                  <option value="NY">New York</option>
-                  <option value="NC">North Carolina</option>
-                  <option value="ND">North Dakota</option>
-                  <option value="OH">Ohio</option>
-                  <option value="OK">Oklahoma</option>
-                  <option value="OR">Oregon</option>
-                  <option value="PA">Pennsylvania</option>
-                  <option value="RI">Rhode Island</option>
-                  <option value="SC">South Carolina</option>
-                  <option value="SD">South Dakota</option>
-                  <option value="TN">Tennessee</option>
-                  <option value="TX">Texas</option>
-                  <option value="UT">Utah</option>
-                  <option value="VT">Vermont</option>
-                  <option value="VA">Virginia</option>
-                  <option value="WA">Washington</option>
-                  <option value="WV">West Virginia</option>
-                  <option value="WI">Wisconsin</option>
-                  <option value="WY">Wyoming</option>
-                </select>
-              </label>
-              <label for="browser-choice">
-                <span>Preferred Browser</span>
-                <input list="browser-options" id="browser-choice">
-                <datalist id="browser-options">
-                  <option value="Internet Explorer">
-                  <option value="Firefox">
-                  <option value="Chrome">
-                  <option value="Opera">
-                  <option value="Safari">
-                </datalist>
-              </label>
-              <fieldset>
-                <legend>Favorite Animals</legend>
-                <input type="checkbox" name="animals" value="Dogs" checked>Dogs<br>
-                <input type="checkbox" name="animals" value="Cats">Cats<br>
-                <input type="checkbox" name="animals" value="Fish">Fish<br>
-                <input type="checkbox" name="animals" value="Reptiles">Reptiles<br>
-                <input type="checkbox" name="animals" value="Bugs">Bugs
-              </fieldset>
-              <fieldset>
-              <legend>Dog Person?</legend>
-                <input type="radio" name="dog_person" value="yes" checked>Yes<br>
-                <input type="radio" name="dog_person" value="no">No
-              </fieldset>
-              <label for="resume">
-                <span>Resume</span>
-                <input type="file" id="resume" name="resume" accept=".pdf">
-              </label>
-              <label for="message">
-                <textarea id="message" name="message">Add an additional message...</textarea>
-              </label>
-              <input type="submit" value="Submit">
+              <legend>Interests</legend>
+              <label><input data-accent type="checkbox" name="interests" value="design"> Design Systems</label>
+              <label><input data-accent type="checkbox" name="interests" value="accessibility"> Accessibility</label>
+              <label><input data-accent type="checkbox" name="interests" value="performance"> Performance</label>
             </fieldset>
-          </form>
-        </div>
 
-        <div id="buttons">
-          <p>The <code>data-buttons</code> attribute for wrapping multiple buttons.</p>
-          <div data-wrapper data-buttons>
-            <button>Primary</button>
-            <button disabled>Primary Disabled</button>
-            <button data-variant="secondary">Secondary</button>
-            <button disabled data-variant="secondary">Secondary Disabled</button>
-            <button data-destructive>Destructive</button>
-            <button data-destructive data-variant="secondary">Secondary Destructive</button>
-          </div>
+            <fieldset>
+              <legend>Newsletter</legend>
+              <label><input data-accent type="radio" name="newsletter" value="yes"> Yes, send updates</label>
+              <label><input data-accent type="radio" name="newsletter" value="no" checked> No, thanks</label>
+            </fieldset>
 
-          <p>Single buttons without a containing wrapper.</p>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us what you think..."></textarea>
+          </fieldset>
+
+          <p data-button-group>
+          <button type="submit">Send Message</button>
+          <button type="reset" data-variant="secondary">Clear Form</button>
+          </p>
+        </form>
+
+        <h3 id="button-variants"><a href="#button-variants" aria-label="Link to Button Variants section">#</a> Button
+          Variants</h3>
+
+        <h4>Standard Variants</h4>
+        <p data-button-group>
           <button>Primary</button>
           <button data-variant="secondary">Secondary</button>
-          <button data-destructive>Destructive</button>
-        </div>
-      </section>
+          <button data-variant="tertiary">Tertiary</button>
+          <button data-variant="link">Link</button>
+        </p>
 
-      <section id="tables">
-        <header>
-          <h2><a href="#tables" aria-label="Link to Tables Section">#</a> Tables</h2>
-          <p>Uses the <code>data-table</code> attribute to allow for responsive scrolling tables.</p>
-        </header>
-        <div data-wrapper data-table>
+        <h4>Disabled States</h4>
+        <p data-button-group>
+          <button disabled>Primary</button>
+          <button disabled data-variant="secondary">Secondary</button>
+          <button disabled data-variant="tertiary">Tertiary</button>
+          <button disabled data-variant="link">Link</button>
+        </p>
+
+        <h4>Destructive Actions</h4>
+        <p data-button-group>
+          <button data-destructive>Delete Item</button>
+          <button data-destructive data-variant="secondary">Remove User</button>
+          <button data-destructive data-variant="tertiary">Cancel Account</button>
+          <button data-destructive data-variant="link">Discard Changes</button>
+        </p>
+
+        <h3 id="form-layouts"><a href="#form-layouts" aria-label="Link to Form Layouts section">#</a> Inline Form Layout
+        </h3>
+        <form data-inline-form>
+          <div>
+            <label for="search">Search</label>
+            <input type="search" id="search" name="search" placeholder="Search...">
+          </div>
+          <button type="submit">Go</button>
+        </form>
+      </article>
+    </section>
+
+    <!-- Tables -->
+    <section id="tables">
+      <header>
+        <h2><a href="#tables" aria-label="Link to Tables section">#</a> Tables</h2>
+        <p>Responsive tables that transform into cards on mobile using container queries.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#basic-table">Basic Table</a></li>
+            <li><a href="#responsive-table">Mobile-Responsive</a></li>
+            <li><a href="#table-variants">Table Variants</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="basic-table"><a href="#basic-table" aria-label="Link to Basic Table section">#</a> Basic Table</h3>
+
+        <div data-table>
           <table>
+            <caption>Basic Table Example</caption>
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Long Strings</th>
-                <th>Moons</th>
+                <th>Role</th>
+                <th>Location</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Saturn</td>
-                <td>Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius of about nine and a half times that of Earth.</td>
-                <td>83</td>
+                <td>John Doe</td>
+                <td>Developer</td>
+                <td>New York</td>
               </tr>
               <tr>
-                <td>Neptune</td>
-                <td>Neptune is the eighth planet from the Sun and the farthest known planet in the Solar System.</td>
-                <td>14</td>
+                <td>Jane Smith</td>
+                <td>Designer</td>
+                <td>San Francisco</td>
               </tr>
               <tr>
-                <td>Pluto</td>
-                <td>Pluto is a dwarf planet in the Kuiper belt, a ring of bodies beyond the orbit of Neptune. It is the ninth-largest and tenth-most-massive known object to directly orbit the Sun.</td>
-                <td>5</td>
+                <td>Bob Johnson</td>
+                <td>Manager</td>
+                <td>Chicago</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </section>
 
-      <section id="info">
-        <header>
-          <h2><a href="#info" aria-label="Link to About Section">#</a> About</h2>
-          <p>This framework was built with some opinions in mind and aimed to solve a few problems.</p>
-        </header>
-        <details open>
-          <summary>What's the benefit of being classless?</summary>
-          <p>In my experience, a lot of projects kick off without ever having the most basic building blocks of the site or app taken care of. A site cannot be entirely classless, but this is a great starting point.</p>
-        </details>
-        <details open>
-          <summary>What's with the <code>data</code> attributes?</summary>
-          <p>Building with data attributes instead of classes for basic frameworks serve two purposes:</p>
-          <ol>
-            <li>Prove direct access to the data attribute values in CSS.</li>
-            <li>Easily setup your website for a clean JavaScript implementation with best practices in mind.</li>
-          </ol>
-        </details>
-        <details open>
-          <summary>Isn't using <code>data</code> attributes less performant?</summary>
-          <p>While there has been some evidence to suggest that <code>data</code> attributes is less performance than classnames, we're using them here sparingly and browser performance in the last five years has improve so much that the difference in performance is negligable.</p>
-        </details>
-        <details open>
-          <summary>Why doesn't tabbing work in Safari?</summary>
-          <p>By default keyboard accessibility is turned off. To enable it for Safari you must open preferences and enable "Press Tab to highlight each item on a webpage".</p>
-        </details>
-        <details open>
-          <summary>Why don't some features work?</summary>
-          <p>This framework was built to attempt to accommodate as many browser features as possible. I'd suggest looking at <a href="https://caniuse.com" target="_blank">Can I Use</a> to make sure that you have browser support for a feature.</p>
-        </details>
-      </section>
-    </main>
+        <h3 id="responsive-table"><a href="#responsive-table" aria-label="Link to Responsive Table section">#</a>
+          Mobile-Responsive Table</h3>
 
-    <footer>
-      <a href="https://jomurgel.com" target="_blank" rel="noreferrer noopener">jomurgel</a> — &copy; 2022-2025
-    </footer>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+        <div data-table>
+          <table>
+            <caption>Framework Comparison</caption>
+            <thead>
+              <tr>
+                <th data-sortable>Framework</th>
+                <th data-sortable>Type</th>
+                <th data-sortable>Size (gzipped)</th>
+                <th>Features</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Framework">Acorn CSS</td>
+                <td data-label="Type">Classless</td>
+                <td data-label="Size">~8KB</td>
+                <td data-label="Features">Generative design, container queries, accessibility</td>
+              </tr>
+              <tr>
+                <td data-label="Framework">Tailwind CSS</td>
+                <td data-label="Type">Utility-first</td>
+                <td data-label="Size">~15KB</td>
+                <td data-label="Features">Utility classes, customization, JIT compilation</td>
+              </tr>
+              <tr>
+                <td data-label="Framework">Bootstrap</td>
+                <td data-label="Type">Component-based</td>
+                <td data-label="Size">~25KB</td>
+                <td data-label="Features">Components, grid system, JavaScript plugins</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Media -->
+    <section id="media">
+      <header>
+        <h2><a href="#media" aria-label="Link to Media section">#</a> Media Elements</h2>
+        <p>Images, video, and embedded content with responsive behavior.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#images">Images</a></li>
+            <li><a href="#alignment">Image Alignment</a></li>
+            <li><a href="#galleries">Media Galleries</a></li>
+            <li><a href="#video">Video & Audio</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="images"><a href="#images" aria-label="Link to Images section">#</a> Responsive Images</h3>
+        <p>Images are responsive by default and can be sized using data attributes:</p>
+
+        <figure>
+          <img src="/carina-nebula-webb.jpg" alt="Carina Nebula captured by James Webb telescope">
+          <figcaption>The Carina Nebula as captured by the James Webb Space Telescope. <cite>NASA, ESA, CSA, and
+              STScI</cite></figcaption>
+        </figure>
+
+        <h3 id="alignment"><a href="#alignment" aria-label="Link to Image Alignment section">#</a> Image Alignment
+          Options</h3>
+        <p>Images can float left or right on larger screens: <img src="/carina-nebula-webb-square.jpg"
+            alt="Square crop of Carina Nebula" data-align="right" style="max-width: 200px;"> This text wraps around the
+          right-aligned image on desktop but stacks normally on mobile devices. The framework handles this responsive
+          behavior automatically using container queries.</p>
+
+        <p>Anim, nisi ad pariatur. Pariatur exercitation adipiscing tempor est amet aute. Adipiscing tempor est amet,
+          aute dolor. Amet aute dolor enim anim est esse. Dolor enim anim est, esse laborum sint. Est esse laborum sint,
+          id. Sint, id duis ea cupidatat. Ea cupidatat qui non sed sed proident. Qui non sed, sed proident. Sed proident
+          sed elit ad.</p>
+
+        <p>Left-aligned images work similarly: <img src="/carina-nebula-webb-square.jpg"
+            alt="Square crop of Carina Nebula" data-align="left" style="max-width: 200px;"> The image floats to the left
+          on
+          larger screens while maintaining proper spacing and readability.</p>
+
+        <p>Commodo occaecat sed aute eiusmod, et culpa. Aute eiusmod et culpa magna cupidatat tempor consectetur. Et
+          culpa magna cupidatat tempor, consectetur. Cupidatat tempor consectetur elit ut. Consectetur elit ut eiusmod
+          nisi exercitation. Ut eiusmod nisi exercitation fugiat incididunt, est ex. Exercitation fugiat incididunt est
+          ex. Incididunt est ex cupidatat irure non ex ex. Ex cupidatat irure non ex ex. Irure non ex ex aliquip nisi.
+        </p>
+
+        <p>Center-aligned images work similarly: <img src="/carina-nebula-webb-square.jpg"
+            alt="Square crop of Carina Nebula" data-align="center" style="max-width: 200px;"> The image is centered on
+          larger screens while maintaining proper spacing and readability.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet aute dolor enim anim est esse. Dolor enim anim
+          est, esse laborum sint. Est esse laborum sint, id. Sint, id duis ea cupidatat. Ea cupidatat qui non sed sed
+          proident. Qui non sed, sed proident. Sed proident sed elit ad.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet aute dolor enim anim est esse. Dolor enim anim
+          est, esse laborum sint. Est esse laborum sint, id. Sint, id duis ea cupidatat. Ea cupidatat qui non sed sed
+          proident. Qui non sed, sed proident. Sed proident sed elit ad.</p>
+      </article>
+
+      <figure data-container="full">
+        <img src="/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Stellar death captured by Webb telescope">
+        <figcaption>Full-width image using <code>data-align="full"</code>. <cite>NASA's Webb Captures Dying Star's
+            Final Performance</cite></figcaption>
+      </figure>
+
+      <article>
+        <h3 id="galleries"><a href="#galleries" aria-label="Link to Media Galleries section">#</a> Media Gallery</h3>
+        <p>Use <code>data-gallery</code> for responsive image grids:</p>
+
+        <div data-gallery>
+          <img src="/carina-nebula-webb.jpg" alt="Carina Nebula">
+          <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula square crop">
+          <img src="/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Stellar death">
+          <img src="/carina-nebula-webb-neg.jpg" alt="Carina Nebula inverted">
+          <img src="/carina-nebula-webb.jpg" alt="Carina Nebula">
+          <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula square crop">
+        </div>
+
+        <h3 id="video"><a href="#video" aria-label="Link to Video section">#</a> Video and Audio</h3>
+        <p>Video elements with responsive aspect ratios:</p>
+
+        <div data-embed>
+          <video controls>
+            <source src="/cross-a-mountain.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div data-embed>
+          <object data="/cross-a-mountain.mp4"></object>
+        </div>
+
+        <div data-embed>
+          <embed src="/cross-a-mountain.mp4">
+        </div>
+
+        <p>Audio elements for podcasts and music:</p>
+        <audio controls>
+          <source src="/sample-audio.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+
+        <figure>
+          <picture>
+            <source media="(min-width: 768px)" srcset="/carina-nebula-webb.jpg">
+            <source media="(min-width: 480px)" srcset="/carina-nebula-webb-square.jpg">
+            <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula responsive image">
+          </picture>
+          <figcaption>Responsive picture element with art direction</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- Grid Placeholder -->
+    <section id="grid">
+      <header>
+        <h2><a href="#grid" aria-label="Link to grid section">#</a> Documentation</h2>
+        <p>Simple grid system demo.</p>
+      </header>
+    </section>
+
+    <!-- Documentation Placeholder -->
+    <section id="documentation">
+      <header>
+        <h2><a href="#documentation" aria-label="Link to Documentation section">#</a> Documentation</h2>
+        <p>Complete guides and API reference coming soon.</p>
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="#coming-soon">Coming Soon</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#community">Community</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <article>
+        <h3 id="coming-soon"><a href="#coming-soon" aria-label="Link to Coming Soon section">#</a> Coming Soon</h3>
+        <ul>
+          <li><strong>Installation Guide:</strong> npm package, CDN links, and direct download</li>
+          <li><strong>Customization Docs:</strong> Complete variable reference and examples</li>
+          <li><strong>Component Library:</strong> All available patterns and data attributes</li>
+          <li><strong>Migration Guide:</strong> Moving from other frameworks</li>
+          <li><strong>Advanced Usage:</strong> Extending the framework and building themes</li>
+        </ul>
+
+        <h3 id="resources"><a href="#resources" aria-label="Link to Resources section">#</a> Resources</h3>
+        <p>Essential links and references:</p>
+
+        <nav data-scroll="horizontal">
+          <ul>
+            <li><a href="https://github.com/jomurgel/acorn.css">GitHub Repository</a></li>
+            <li><a href="#npm">npm Package</a> (coming soon)</li>
+            <li><a href="#cdn">CDN Links</a> (coming soon)</li>
+            <li><a href="#changelog">Changelog</a> (coming soon)</li>
+          </ul>
+        </nav>
+
+        <h3 id="community"><a href="#community" aria-label="Link to Community section">#</a> Community</h3>
+        <p>Connect with other developers using Acorn CSS:</p>
+
+        <ul>
+          <li><a href="https://github.com/jomurgel/acorn.css/discussions">GitHub Discussions</a></li>
+          <li><a href="https://github.com/jomurgel/acorn.css/issues">Report Issues</a></li>
+          <li><a href="https://twitter.com/jomurgel">Follow on Twitter</a></li>
+        </ul>
+
+        <details>
+          <summary>Frequently Asked Questions</summary>
+          <dl>
+            <dt>Why classless?</dt>
+            <dd>Classless frameworks let you focus on semantic HTML while providing beautiful defaults. Perfect for
+              prototypes, documentation sites, and projects where you want to write less CSS.</dd>
+
+            <dt>How does the generative system work?</dt>
+            <dd>Mathematical relationships generate entire design systems from 5 core variables. Change one hue and
+              get a complete color palette with proper contrast ratios automatically.</dd>
+
+            <dt>Is it accessible?</dt>
+            <dd>Yes! The framework follows WCAG guidelines with proper focus states, semantic markup requirements, and
+              support for assistive technologies.</dd>
+
+            <dt>Can I use it with JavaScript frameworks?</dt>
+            <dd>Absolutely! Since it's classless, it works with any framework - React, Vue, Svelte, or vanilla HTML.
+            </dd>
+          </dl>
+        </details>
+
+        <p>Follow the <a href="https://github.com/jomurgel/acorn.css">GitHub repository</a> for updates and release
+          announcements.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer data-text="center">
+    <hr>
+    <p>Made with ❤️ by <a href="https://jomurgel.com">jomurgel</a> · © 2022-2025</p>
+  </footer>
+
+  <script>
+    // Dark mode toggle functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const icon = document.getElementById('theme-icon');
+
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Update icon
+      icon.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    }
+
+    // Check for saved theme preference or default to light mode
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      const icon = document.getElementById('theme-icon');
+
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      icon.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    });
+  </script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
