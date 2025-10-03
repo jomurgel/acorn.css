@@ -4,12 +4,12 @@
 
 A lightweight, semantic HTML framework. Just ~18KB of thoughtful CSS (3.8KB gzipped).
 
-- 🪶 **Lightweight**: ~18KB uncompressed, 3.8KB gzipped
-- 🎯 **Semantic**: Style HTML elements directly without classes
-- 🎨 **Customizable**: Simple CSS custom properties for everything
-- ♿ **Accessible**: WCAG compliant with proper focus management
-- 📱 **Responsive**: Mobile-first with sensible defaults
-- 🌓 **Dark Mode**: Built-in support with manual or automatic switching
+- **Lightweight**: ~18KB uncompressed, 3.8KB gzipped
+- **Semantic**: Style HTML elements directly without classes
+- **Customizable**: Simple CSS custom properties for everything
+- **Accessible**: WCAG compliant with proper focus management
+- **Responsive**: Mobile-first with sensible defaults
+- **Dark Mode**: Built-in support with manual or automatic switching
 
 [**View Demo**](https://jomurgel.github.io/acorn.css/)
 
