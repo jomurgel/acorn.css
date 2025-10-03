@@ -1,12 +1,37 @@
 {
   "name": "acorn.css",
-  "private": true,
-  "version": "0.0.2",
+  "version": "1.0.0",
+  "description": "A lightweight, semantic HTML framework. Just ~18KB of thoughtful CSS.",
+  "license": "MIT",
+  "author": "Jo Murgel",
   "type": "module",
+  "main": "dist/acorn.css",
+  "module": "dist/acorn.css",
+  "style": "dist/acorn.css",
+  "unpkg": "dist/acorn.min.css",
+  "jsdelivr": "dist/acorn.min.css",
+  "exports": {
+    ".": {
+      "style": "./dist/acorn.css",
+      "default": "./dist/acorn.css"
+    },
+    "./min": {
+      "style": "./dist/acorn.min.css",
+      "default": "./dist/acorn.min.css"
+    }
+  },
+  "files": [
+    "dist/acorn.css",
+    "dist/acorn.min.css",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && npm run build:css",
+    "build:css": "sass src/index.scss dist/acorn.css --style=expanded && sass src/index.scss dist/acorn.min.css --style=compressed",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "browserslist": [
     "defaults"
@@ -15,5 +40,23 @@
     "autoprefixer": "^10.4.13",
     "sass": "^1.57.1",
     "vite": "^6.3.5"
-  }
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "semantic",
+    "classless",
+    "lightweight",
+    "html",
+    "stylesheet",
+    "design-system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jomurgel/acorn.css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jomurgel/acorn.css/issues"
+  },
+  "homepage": "https://jomurgel.github.io/acorn.css"
 }

@@ -1,0 +1,20 @@
+# Source files (only ship compiled CSS)
+src/
+public/
+
+# Development files
+node_modules/
+.vscode/
+.idea/
+
+# Config files
+vite.config.js
+.gitignore
+.editorconfig
+
+# Demo files
+index.html
+
+# Build artifacts (except dist/)
+*.log
+.DS_Store
