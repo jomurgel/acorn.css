@@ -104,10 +104,27 @@
 
       <article>
         <h3 id="installation"><a href="#installation" aria-label="Link to Installation section">#</a> Installation</h3>
-        <p><em>Coming soon:</em> npm package, CDN links, and direct download options.</p>
 
-        <pre><code>/* Quick start - customize with CSS variables */
-:root {
+        <h4>Via npm</h4>
+        <p>Install the package from <a href="https://www.npmjs.com/package/acorn.css">npm</a>:</p>
+        <pre><code>npm install acorn.css</code></pre>
+
+        <p>Then import in your JavaScript/TypeScript:</p>
+        <pre><code>// Import everything
+import 'acorn.css';
+
+// Or import specific build
+import 'acorn.css/dist/acorn.css';
+import 'acorn.css/dist/acorn.min.css';</code></pre>
+
+        <p>Or import in your CSS:</p>
+        <pre><code>@import 'acorn.css';</code></pre>
+
+        <h4>Via CDN</h4>
+        <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/acorn.css@latest/dist/acorn.min.css"&gt;</code></pre>
+
+        <h4>Quick start - customize with CSS variables</h4>
+        <pre><code>:root {
   --primary: #41aaea;
   --space-2: 1rem;
   --text-base: 1rem;
@@ -797,8 +814,8 @@ if (savedTheme) {
         <nav data-scroll="horizontal">
           <ul>
             <li><a href="https://github.com/jomurgel/acorn.css">GitHub Repository</a></li>
-            <li><a href="#npm">npm Package</a> (coming soon)</li>
-            <li><a href="#cdn">CDN Links</a> (coming soon)</li>
+            <li><a href="https://www.npmjs.com/package/acorn.css">npm Package</a></li>
+            <li><a href="https://unpkg.com/acorn.css@latest/dist/">CDN Links</a></li>
             <li><a href="#changelog">Changelog</a> (coming soon)</li>
           </ul>
         </nav>

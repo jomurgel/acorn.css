@@ -21,6 +21,21 @@ A lightweight, semantic HTML framework. Just ~18KB of thoughtful CSS (3.8KB gzip
 npm install acorn.css
 ```
 
+**Import in JavaScript/TypeScript:**
+```javascript
+// Import everything
+import 'acorn.css';
+
+// Or import specific build
+import 'acorn.css/dist/acorn.css';
+import 'acorn.css/dist/acorn.min.css';
+```
+
+**Import in CSS:**
+```css
+@import 'acorn.css';
+```
+
 ### Via CDN
 
 **Uncompressed:**
