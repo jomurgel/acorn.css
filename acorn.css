@@ -1,75 +1,133 @@
-@charset "UTF-8";
+/* -------------------------------------------------------------- */
+/* Acorn CSS — a lightweight, classless CSS baseline. */
+/* Styles semantic HTML out of the box: the stylesheet you start with. */
+/* Version 3.0 */
+/* -------------------------------------------------------------- */
+
 :root {
+  /* -------------------------------------------------------------- */
+  /* TYPOGRAPHY */
+  /* -------------------------------------------------------------- */
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     Cantarell, Noto Sans, sans-serif;
-  --font-mono: Consolas, Monaco, "Courier New", monospace;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 2rem;
-  --text-3xl: 2.5rem;
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 2rem;
-  --space-4: 4rem;
-  --space-5: 8rem;
-  --primary: #41aaea;
-  --primary-light: #6ec3f8;
-  --primary-dark: #186797;
-  --secondary: #e0a81e;
-  --secondary-light: #edc151;
-  --accent: #ee2d6d;
+  --font-mono: Consolas, Monaco, 'Courier New', monospace;
+
+  /* Type scale (1.25 ratio). Small sizes stay fixed for readable body */
+  /* copy; display sizes scale fluidly with the viewport via clamp(). */
+  /* Each clamp keeps a rem term so text still honors zoom (WCAG 1.4.4). */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px (fixed body) */
+  --text-lg: clamp(1.125rem, 1.083rem + 0.208vw, 1.25rem); /* 18 → 20px */
+  --text-xl: clamp(1.25rem, 1.167rem + 0.417vw, 1.5rem); /* 20 → 24px */
+  --text-2xl: clamp(1.5rem, 1.333rem + 0.833vw, 2rem); /* 24 → 32px */
+  --text-3xl: clamp(1.875rem, 1.667rem + 1.042vw, 2.5rem); /* 30 → 40px */
+
+  /* -------------------------------------------------------------- */
+  /* SPACING (Rule of 2 progression) */
+  /* -------------------------------------------------------------- */
+  /* Deliberately coarse — each step doubles. Fine-grained spacing is */
+  /* layout tuning and belongs in the consuming site's CSS, not the */
+  /* baseline. This keeps Acorn about content, not layout. */
+  --space-1: 0.5rem; /* 8px */
+  --space-2: 1rem; /* 16px (base) */
+  --space-3: 2rem; /* 32px */
+  --space-4: 4rem; /* 64px */
+  --space-5: 8rem; /* 128px */
+
+  /* -------------------------------------------------------------- */
+  /* COLORS - Light Mode (default) */
+  /* -------------------------------------------------------------- */
+  /* CMYK identity. Cyan/magenta are capped at the brightest shade that */
+  /* still passes WCAG AA with white text; the brighter pops live in the */
+  /* -light shades, the gold, highlights, and accents. */
+  --primary: #0b779f; /* cyan — verified 4.64:1 on paper (AA) */
+  --primary-light: #2fa6d2; /* brighter cyan for hover/accents (non-text) */
+  --primary-dark: #0a6080;
+
+  --secondary: #f4bb1a; /* yellow/gold (pairs with dark text) */
+  --secondary-light: #fcd34d;
+  --secondary-dark: #b8860b;
+
+  --accent: #e62e6b; /* bright signature magenta/pink (highlights) */
   --accent-light: #f4759f;
-  --accent-dark: #7f062e;
+  --accent-dark: #b01550; /* for pink-as-text + white-on-pink contexts */
+
+  /* Pink used as small text (footnote refs): needs a dark pink on light */
+  /* paper, a light pink on dark. Overridden in the dark theme below. */
+  --footnote-ref: var(--accent-dark);
+
+  /* Neutrals - Light Mode */
   --white: #f5f5f5;
   --off-white: #efefef;
   --light-gray: #cecece;
   --gray: #616161;
   --dark-gray: #212121;
   --black: #151513;
+
+  /* Semantic */
   --success: #00c807;
   --error: #ff003e;
   --warning: #ffcc00;
-  --container-narrow: 45rem;
-  --container-default: 60rem;
-  --container-wide: 80rem;
-  --border-radius: 0.25rem;
+
+  /* -------------------------------------------------------------- */
+  /* LAYOUT */
+  /* -------------------------------------------------------------- */
+  --container-narrow: 45rem; /* 720px - reading width */
+  --container-default: 60rem; /* 960px - standard */
+  --container-wide: 80rem; /* 1280px - wide layouts */
+
+  --border-radius: 0.25rem; /* 4px */
+  --button-radius: 1.5625rem; /* 25px — buttons round independently of --border-radius */
   --line-height: 1.5;
 }
 
-[data-theme=dark] {
+/* Dark mode colors */
+[data-theme="dark"] {
   color-scheme: dark;
-  --primary: #6ec3f8;
-  --primary-light: #8fd4ff;
-  --primary-dark: #41aaea;
-  --secondary: #edc151;
-  --secondary-light: #f4d482;
-  --accent: #f4759f;
+
+  --primary: #34b0e0; /* brighter cyan reads well on dark */
+  --primary-light: #5cc8f5;
+  --primary-dark: #0e80ab;
+
+  --secondary: #f7c843;
+  --secondary-light: #ffe07a;
+  --secondary-dark: #d39e1a;
+
+  --accent: #ff5b8f; /* brighter pink on dark */
   --accent-light: #ffb3ce;
-  --accent-dark: #ee2d6d;
+  --accent-dark: #e62e6b;
+  --footnote-ref: var(--accent); /* light pink reads on the dark bg */
+
+  /* Neutrals - Dark Mode (inverted) */
   --white: #151513;
   --off-white: #212121;
   --light-gray: #3a3a3a;
   --gray: #a0a0a0;
   --dark-gray: #cecece;
   --black: #f5f5f5;
+
+  /* Semantic (brighter for dark backgrounds) */
   --success: #00ff0a;
   --error: #ff4a6e;
   --warning: #ffd700;
-}
-[data-theme=dark] [data-accent] {
-  accent-color: var(--accent);
+
+  [data-accent] {
+    accent-color: var(--accent);
+  }
 }
 
 [data-accent] {
   accent-color: var(--accent);
 }
 
-[data-theme=light] {
+[data-theme="light"] {
   color-scheme: light;
 }
+
+/* -------------------------------------------------------------- */
+/* RESET & BASE */
+/* -------------------------------------------------------------- */
 
 *,
 *::before,
@@ -103,6 +161,10 @@ body {
   color: var(--white);
 }
 
+/* -------------------------------------------------------------- */
+/* TYPOGRAPHY */
+/* -------------------------------------------------------------- */
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
@@ -135,24 +197,18 @@ p {
   margin-bottom: var(--space-3);
 }
 
-strong, b {
-  font-weight: 700;
-}
+/* Inline text elements */
+strong, b { font-weight: 700; }
+em, i { font-style: italic; }
+small { font-size: var(--text-sm); }
+del, s { text-decoration: line-through; }
+ins, u { text-decoration: underline; }
+dfn { font-style: italic; }
 
-em, i {
-  font-style: italic;
-}
-
-small {
-  font-size: var(--text-sm);
-}
-
-del, s {
-  text-decoration: line-through;
-}
-
-ins, u {
-  text-decoration: underline;
+abbr[title] {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
 }
 
 sub, sup {
@@ -162,49 +218,68 @@ sub, sup {
   vertical-align: baseline;
 }
 
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
 
 mark {
   background-color: var(--accent);
   border-radius: var(--border-radius);
-  color: var(--white);
+  /* Pure black for max contrast on the bright pink highlight in BOTH */
+  /* themes (~5:1 light, ~7:1 dark — passes AA). var(--black) would flip */
+  /* with the theme and fail; near-black #151513 lands just under 4.5:1. */
+  color: #000;
   padding: 0.125rem 0.25rem;
 }
 
+/* Links */
 a {
   color: var(--primary);
   text-decoration: underline;
+
+  &:hover {
+    color: var(--primary-dark);
+  }
+
+  &[target="_blank"]::after {
+    content: " ↗";
+  }
 }
-a:hover {
-  color: var(--primary-dark);
-}
-a[target=_blank]::after {
-  content: " ↗";
-}
+
+/* -------------------------------------------------------------- */
+/* LISTS */
+/* -------------------------------------------------------------- */
 
 ul, ol {
   margin-bottom: var(--space-3);
   padding-left: var(--space-3);
 }
 
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
-}
+ul { list-style: disc; }
+ol { list-style: decimal; }
 
 li {
   margin-bottom: var(--space-1);
 }
 
+/* Task lists (markdown `- [ ]` / `- [x]`). Parsers emit class-based */
+/* markup; we style those plus a :has() fallback. Drop the bullet and */
+/* pull the checkbox into the gutter so items line up. */
+ul.contains-task-list,
+ul:has(> li > input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 0;
+}
+
+.task-list-item,
+li:has(> input[type="checkbox"]:first-child) {
+  list-style: none;
+}
+
+li > input[type="checkbox"]:first-child {
+  margin-right: var(--space-1);
+}
+
+/* Description lists */
 dl {
   display: grid;
   gap: var(--space-1) var(--space-3);
@@ -220,6 +295,10 @@ dd {
   margin: 0;
 }
 
+/* -------------------------------------------------------------- */
+/* BLOCKQUOTE & CITATIONS */
+/* -------------------------------------------------------------- */
+
 blockquote {
   border-left: var(--space-1) solid var(--primary);
   color: var(--gray);
@@ -227,24 +306,122 @@ blockquote {
   font-style: italic;
   margin: var(--space-3) 0;
   padding-left: var(--space-3);
-}
-blockquote cite {
-  color: var(--gray);
-  display: block;
-  font-size: var(--text-sm);
-  margin-top: var(--space-2);
-}
-blockquote cite :is(em, strong, i, b) {
-  color: var(--gray);
-}
-blockquote cite::before {
-  content: "— ";
+
+  cite {
+    color: var(--gray);
+    display: block;
+    font-size: var(--text-sm);
+    margin-top: var(--space-2);
+
+    :is(em, strong, i, b) {
+      color: var(--gray);
+    }
+
+    &::before {
+      content: "— ";
+    }
+  }
 }
 
 cite {
   color: var(--gray);
   font-style: italic;
 }
+
+/* -------------------------------------------------------------- */
+/* FOOTNOTES */
+/* -------------------------------------------------------------- */
+/* Deliberate, documented exception to the classless rule: Markdown */
+/* footnote output is class-based and varies by parser, so we style */
+/* the de-facto class outputs (markdown-it, GitHub/remark, PHP */
+/* Markdown Extra) alongside semantic fallbacks (role="doc-endnotes", */
+/* id^="fn"). Acorn's job is to style what real content emits — and */
+/* real content emits these. */
+
+/* Inline reference marker in the body copy (a superscript link). */
+/* `sup` itself is already positioned by the typography section. */
+.footnote-ref a,
+a[data-footnote-ref],
+sup[id^="fnref"] a {
+  color: var(--footnote-ref);
+  font-weight: 600;
+  padding: 0 0.15em;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+/* The endnotes block at the bottom of the content. Set apart with a */
+/* rule above it, smaller and quieter than the body — like the small */
+/* print it is. */
+.footnotes,
+[data-footnotes],
+section[role="doc-endnotes"] {
+  border-top: 2px solid var(--light-gray);
+  color: var(--gray);
+  font-size: var(--text-sm);
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+
+  /* Some parsers emit their own separator rule; ours already divides */
+  /* the section, so suppress the duplicate. */
+  hr {
+    display: none;
+  }
+
+  /* A heading some parsers add ("Footnotes"); keep it modest. */
+  :is(h1, h2, h3, h4, h5, h6),
+  [id="footnote-label"] {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  ol {
+    margin-bottom: 0;
+  }
+
+  li {
+    margin-bottom: var(--space-1);
+  }
+
+  /* Notes are tight; the list spacing separates them, not the body */
+  /* paragraph margin. Keep a small gap only for multi-paragraph notes. */
+  p {
+    margin-bottom: var(--space-1);
+  }
+
+  li > p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Highlight the note you just jumped to, so it's easy to find. */
+  li:target {
+    background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+  }
+}
+
+/* The "return to reference" arrow inside an endnote. */
+.footnote-backref,
+a[data-footnote-backref],
+.footnotes a[role="doc-backlink"] {
+  color: var(--footnote-ref);
+  margin-left: var(--space-1);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+/* -------------------------------------------------------------- */
+/* CODE & PRE */
+/* -------------------------------------------------------------- */
 
 code, kbd, samp {
   background-color: var(--off-white);
@@ -268,13 +445,18 @@ pre {
   margin-bottom: var(--space-3);
   overflow-x: auto;
   padding: var(--space-2);
+
+  code {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+  }
 }
-pre code {
-  background: none;
-  border: none;
-  color: inherit;
-  padding: 0;
-}
+
+/* -------------------------------------------------------------- */
+/* HORIZONTAL RULE */
+/* -------------------------------------------------------------- */
 
 hr {
   border: none;
@@ -282,6 +464,10 @@ hr {
   margin: var(--space-4) auto;
   max-width: 15%;
 }
+
+/* -------------------------------------------------------------- */
+/* LAYOUT & STRUCTURE */
+/* -------------------------------------------------------------- */
 
 main {
   margin: 0 auto;
@@ -299,51 +485,60 @@ footer {
   margin-bottom: var(--space-3);
 }
 
+/* Containers — constrain a REGION to a reading width. Width only; */
+/* block-level breakouts (wide/full) live under [data-align] below. */
 [data-container] {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--container-default);
 }
 
-[data-container=narrow] {
-  margin-left: auto;
-  margin-right: auto;
+[data-container="narrow"] {
   max-width: var(--container-narrow);
 }
 
-[data-container=wide] {
+/* Block alignment — place/size a BLOCK in the flow. Mirrors the */
+/* WordPress/Gutenberg align model: left/right float with wrap, center */
+/* centers, wide/full break out past the reading measure. */
+[data-align="center"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-align="left"] {
+  float: left;
+  margin: 0 var(--space-3) var(--space-2) 0;
+  max-width: 50%;
+}
+
+[data-align="right"] {
+  float: right;
+  margin: 0 0 var(--space-2) var(--space-3);
+  max-width: 50%;
+}
+
+[data-align="wide"] {
   left: 50%;
+  margin-bottom: var(--space-2);
   max-width: var(--container-wide);
   position: relative;
   transform: translateX(-50%);
   width: 100vw;
 }
 
-[data-container=full] {
+[data-align="full"] {
   left: 50%;
+  margin-bottom: var(--space-2);
   max-width: 100vw;
   position: relative;
   transform: translateX(-50%);
   width: 100vw;
 }
 
-[data-align=center] {
-  display: block;
-  margin: 0 auto var(--space-2);
-  text-align: center;
-}
-
-[data-align=left] {
-  float: left;
-  margin: 0 var(--space-3) var(--space-2) 0;
-  max-width: 50%;
-}
-
-[data-align=right] {
-  float: right;
-  margin: 0 0 var(--space-2) var(--space-3);
-  max-width: 50%;
-}
+/* -------------------------------------------------------------- */
+/* MEDIA */
+/* -------------------------------------------------------------- */
 
 img, video, canvas, svg {
   border-radius: var(--border-radius);
@@ -363,84 +558,106 @@ figcaption {
   max-width: var(--container-default);
 }
 
+/* Embedded content wrapper */
 [data-embed] {
   border-radius: var(--border-radius);
   margin: var(--space-3) 0;
   overflow: hidden;
-  padding-top: 56.25%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
   position: relative;
-}
-[data-embed] iframe,
-[data-embed] video,
-[data-embed] embed,
-[data-embed] object {
-  border: 0;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
+
+  iframe,
+  video,
+  embed,
+  object {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }
 
+/* Media galleries */
 [data-gallery] {
   display: grid;
   gap: var(--space-2);
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   margin: var(--space-3) 0;
+
+  img,
+  video {
+    aspect-ratio: 1;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    width: 100%;
+  }
 }
-[data-gallery] img,
-[data-gallery] video {
-  aspect-ratio: 1;
-  height: 100%;
-  margin: 0;
-  object-fit: cover;
-  width: 100%;
-}
+
+/* -------------------------------------------------------------- */
+/* NAVIGATION */
+/* -------------------------------------------------------------- */
 
 nav {
   margin-bottom: var(--space-3);
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    border-radius: var(--button-radius);
+    display: block;
+    padding: var(--space-1) var(--space-2);
+    text-decoration: none;
+
+    &:hover {
+      background-color: var(--off-white);
+    }
+
+    &[aria-current="page"] {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      pointer-events: none;
+    }
+  }
+
+  /* Horizontal scrolling navigation */
+  &[data-scroll="horizontal"] {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    ul {
+      flex-wrap: nowrap;
+      min-width: min-content;
+    }
+
+    a {
+      white-space: nowrap;
+    }
+  }
 }
-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-nav li {
-  margin: 0;
-}
-nav a {
-  border-radius: var(--border-radius);
-  display: block;
-  padding: var(--space-1) var(--space-2);
-  text-decoration: none;
-}
-nav a:hover {
-  background-color: var(--off-white);
-}
-nav a[aria-current=page] {
-  background-color: var(--primary);
-  color: var(--white);
-  font-weight: 600;
-  pointer-events: none;
-}
-nav[data-scroll=horizontal] {
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-nav[data-scroll=horizontal]::-webkit-scrollbar {
-  display: none;
-}
-nav[data-scroll=horizontal] ul {
-  flex-wrap: nowrap;
-  min-width: min-content;
-}
-nav[data-scroll=horizontal] a {
-  white-space: nowrap;
-}
+
+/* -------------------------------------------------------------- */
+/* TABLES */
+/* -------------------------------------------------------------- */
 
 table {
   border-collapse: collapse;
@@ -465,23 +682,30 @@ tbody tr:hover {
   background-color: var(--off-white);
 }
 
+/* Table wrapper for overflow */
 [data-table] {
   margin-bottom: var(--space-3);
   overflow-x: auto;
 }
 
+/* -------------------------------------------------------------- */
+/* FORMS */
+/* -------------------------------------------------------------- */
+
 form {
   margin-bottom: var(--space-3);
-}
-form[data-inline-form] {
-  align-items: flex-end;
-  display: flex;
-  gap: var(--space-1);
-}
-form[data-inline-form] button,
-form[data-inline-form] input {
-  line-height: 1;
-  margin: 0;
+
+  &[data-inline-form] {
+    align-items: flex-end;
+    display: flex;
+    gap: var(--space-1);
+
+    button,
+    input {
+      line-height: 1;
+      margin: 0;
+    }
+  }
 }
 
 fieldset {
@@ -489,11 +713,12 @@ fieldset {
   border-radius: var(--border-radius);
   margin-bottom: var(--space-3);
   padding: var(--space-3);
-}
-fieldset legend {
-  color: var(--primary);
-  font-weight: 700;
-  padding: 0 var(--space-1);
+
+  legend {
+    color: var(--primary);
+    font-weight: 700;
+    padding: 0 var(--space-1);
+  }
 }
 
 label {
@@ -512,20 +737,18 @@ select {
   margin-bottom: var(--space-2);
   padding: var(--space-1);
   width: 100%;
-}
-input:focus,
-textarea:focus,
-select:focus {
-  box-shadow: 0 0 0 2px var(--primary-light);
-  outline: none;
-}
-input:disabled,
-textarea:disabled,
-select:disabled {
-  background-color: var(--off-white);
-  color: var(--gray);
-  cursor: not-allowed;
-  opacity: 0.6;
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--primary-light);
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: var(--off-white);
+    color: var(--gray);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }
 
 textarea {
@@ -544,8 +767,8 @@ select {
   padding-right: 2rem;
 }
 
-input[type=checkbox],
-input[type=radio] {
+input[type="checkbox"],
+input[type="radio"] {
   appearance: auto;
   background: transparent;
   border: none;
@@ -554,26 +777,30 @@ input[type=radio] {
   margin: 0 var(--space-1) 0 0;
   padding: 0;
   width: 1.125rem;
-}
-input[type=checkbox]:focus,
-input[type=radio]:focus {
-  box-shadow: 0 0 0 2px var(--primary-light);
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--primary-light);
+  }
 }
 
-input[type=file]::file-selector-button {
+input[type="file"]::file-selector-button {
   background-color: var(--primary);
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius);
   color: var(--white);
   cursor: pointer;
   font-weight: 600;
   margin-right: var(--space-2);
   padding: var(--space-1) var(--space-2);
-}
-input[type=file]::file-selector-button:hover {
-  background-color: var(--primary-dark);
+
+  &:hover {
+    background-color: var(--primary-dark);
+  }
 }
 
+/* -------------------------------------------------------------- */
+/* BUTTONS */
+/* -------------------------------------------------------------- */
 [data-button-group] {
   display: flex;
   flex-flow: row wrap;
@@ -581,11 +808,11 @@ input[type=file]::file-selector-button:hover {
 }
 
 button,
-input[type=submit],
-input[type=button],
-input[type=reset],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
 [data-button] {
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius);
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
@@ -594,194 +821,157 @@ input[type=reset],
   line-height: 1;
   text-decoration: none;
   transition: all 0.15s ease;
+
+  /* Primary (default) */
   background-color: var(--primary);
   border: 2px solid var(--primary);
   color: var(--white);
   padding: var(--space-1) var(--space-2);
-}
-button:hover,
-input[type=submit]:hover,
-input[type=button]:hover,
-input[type=reset]:hover,
-[data-button]:hover {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-}
-button:disabled,
-input[type=submit]:disabled,
-input[type=button]:disabled,
-input[type=reset]:disabled,
-[data-button]:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-  pointer-events: none;
-}
-button[data-variant=secondary],
-input[type=submit][data-variant=secondary],
-input[type=button][data-variant=secondary],
-input[type=reset][data-variant=secondary],
-[data-button][data-variant=secondary] {
-  background-color: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-}
-button[data-variant=secondary]:hover,
-input[type=submit][data-variant=secondary]:hover,
-input[type=button][data-variant=secondary]:hover,
-input[type=reset][data-variant=secondary]:hover,
-[data-button][data-variant=secondary]:hover {
-  background-color: var(--primary);
-  color: var(--white);
-}
-button[data-variant=secondary]:disabled,
-input[type=submit][data-variant=secondary]:disabled,
-input[type=button][data-variant=secondary]:disabled,
-input[type=reset][data-variant=secondary]:disabled,
-[data-button][data-variant=secondary]:disabled {
-  background-color: transparent;
-  color: var(--primary);
-}
-button[data-variant=tertiary],
-input[type=submit][data-variant=tertiary],
-input[type=button][data-variant=tertiary],
-input[type=reset][data-variant=tertiary],
-[data-button][data-variant=tertiary] {
-  background-color: transparent;
-  border: 2px solid transparent;
-  color: var(--primary);
-}
-button[data-variant=tertiary]:hover,
-input[type=submit][data-variant=tertiary]:hover,
-input[type=button][data-variant=tertiary]:hover,
-input[type=reset][data-variant=tertiary]:hover,
-[data-button][data-variant=tertiary]:hover {
-  background-color: var(--off-white);
-  border-color: var(--light-gray);
-  color: var(--light-gray);
-}
-button[data-variant=tertiary]:disabled,
-input[type=submit][data-variant=tertiary]:disabled,
-input[type=button][data-variant=tertiary]:disabled,
-input[type=reset][data-variant=tertiary]:disabled,
-[data-button][data-variant=tertiary]:disabled {
-  background-color: transparent;
-  color: var(--primary);
-}
-button[data-variant=link],
-input[type=submit][data-variant=link],
-input[type=button][data-variant=link],
-input[type=reset][data-variant=link],
-[data-button][data-variant=link] {
-  background-color: transparent;
-  border: none;
-  color: var(--primary);
-  padding: 0;
-  text-decoration: underline;
-}
-button[data-variant=link]:hover,
-input[type=submit][data-variant=link]:hover,
-input[type=button][data-variant=link]:hover,
-input[type=reset][data-variant=link]:hover,
-[data-button][data-variant=link]:hover {
-  color: var(--primary-dark);
-}
-button[data-variant=link]:disabled,
-input[type=submit][data-variant=link]:disabled,
-input[type=button][data-variant=link]:disabled,
-input[type=reset][data-variant=link]:disabled,
-[data-button][data-variant=link]:disabled {
-  background-color: transparent;
-  color: var(--primary);
-}
-button[data-destructive],
-input[type=submit][data-destructive],
-input[type=button][data-destructive],
-input[type=reset][data-destructive],
-[data-button][data-destructive] {
-  background-color: var(--error);
-  border-color: var(--error);
-  color: var(--white);
-}
-button[data-destructive]:hover,
-input[type=submit][data-destructive]:hover,
-input[type=button][data-destructive]:hover,
-input[type=reset][data-destructive]:hover,
-[data-button][data-destructive]:hover {
-  background-color: var(--accent-dark);
-  border-color: var(--accent-dark);
-}
-button[data-destructive][data-variant=secondary],
-input[type=submit][data-destructive][data-variant=secondary],
-input[type=button][data-destructive][data-variant=secondary],
-input[type=reset][data-destructive][data-variant=secondary],
-[data-button][data-destructive][data-variant=secondary] {
-  background-color: transparent;
-  border-color: var(--error);
-  color: var(--error);
-}
-button[data-destructive][data-variant=secondary]:hover,
-input[type=submit][data-destructive][data-variant=secondary]:hover,
-input[type=button][data-destructive][data-variant=secondary]:hover,
-input[type=reset][data-destructive][data-variant=secondary]:hover,
-[data-button][data-destructive][data-variant=secondary]:hover {
-  background-color: var(--error);
-  color: var(--white);
-}
-button[data-destructive][data-variant=tertiary],
-input[type=submit][data-destructive][data-variant=tertiary],
-input[type=button][data-destructive][data-variant=tertiary],
-input[type=reset][data-destructive][data-variant=tertiary],
-[data-button][data-destructive][data-variant=tertiary] {
-  background-color: transparent;
-  border-color: transparent;
-  color: var(--accent);
-}
-button[data-destructive][data-variant=tertiary]:hover,
-input[type=submit][data-destructive][data-variant=tertiary]:hover,
-input[type=button][data-destructive][data-variant=tertiary]:hover,
-input[type=reset][data-destructive][data-variant=tertiary]:hover,
-[data-button][data-destructive][data-variant=tertiary]:hover {
-  background-color: rgba(238, 45, 109, 0.1);
-  border-color: var(--accent-light);
-}
-button[data-destructive][data-variant=link],
-input[type=submit][data-destructive][data-variant=link],
-input[type=button][data-destructive][data-variant=link],
-input[type=reset][data-destructive][data-variant=link],
-[data-button][data-destructive][data-variant=link] {
-  background-color: transparent;
-  border: none;
-  color: var(--accent);
-}
-button[data-destructive][data-variant=link]:hover,
-input[type=submit][data-destructive][data-variant=link]:hover,
-input[type=button][data-destructive][data-variant=link]:hover,
-input[type=reset][data-destructive][data-variant=link]:hover,
-[data-button][data-destructive][data-variant=link]:hover {
-  color: var(--accent-dark);
+
+  &:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* Secondary (outlined) */
+  &[data-variant="secondary"] {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+
+    &:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--primary);
+    }
+  }
+
+  /* Tertiary (text with padding) */
+  &[data-variant="tertiary"] {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: var(--primary);
+
+    &:hover {
+      background-color: var(--off-white);
+      border-color: var(--light-gray);
+      color: var(--light-gray);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--primary);
+    }
+  }
+
+  /* Link (styled like a link) */
+  &[data-variant="link"] {
+    background-color: transparent;
+    border: none;
+    color: var(--primary);
+    padding: 0;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--primary-dark);
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--primary);
+    }
+  }
+
+  /* Destructive modifier (works with all variants) */
+  &[data-destructive] {
+    /* Primary destructive */
+    background-color: var(--error);
+    border-color: var(--error);
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    /* Secondary destructive */
+    &[data-variant="secondary"] {
+      background-color: transparent;
+      border-color: var(--error);
+      color: var(--error);
+
+      &:hover {
+        background-color: var(--error);
+        color: var(--white);
+      }
+    }
+
+    /* Tertiary destructive */
+    &[data-variant="tertiary"] {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--accent);
+
+      &:hover {
+        background-color: rgba(238, 45, 109, 0.1);
+        border-color: var(--accent-light);
+      }
+    }
+
+    /* Link destructive */
+    &[data-variant="link"] {
+      background-color: transparent;
+      border: none;
+      color: var(--accent);
+
+      &:hover {
+        color: var(--accent-dark);
+      }
+    }
+  }
 }
 
+/* -------------------------------------------------------------- */
+/* INTERACTIVE ELEMENTS */
+/* -------------------------------------------------------------- */
+
+/* Details/Summary */
 details {
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius);
   margin-bottom: var(--space-2);
   padding: var(--space-2);
-}
-details[open] {
-  border-color: var(--primary);
-}
-details summary {
-  cursor: pointer;
-  font-weight: 700;
-  user-select: none;
-}
-details summary:hover {
-  color: var(--primary);
-}
-details[open] summary {
-  margin-bottom: var(--space-2);
+
+  &[open] {
+    border-color: var(--primary);
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    user-select: none;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  &[open] summary {
+    margin-bottom: var(--space-2);
+  }
 }
 
+/* Dialog */
 dialog {
   background-color: var(--white);
   border: none;
@@ -791,27 +981,32 @@ dialog {
   margin: auto;
   max-width: 90vw;
   padding: var(--space-3);
-}
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-dialog > header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-dialog > header h1,
-dialog > header h2,
-dialog > header h3,
-dialog > header h4,
-dialog > header h5,
-dialog > header h6 {
-  margin: 0;
-}
-dialog > footer {
-  margin: var(--space-3) 0 0 0;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  > header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+          margin: 0;
+      }
+  }
+
+  > footer {
+    margin: var(--space-3) 0 0 0;
+  }
 }
 
+/* Progress & Meter */
 progress {
   appearance: none;
   background-color: var(--off-white);
@@ -821,19 +1016,24 @@ progress {
   margin-bottom: var(--space-2);
   overflow: hidden;
   width: 100%;
-}
-progress::-webkit-progress-bar {
-  background-color: var(--off-white);
-  border-radius: var(--border-radius);
-}
-progress::-webkit-progress-value {
-  background-color: var(--primary);
-  border-radius: var(--border-radius);
-  transition: width 0.3s ease;
-}
-progress::-moz-progress-bar {
-  background-color: var(--primary);
-  border-radius: var(--border-radius);
+
+  /* WebKit/Blink */
+  &::-webkit-progress-bar {
+    background-color: var(--off-white);
+    border-radius: var(--border-radius);
+  }
+
+  &::-webkit-progress-value {
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+    transition: width 0.3s ease;
+  }
+
+  /* Firefox */
+  &::-moz-progress-bar {
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+  }
 }
 
 meter {
@@ -845,37 +1045,54 @@ meter {
   margin-bottom: var(--space-2);
   overflow: hidden;
   width: 100%;
-}
-meter::-webkit-meter-bar {
-  background-color: var(--off-white);
-  border-radius: var(--border-radius);
-}
-meter::-webkit-meter-optimum-value {
-  background-color: var(--success);
-  border-radius: var(--border-radius);
-}
-meter::-webkit-meter-suboptimum-value {
-  background-color: var(--warning);
-  border-radius: var(--border-radius);
-}
-meter::-webkit-meter-even-less-good-value {
-  background-color: var(--error);
-  border-radius: var(--border-radius);
-}
-meter::-moz-meter-bar {
-  background-color: var(--success);
-  border-radius: var(--border-radius);
-}
-meter:-moz-meter-optimum::-moz-meter-bar {
-  background-color: var(--success);
-}
-meter:-moz-meter-sub-optimum::-moz-meter-bar {
-  background-color: var(--warning);
-}
-meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
-  background-color: var(--error);
+
+  /* WebKit/Blink */
+  &::-webkit-meter-bar {
+    background-color: var(--off-white);
+    border-radius: var(--border-radius);
+  }
+
+  &::-webkit-meter-optimum-value {
+    background-color: var(--success);
+    border-radius: var(--border-radius);
+  }
+
+  &::-webkit-meter-suboptimum-value {
+    background-color: var(--warning);
+    border-radius: var(--border-radius);
+  }
+
+  &::-webkit-meter-even-less-good-value {
+    background-color: var(--error);
+    border-radius: var(--border-radius);
+  }
+
+  /* Firefox */
+  &::-moz-meter-bar {
+    background-color: var(--success);
+    border-radius: var(--border-radius);
+  }
+
+  /* Firefox doesn't support optimum/suboptimum states well, */
+  /* so we use a general approach */
+  &:-moz-meter-optimum::-moz-meter-bar {
+    background-color: var(--success);
+  }
+
+  &:-moz-meter-sub-optimum::-moz-meter-bar {
+    background-color: var(--warning);
+  }
+
+  &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background-color: var(--error);
+  }
 }
 
+/* -------------------------------------------------------------- */
+/* UTILITIES */
+/* -------------------------------------------------------------- */
+
+/* Visibility */
 [hidden] {
   display: none !important;
 }
@@ -892,9 +1109,10 @@ meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
   width: 1px !important;
 }
 
+/* Skip link (for accessibility) */
 [data-skip-link] {
   background-color: var(--primary);
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius);
   color: var(--white);
   font-weight: 600;
   left: var(--space-2);
@@ -903,23 +1121,18 @@ meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
   text-decoration: none;
   top: -100%;
   z-index: 1000;
-}
-[data-skip-link]:focus {
-  top: var(--space-2);
+
+  &:focus {
+    top: var(--space-2);
+  }
 }
 
-[data-text=center] {
-  text-align: center;
-}
+/* Text alignment */
+[data-text="center"] { text-align: center; }
+[data-text="left"] { text-align: left; }
+[data-text="right"] { text-align: right; }
 
-[data-text=left] {
-  text-align: left;
-}
-
-[data-text=right] {
-  text-align: right;
-}
-
+/* State utilities */
 [data-loading] {
   cursor: wait;
   opacity: 0.6;
@@ -935,11 +1148,16 @@ meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
   color: var(--success);
 }
 
+/* -------------------------------------------------------------- */
+/* ACCESSIBILITY */
+/* -------------------------------------------------------------- */
+
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -950,4 +1168,107 @@ meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
   }
 }
 
-/*# sourceMappingURL=acorn.css.map */
+/* -------------------------------------------------------------- */
+/* PRINT */
+/* -------------------------------------------------------------- */
+
+@media print {
+  /* Force ink-friendly black-on-white regardless of light/dark theme */
+  /* (literal colors, not theme vars, so dark mode can't print blank). */
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    background: #fff;
+    font-size: 12pt;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  /* Use the full page width on paper; undo any breakouts and floats. */
+  main,
+  [data-container],
+  [data-align] {
+    float: none;
+    left: auto;
+    max-width: none;
+    transform: none;
+    width: auto;
+  }
+
+  /* Drop chrome that means nothing on paper. */
+  nav,
+  [data-skip-link] {
+    display: none !important;
+  }
+
+  /* Legible code without a dark fill. */
+  pre,
+  code,
+  kbd,
+  samp {
+    border: 1px solid #ccc !important;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  /* Spell out external URLs so links survive on paper. Internal */
+  /* #anchors and footnote refs are left alone. */
+  a[href^="http"]::after,
+  a[target="_blank"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    word-break: break-all;
+  }
+
+  /* Emphasis without an ink block. */
+  mark {
+    text-decoration: underline;
+  }
+
+  /* Spell out abbreviations on paper. */
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /* Pagination: don't strand headings or split atomic blocks. */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  blockquote,
+  figure,
+  li,
+  pre,
+  table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  /* Footnotes print as real endnotes; a hard rule sets them off. */
+  .footnotes,
+  [data-footnotes],
+  section[role="doc-endnotes"] {
+    border-top: 1px solid #000;
+  }
+}
