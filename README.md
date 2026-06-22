@@ -2,65 +2,58 @@
 
 # acorn.css
 
-A lightweight, semantic HTML framework. Just ~18KB of thoughtful CSS (3.8KB gzipped).
+A lightweight, classless CSS baseline that styles semantic HTML out of the box. The stylesheet you *start* with — not the one you build everything with.
 
 [![npm version](https://badge.fury.io/js/acorn.css.svg)](https://www.npmjs.com/package/acorn.css)
-[![Bundle Size](https://img.shields.io/badge/bundle%20size-18%20KB%20gzipped-brightgreen)]()
+[![Bundle Size](https://img.shields.io/badge/bundle%20size-~5%20KB%20gzipped-brightgreen)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- **Lightweight**: ~18KB uncompressed, 3.8KB gzipped
-- **Semantic**: Style HTML elements directly without classes
-- **Customizable**: Simple CSS custom properties for everything
-- **Accessible**: WCAG compliant with proper focus management
-- **Responsive**: Mobile-first with sensible defaults
-- **Dark Mode**: Built-in support with manual or automatic switching
+- **Classless** — write semantic HTML, get a styled page. No class soup.
+- **Complete** — styles the elements people forget until launch: blockquotes, tables, figures, footnotes, task lists, form controls.
+- **Customizable** — everything themes through CSS custom properties.
+- **Accessible** — WCAG AA color contrast and proper focus management out of the box.
+- **Dark mode** — built in, manual or automatic.
+- **Tiny** — around 5KB gzipped.
 
 [**View Demo**](https://jomurgel.github.io/acorn.css/)
 
+## What Acorn is (and isn't)
+
+Acorn solves a specific, annoying problem: teams style exactly what's in the design, ship, and then scramble on launch day because nobody designed the `<blockquote>`, the `<table>`, or the footnotes that showed up in real content. Acorn makes every native HTML element look good and work from the first line, so you're already halfway there before you write a rule of your own.
+
+**Acorn styles content, not layout.** It is opinionated about how content *looks and reads* — type, spacing, color, every native element. It is deliberately *not* a grid system, a utility framework, or a component library, and it ships **no presentational classes**. Bring your own layout; Acorn handles the rest.
+
+Because it's classless, anything that emits clean semantic HTML — including Markdown and AI-generated content — gets styled automatically, no class wrangling required.
+
 ## Installation
 
-### Via npm
+### npm
 
 ```bash
 npm install acorn.css
 ```
 
-**Import in JavaScript/TypeScript:**
 ```javascript
-// Import everything
 import 'acorn.css';
-
-// Or import specific build
-import 'acorn.css/dist/acorn.css';
-import 'acorn.css/dist/acorn.min.css';
 ```
 
-**Import in CSS:**
 ```css
 @import 'acorn.css';
 ```
 
-### Via CDN
+### CDN
 
-**Uncompressed:**
-```html
-<link rel="stylesheet" href="https://unpkg.com/acorn.css@latest/dist/acorn.css">
-```
-
-**Minified:**
 ```html
 <link rel="stylesheet" href="https://unpkg.com/acorn.css@latest/dist/acorn.min.css">
 ```
 
 ### Download
 
-Download the [latest release](https://github.com/jomurgel/acorn.css/releases) and include the CSS file in your project.
+Grab the [latest release](https://github.com/jomurgel/acorn.css/releases) and drop the CSS file into your project.
 
 ## Usage
 
-### Basic HTML
-
-Simply write semantic HTML and acorn.css will style it beautifully:
+Write semantic HTML. That's it.
 
 ```html
 <!DOCTYPE html>
@@ -71,7 +64,7 @@ Simply write semantic HTML and acorn.css will style it beautifully:
 <body>
   <main>
     <h1>Hello World</h1>
-    <p>Write semantic HTML and get beautiful designs automatically.</p>
+    <p>Write semantic HTML and get a styled page automatically.</p>
     <button>Click Me</button>
   </main>
 </body>
@@ -80,46 +73,37 @@ Simply write semantic HTML and acorn.css will style it beautifully:
 
 ### Customization
 
-Override CSS variables to customize the framework:
+Override the custom properties. Acorn's defaults are a CMYK-leaning palette; change a handful of variables and it's yours.
 
 ```css
 :root {
-  --primary: #41aaea;
-  --space-2: 1rem;
+  --primary: #0b779f;     /* cyan  */
+  --secondary: #f4bb1a;   /* gold  */
+  --accent: #e62e6b;      /* magenta / pink */
   --text-base: 1rem;
   --container-default: 60rem;
   --border-radius: 0.25rem;
 }
 ```
 
-### Dark Mode
+### Dark mode
 
-**Manual Toggle:**
+Built in. Toggle it with an attribute:
+
 ```html
-<html data-theme="light"> <!-- or "dark" -->
+<html data-theme="dark"> <!-- or "light" -->
 ```
 
-**Automatic (with JavaScript):**
+Or follow the system preference with a line of JavaScript:
+
 ```javascript
-// Detect system preference
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-if (prefersDark.matches) {
-  document.documentElement.setAttribute('data-theme', 'dark');
-}
-```
-
-**CSS Only:**
-```css
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #6ec3f8;
-    --white: #151513;
-    --black: #f5f5f5;
-  }
-}
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
 ```
 
 ## Features
+
+Everything below is styled with attributes, never presentational classes — so when you *do* reach for a class, it's yours and you know exactly what it does.
 
 ### Buttons
 
@@ -131,13 +115,28 @@ if (prefersDark.matches) {
 <button data-destructive>Delete</button>
 ```
 
-### Containers
+### Containers (region width)
 
 ```html
-<main>Default container (60rem)</main>
-<div data-container="narrow">Reading width (45rem)</div>
-<div data-container="wide">Wide layout (80rem)</div>
-<div data-container="full">Full viewport width</div>
+<main>Default reading width (60rem)</main>
+<div data-container="narrow">Narrower reading width (45rem)</div>
+```
+
+### Block alignment
+
+Mirrors the WordPress/Gutenberg align model — `left`/`right` float with text wrap, `center` centers, `wide`/`full` break out past the reading measure.
+
+```html
+<img src="cat.jpg" data-align="left" alt="">
+<img src="cat.jpg" data-align="center" alt="">
+<figure data-align="wide">...</figure>
+<figure data-align="full">...</figure>
+```
+
+### Text alignment
+
+```html
+<p data-text="center">Centered text.</p>
 ```
 
 ### Navigation
@@ -146,30 +145,29 @@ if (prefersDark.matches) {
 <nav data-scroll="horizontal">
   <ul>
     <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact" aria-current="page">Contact</a></li>
+    <li><a href="#about" aria-current="page">About</a></li>
   </ul>
 </nav>
 ```
 
-## Browser Support
+### Footnotes
 
-All modern browsers (Chrome, Firefox, Safari, Edge) and their mobile variants.
+Markdown footnote output is styled automatically — inline references, the endnotes block, and back-links — across the common parsers (markdown-it, GitHub/remark, PHP Markdown Extra). Jump to a note and it highlights so you can find it.
+
+### Task lists
+
+Markdown task lists (`- [ ]` / `- [x]`) render with the bullet removed and the checkbox aligned.
+
+## Browser support
+
+All modern browsers (Chrome, Firefox, Safari, Edge) and their mobile variants. Uses native CSS nesting, `:has()`, and `color-mix()`.
 
 ## Development
 
 ```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Build CSS only
-npm run build:css
+npm install      # install dependencies
+npm run dev      # start the local demo
+npm run build    # build dist/
 ```
 
 ## License
@@ -178,7 +176,7 @@ MIT © [Jo Murgel](https://jomurgel.com)
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request.
+Issues and pull requests welcome.
 
 ## Links
 
