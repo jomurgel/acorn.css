@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/acorn.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
-  <title>Acorn CSS - A Generative Classless Framework</title>
+  <title>Acorn CSS — the classless CSS baseline you start with</title>
 
   <style>
     .demo-header {
@@ -33,11 +33,14 @@
       margin: 0 auto var(--space-2);
     }
 
+    .intro-text {
+      font-size: 125%;
+    }
+
     [data-dialog-trigger] {
       margin-bottom: var(--space-3);
     }
 
-    /* Dark mode toggle */
     .theme-toggle {
       bottom: var(--space-3);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -52,15 +55,12 @@
 </head>
 
 <body>
-  <!-- Skip link for accessibility -->
   <a href="#main-content" data-skip-link>Skip to main content</a>
 
-  <!-- GitHub corner -->
   <a href="https://github.com/jomurgel/acorn.css" class="github-corner" aria-label="View source on GitHub">
     <img src="/github-corner.svg" alt="GitHub corner" title="View on GitHub">
   </a>
 
-  <!-- Dark mode toggle -->
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
     <span id="theme-icon">Dark Mode</span>
   </button>
@@ -68,35 +68,33 @@
   <header data-container="narrow" class="demo-header">
     <img src="/acorn.svg" alt="Acorn CSS Logo" class="acorn-logo">
     <h1>Acorn CSS</h1>
-    <p>A generative classless CSS framework built for customization</p>
+    <p class="intro-text">A lightweight, classless CSS baseline that styles semantic HTML out of the box. The stylesheet you <em>start</em> with — not the one you build everything with.</p>
 
-    <!-- Main navigation -->
     <nav data-scroll="horizontal">
       <ul>
         <li><a href="#getting-started">Getting Started</a></li>
         <li><a href="#typography">Typography</a></li>
+        <li><a href="#footnotes">Footnotes</a></li>
         <li><a href="#navigation">Navigation</a></li>
         <li><a href="#layout">Layout</a></li>
         <li><a href="#interactive">Interactive</a></li>
         <li><a href="#forms">Forms</a></li>
         <li><a href="#tables">Tables</a></li>
         <li><a href="#media">Media</a></li>
-        <li><a href="#grid">Grid</a></li>
-        <li><a href="#documentation">Docs</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main-content">
-    <!-- Getting Started Section -->
+    <!-- Getting Started -->
     <section id="getting-started">
       <header>
         <h2><a href="#getting-started" aria-label="Link to Getting Started section">#</a> Getting Started</h2>
-        <p>A lightweight CSS framework that makes semantic HTML beautiful. Just ~18KB of thoughtful CSS.</p>
+        <p>Acorn makes every native HTML element look good from the first line — the stuff that's easy to forget until launch day: blockquotes, tables, figures, footnotes, form controls. Around 5KB gzipped, no JavaScript required.</p>
         <nav data-scroll="horizontal">
           <ul>
             <li><a href="#installation">Installation</a></li>
-            <li><a href="#principles">Core Principles</a></li>
+            <li><a href="#principles">What it is</a></li>
             <li><a href="#customization">Customization</a></li>
           </ul>
         </nav>
@@ -109,107 +107,79 @@
         <p>Install the package from <a href="https://www.npmjs.com/package/acorn.css">npm</a>:</p>
         <pre><code>npm install acorn.css</code></pre>
 
-        <p>Then import in your JavaScript/TypeScript:</p>
-        <pre><code>// Import everything
-import 'acorn.css';
+        <p>Then import it:</p>
+        <pre><code>import 'acorn.css';</code></pre>
 
-// Or import specific build
-import 'acorn.css/dist/acorn.css';
-import 'acorn.css/dist/acorn.min.css';</code></pre>
-
-        <p>Or import in your CSS:</p>
+        <p>Or in CSS:</p>
         <pre><code>@import 'acorn.css';</code></pre>
 
         <h4>Via CDN</h4>
         <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/acorn.css@latest/dist/acorn.min.css"&gt;</code></pre>
 
-        <h4>Quick start - customize with CSS variables</h4>
+        <h4>Quick start — customize with CSS variables</h4>
         <pre><code>:root {
-  --primary: #41aaea;
-  --space-2: 1rem;
-  --text-base: 1rem;
+  --primary: #0b779f;     /* cyan */
+  --secondary: #f4bb1a;   /* gold */
+  --accent: #e62e6b;      /* magenta / pink */
+  --button-radius: 1.5625rem;
   --container-default: 60rem;
-  --border-radius: 0.25rem;
 }</code></pre>
 
-        <h3 id="principles"><a href="#principles" aria-label="Link to Core Principles section">#</a> Core Principles
-        </h3>
+        <h3 id="principles"><a href="#principles" aria-label="Link to What it is section">#</a> What Acorn is (and isn't)</h3>
+        <p><strong>Acorn styles content, not layout.</strong> It's opinionated about how content looks and reads, and deliberately not a grid system, a utility framework, or a component library. It ships no presentational classes — so when you reach for a class, it's yours and you know exactly what it does.</p>
         <ul>
-          <li><strong>Lightweight:</strong> ~18KB of CSS (3.8KB gzipped), no JavaScript required</li>
-          <li><strong>Semantic:</strong> Style HTML elements directly without classes</li>
-          <li><strong>Customizable:</strong> Simple CSS custom properties for everything</li>
-          <li><strong>Accessible:</strong> WCAG compliant with proper focus management</li>
-          <li><strong>Responsive:</strong> Mobile-first with sensible defaults</li>
+          <li><strong>Classless:</strong> write semantic HTML, get a styled page.</li>
+          <li><strong>Complete:</strong> styles the elements people forget — blockquotes, tables, figures, footnotes, task lists, form controls.</li>
+          <li><strong>Customizable:</strong> everything themes through CSS custom properties.</li>
+          <li><strong>Accessible:</strong> WCAG AA color contrast and proper focus management out of the box.</li>
+          <li><strong>Tiny:</strong> around 5KB gzipped, no JavaScript.</li>
         </ul>
+        <p>Because it's classless, anything that emits clean semantic HTML — including Markdown and AI-generated content — gets styled automatically.</p>
 
-        <h3 id="customization"><a href="#customization" aria-label="Link to Customization section">#</a> Customization
-        </h3>
-        <p>Customize the framework using straightforward CSS custom properties:</p>
+        <h3 id="customization"><a href="#customization" aria-label="Link to Customization section">#</a> Customization</h3>
+        <p>Customize through CSS custom properties:</p>
 
         <dl>
           <dt><code>--primary</code>, <code>--secondary</code>, <code>--accent</code></dt>
-          <dd>Brand colors with light/dark variants for your design system.</dd>
+          <dd>CMYK-leaning brand colors (cyan, gold, magenta) with <code>-light</code>/<code>-dark</code> variants. All defaults pass WCAG AA in both themes.</dd>
 
           <dt><code>--space-1</code> through <code>--space-5</code></dt>
-          <dd>Spacing scale using rule of 2: 8px, 16px, 32px, 64px, 128px.</dd>
+          <dd>Spacing scale, rule of 2: 8px, 16px, 32px, 64px, 128px. Deliberately coarse — fine spacing is your layout's job.</dd>
 
           <dt><code>--text-xs</code> through <code>--text-3xl</code></dt>
-          <dd>Typography scale (1.25 ratio) for consistent text sizing.</dd>
+          <dd>Type scale (1.25 ratio). Display sizes scale fluidly with the viewport via <code>clamp()</code>; body text stays fixed.</dd>
 
-          <dt><code>--container-narrow/default/wide</code></dt>
-          <dd>Container widths: 45rem (reading), 60rem (default), 80rem (wide).</dd>
+          <dt><code>--container-narrow</code>, <code>--container-default</code></dt>
+          <dd>Reading widths: 45rem (narrow) and 60rem (default).</dd>
 
           <dt><code>--border-radius</code></dt>
-          <dd>Base border radius applied to buttons, inputs, and interactive elements.</dd>
+          <dd>Base radius for inputs, code, cards.</dd>
+
+          <dt><code>--button-radius</code></dt>
+          <dd>Button radius, separate from <code>--border-radius</code> so buttons round independently (25px default).</dd>
         </dl>
 
-        <h4>Dark Mode</h4>
-        <p>The framework includes built-in dark mode support using the <code>data-theme</code> attribute:</p>
-
-        <pre><code><!-- Manual theme switching -->
-&lt;html data-theme="light"&gt; &lt;!-- Light mode (default) --&gt;
-&lt;html data-theme="dark"&gt;  &lt;!-- Dark mode --&gt;</code></pre>
-
-        <p>For automatic theme detection based on user preferences, you can use CSS media queries instead:</p>
-
-        <pre><code>/* Auto dark mode using prefers-color-scheme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Apply dark mode colors automatically */
-    --primary: #6ec3f8;
-    --white: #151513;
-    --black: #f5f5f5;
-    /* ... other dark mode variables */
-  }
-}</code></pre>
-
-        <p>Or implement with JavaScript to respect system preferences while allowing manual override:</p>
-
-        <pre><code>// Auto mode with system preference detection
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme) {
-  document.documentElement.setAttribute('data-theme', savedTheme);
-} else if (prefersDark.matches) {
-  document.documentElement.setAttribute('data-theme', 'dark');
-}</code></pre>
-
-        <p><strong>Note:</strong> This demo uses manual theme switching with the toggle button in the bottom-right
-          corner. Your implementation can choose manual control, automatic detection, or both!</p>
+        <h4>Dark mode</h4>
+        <p>Built in. Toggle it with an attribute:</p>
+        <pre><code>&lt;html data-theme="dark"&gt; &lt;!-- or "light" --&gt;</code></pre>
+        <p>Or follow the system preference with a line of JavaScript:</p>
+        <pre><code>const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');</code></pre>
+        <p><strong>Note:</strong> this demo uses the toggle button in the bottom-right corner.</p>
       </article>
     </section>
 
-    <!-- Typography Examples -->
+    <!-- Typography -->
     <section id="typography">
       <header>
         <h2><a href="#typography" aria-label="Link to Typography section">#</a> Typography</h2>
-        <p>All heading and text elements styled automatically with mathematical type scale.</p>
+        <p>Every heading and text element styled automatically, on a fluid type scale.</p>
         <nav data-scroll="horizontal">
           <ul>
             <li><a href="#headings">Headings</a></li>
             <li><a href="#text-elements">Text Elements</a></li>
             <li><a href="#lists">Lists</a></li>
+            <li><a href="#tasklists">Task Lists</a></li>
             <li><a href="#quotes">Quotes</a></li>
           </ul>
         </nav>
@@ -217,40 +187,21 @@ if (savedTheme) {
 
       <article>
         <h3 id="headings"><a href="#headings" aria-label="Link to Headings section">#</a> Heading Hierarchy</h3>
-        <h1>Heading 1 - Main Title</h1>
-        <h2>Heading 2 - Section Title</h2>
-        <h3>Heading 3 - Subsection</h3>
-        <h4>Heading 4 - Article Title</h4>
-        <h5>Heading 5 - Subheading</h5>
-        <h6>Heading 6 - Minor Heading</h6>
+        <h1>Heading 1 — Main Title</h1>
+        <h2>Heading 2 — Section Title</h2>
+        <h3>Heading 3 — Subsection</h3>
+        <h4>Heading 4 — Article Title</h4>
+        <h5>Heading 5 — Subheading</h5>
+        <h6>Heading 6 — Minor Heading</h6>
 
-        <h3 id="text-elements"><a href="#text-elements" aria-label="Link to Text Elements section">#</a> Inline Text
-          Elements</h3>
-        <p>This is a paragraph with <strong>bold text</strong>, <em>italic text</em>, and <a href="#">a link</a>. The
-          framework provides consistent spacing and typography that scales beautifully across devices.</p>
+        <h3 id="text-elements"><a href="#text-elements" aria-label="Link to Text Elements section">#</a> Inline Text Elements</h3>
+        <p>This is a paragraph with <strong>bold text</strong>, <em>italic text</em>, and <a href="#">a link</a>. The baseline provides consistent spacing and typography that scales across devices.</p>
 
-        <p>You can use <code>inline code</code>, <kbd>Cmd</kbd> + <kbd>C</kbd> keyboard shortcuts, <mark>highlighted
-            text</mark>, <small>small text</small>, and text with various other formatting options including
-          <sup>superscript</sup> and <sub>subscript</sub>.
-        </p>
+        <p>You can use <code>inline code</code>, <kbd>Cmd</kbd> + <kbd>C</kbd> keyboard shortcuts, <mark>highlighted text</mark>, <small>small text</small>, and <sup>superscript</sup> / <sub>subscript</sub>.</p>
 
-        <p>Additional semantic elements: <abbr title="HyperText Markup Language">HTML</abbr>, <dfn>definition
-            terms</dfn>, <var>variables</var>, <time datetime="2025-01-20">January 20, 2025</time>, and <q>inline
-            quotations</q>.</p>
-
-        <h3 id="quotes"><a href="#quotes" aria-label="Link to Quotes section">#</a> Blockquotes</h3>
-
-        <blockquote>
-          <p>The best frameworks get out of your way and let you focus on content. This blockquote demonstrates how
-            semantic HTML just works.</p>
-          <cite>Framework Philosophy</cite>
-        </blockquote>
-
-        <hr>
+        <p>Additional semantic elements: <abbr title="HyperText Markup Language">HTML</abbr>, <dfn>definition terms</dfn>, <var>variables</var>, <time datetime="2026-06-22">June 22, 2026</time>, and <q>inline quotations</q>.</p>
 
         <h3 id="lists"><a href="#lists" aria-label="Link to Lists section">#</a> Lists and Definitions</h3>
-        <p>Unordered and ordered lists work perfectly:</p>
-
         <ul>
           <li>Automatic styling for list items</li>
           <li>Proper spacing and indentation
@@ -259,47 +210,77 @@ if (savedTheme) {
               <li>Multiple levels supported</li>
             </ul>
           </li>
-          <li>Mobile-friendly responsive design</li>
         </ul>
 
         <ol>
-          <li>Install the framework</li>
+          <li>Install the baseline</li>
           <li>Write semantic HTML</li>
           <li>Customize with CSS variables</li>
         </ol>
 
         <dl>
-          <dt>Classless Framework</dt>
-          <dd>A CSS framework that styles HTML elements without requiring class names.</dd>
-          <dt>Generative Design</dt>
-          <dd>A system where changing one parameter affects the entire design systematically.</dd>
-          <dt>Container Queries</dt>
-          <dd>CSS feature allowing styles based on container size rather than viewport size.</dd>
+          <dt>Classless</dt>
+          <dd>Styles HTML elements directly, without requiring class names.</dd>
+          <dt>Semantic baseline</dt>
+          <dd>A starting stylesheet that styles native elements, not a component or layout system.</dd>
+          <dt>Content, not layout</dt>
+          <dd>Acorn handles how content looks; your site handles how the page is arranged.</dd>
         </dl>
+
+        <h3 id="tasklists"><a href="#tasklists" aria-label="Link to Task Lists section">#</a> Task Lists</h3>
+        <p>Markdown task lists (<code>- [ ]</code> / <code>- [x]</code>) render with the bullet removed and the checkbox aligned:</p>
+        <ul class="contains-task-list">
+          <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" checked disabled> Write semantic HTML</li>
+          <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" checked disabled> Drop in acorn.css</li>
+          <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled> Build the rest</li>
+        </ul>
+
+        <h3 id="quotes"><a href="#quotes" aria-label="Link to Quotes section">#</a> Blockquotes</h3>
+        <blockquote>
+          <p>The best baseline gets out of your way and lets you focus on content.</p>
+          <cite>Acorn philosophy</cite>
+        </blockquote>
+
+        <hr>
       </article>
     </section>
 
-    <!-- Navigation Examples -->
-    <section id="navigation">
+    <!-- Footnotes -->
+    <section id="footnotes">
       <header>
-        <h2><a href="#navigation" aria-label="Link to Navigation section">#</a> Navigation Patterns</h2>
-        <p>Various navigation patterns built into the framework.</p>
-        <nav data-scroll="horizontal">
-          <ul>
-            <li><a href="#basic-nav">Basic Navigation</a></li>
-            <li><a href="#horizontal-nav">Horizontal Scroll</a></li>
-            <li><a href="#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="#pagination">Pagination</a></li>
-          </ul>
-        </nav>
+        <h2><a href="#footnotes" aria-label="Link to Footnotes section">#</a> Footnotes</h2>
+        <p>Markdown footnote output is styled automatically — inline references, the endnotes block, and back-links — across the common parsers (markdown-it, GitHub/remark, PHP Markdown Extra).</p>
       </header>
 
       <article>
-        <h3 id="basic-nav"><a href="#basic-nav" aria-label="Link to Basic Navigation section">#</a> Basic Navigation
-        </h3>
-        <p>Standard navigation with current page indication:</p>
+        <p>Footnotes are the quiet asides of good writing.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> They say the extra thing without interrupting the sentence,<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> and Acorn sets them in the accent color so they read as references, not stray brackets.</p>
 
-        <nav data-scroll="horizontal">
+        <p>Click a reference to jump down — the note you land on highlights briefly so you can find it. The arrow returns you to where you were reading.</p>
+
+        <hr class="footnotes-sep">
+        <section class="footnotes">
+          <ol class="footnotes-list">
+            <li id="fn1" class="footnote-item">
+              <p>The endnotes block is set apart with a rule, smaller and quieter than the body — like the small print it is. <a href="#fnref1" class="footnote-backref">&#8617;&#xFE0E;</a></p>
+            </li>
+            <li id="fn2" class="footnote-item">
+              <p>Links inside a note <a href="https://github.com/jomurgel/acorn.css">still read fine</a>, distinct from the back-link arrow. <a href="#fnref2" class="footnote-backref">&#8617;&#xFE0E;</a></p>
+            </li>
+          </ol>
+        </section>
+      </article>
+    </section>
+
+    <!-- Navigation -->
+    <section id="navigation">
+      <header>
+        <h2><a href="#navigation" aria-label="Link to Navigation section">#</a> Navigation Patterns</h2>
+        <p>Navigation styled from a plain <code>nav &gt; ul</code>, with current-page indication and optional horizontal scroll.</p>
+      </header>
+
+      <article>
+        <h3 id="basic-nav"><a href="#basic-nav" aria-label="Link to Basic Navigation section">#</a> Basic Navigation</h3>
+        <nav>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -308,10 +289,8 @@ if (savedTheme) {
           </ul>
         </nav>
 
-        <h3 id="horizontal-nav"><a href="#horizontal-nav" aria-label="Link to Horizontal Scroll section">#</a>
-          Horizontal Scrolling Navigation</h3>
-        <p>Long navigation lists that scroll horizontally on mobile:</p>
-
+        <h3 id="horizontal-nav"><a href="#horizontal-nav" aria-label="Link to Horizontal Scroll section">#</a> Horizontal Scrolling Navigation</h3>
+        <p>Long navigation lists scroll horizontally with <code>data-scroll="horizontal"</code>:</p>
         <nav data-scroll="horizontal">
           <ul>
             <li><a href="#section1">Introduction</a></li>
@@ -324,135 +303,87 @@ if (savedTheme) {
           </ul>
         </nav>
 
-        <h3 id="breadcrumbs"><a href="#breadcrumbs" aria-label="Link to Breadcrumbs section">#</a> Breadcrumb Navigation
-        </h3>
+        <h3 id="breadcrumbs"><a href="#breadcrumbs" aria-label="Link to Breadcrumbs section">#</a> Breadcrumbs</h3>
         <nav aria-label="Breadcrumb">
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/docs">Documentation</a></li>
-            <li><a href="/docs/components">Components</a></li>
-            <li><a aria-current="page" href="/docs/components/navigation">Navigation</a></li>
-          </ul>
-        </nav>
-
-        <h3 id="pagination"><a href="#pagination" aria-label="Link to Pagination section">#</a> Pagination</h3>
-        <nav aria-label="Pagination">
-          <ul>
-            <li><a href="#prev" aria-label="Previous page">←</a></li>
-            <li><a href="#page1">1</a></li>
-            <li><a href="#page2">2</a></li>
-            <li><a href="#page3" aria-current="page">3</a></li>
-            <li><a href="#page4">4</a></li>
-            <li><a href="#page5">5</a></li>
-            <li><a href="#next" aria-label="Next page">→</a></li>
+            <li><a aria-current="page" href="/docs/navigation">Navigation</a></li>
           </ul>
         </nav>
       </article>
     </section>
 
-    <!-- Layout Examples -->
+    <!-- Layout -->
     <section id="layout">
       <header>
-        <h2><a href="#layout" aria-label="Link to Layout section">#</a> Layout & Sectioning</h2>
-        <p>Semantic HTML5 sectioning elements with responsive container behavior.</p>
+        <h2><a href="#layout" aria-label="Link to Layout section">#</a> Containers &amp; Alignment</h2>
+        <p>Acorn handles content width and how blocks sit in the flow. It is not a grid system — page layout is your stylesheet's job.</p>
         <nav data-scroll="horizontal">
           <ul>
             <li><a href="#containers">Containers</a></li>
-            <li><a href="#sectioning">Sectioning Elements</a></li>
-            <li><a href="#content-flow">Content Flow</a></li>
+            <li><a href="#alignment">Block Alignment</a></li>
+            <li><a href="#sectioning">Sectioning</a></li>
           </ul>
         </nav>
       </header>
 
       <article>
-        <h3 id="containers"><a href="#containers" aria-label="Link to Containers section">#</a> Container System</h3>
-        <p>The framework provides four container widths:</p>
-
+        <h3 id="containers"><a href="#containers" aria-label="Link to Containers section">#</a> Containers (region width)</h3>
+        <p>Constrain a region to a reading width:</p>
         <ul>
-          <li><code>data-container="text"</code> - 720px optimal reading width</li>
-          <li><code>data-container="max"</code> - 1200px max content width</li>
-          <li><code>data-container="wide"</code> - 1440px wide layouts</li>
-          <li><code>data-container="full"</code> - 100vw full viewport</li>
+          <li><code>&lt;main&gt;</code> — default reading width (60rem)</li>
+          <li><code>data-container="narrow"</code> — narrower reading width (45rem)</li>
         </ul>
+
+        <h3 id="alignment"><a href="#alignment" aria-label="Link to Block Alignment section">#</a> Block Alignment</h3>
+        <p>Place or size a block in the flow. This mirrors the WordPress/Gutenberg align model:</p>
+        <ul>
+          <li><code>data-align="left"</code> / <code>"right"</code> — float with text wrap</li>
+          <li><code>data-align="center"</code> — centered block</li>
+          <li><code>data-align="wide"</code> / <code>"full"</code> — break out past the reading measure</li>
+        </ul>
+        <p>See it in action in the <a href="#media">Media</a> section below.</p>
       </article>
 
-      <article>
-        <h3 id="content-flow"><a href="#content-flow" aria-label="Link to Content Flow section">#</a> Content Flow
-          Utilities</h3>
-        <p>Stack and cluster utilities for content organization:</p>
-
-        <p>Content flow uses default margin-bottom spacing for consistent vertical rhythm.</p>
-
-        <div style="display: flex; gap: var(--space-2); justify-content: center; flex-wrap: wrap;">
-          <button>Button 1</button>
-          <button data-variant="secondary">Button 2</button>
-          <button data-destructive>Button 3</button>
-        </div>
-      </article>
-
-      <section data-container="wide">
-        <h3 id="wide-content"><a href="#wide-content" aria-label="Link to Wide Content section">#</a> Wide Container
-          Section</h3>
-        <p>This section uses <code>data-container="wide"</code> to break out wider than normal content. Perfect for
-          showcasing images, data visualizations, or content that needs more breathing room.</p>
+      <section data-align="wide">
+        <h3 id="sectioning"><a href="#sectioning" aria-label="Link to Sectioning section">#</a> Wide Breakout</h3>
+        <p>This section uses <code>data-align="wide"</code> to break out wider than the reading measure — good for images, data, or anything that needs more room.</p>
       </section>
     </section>
 
-    <!-- Interactive Elements -->
+    <!-- Interactive -->
     <section id="interactive">
       <header>
         <h2><a href="#interactive" aria-label="Link to Interactive Elements section">#</a> Interactive Elements</h2>
-        <p>Modern HTML5 interactive elements with built-in accessibility.</p>
-        <nav data-scroll="horizontal">
-          <ul>
-            <li><a href="#disclosure">Disclosure Widgets</a></li>
-            <li><a href="#progress">Progress & Meter</a></li>
-            <li><a href="#dialog">Dialogs</a></li>
-            <li><a href="#tooltips">Tooltips</a></li>
-          </ul>
-        </nav>
+        <p>Native HTML5 interactive elements with built-in styling and accessibility.</p>
       </header>
 
       <article>
-        <h3 id="disclosure"><a href="#disclosure" aria-label="Link to Disclosure Widgets section">#</a> Disclosure
-          Widgets</h3>
+        <h3 id="disclosure"><a href="#disclosure" aria-label="Link to Disclosure Widgets section">#</a> Disclosure Widgets</h3>
         <details>
-          <summary>What makes this framework different?</summary>
-          <p>Unlike utility-first frameworks, Acorn is designed to style semantic HTML out of the box. You write markup
-            the way it was intended, and the framework makes it look great.</p>
+          <summary>What makes Acorn different?</summary>
+          <p>It styles semantic HTML out of the box — the baseline you start with, not a utility kit you build with. Write proper markup, get a styled page.</p>
         </details>
-
-        <details>
-          <summary>How does the generative system work?</summary>
-          <p>The framework uses mathematical relationships to generate entire color palettes, spacing scales, and
-            typography hierarchies from just 5 core variables. Change the hue from 210 to 160, and your entire site
-            shifts from blue to green while maintaining perfect color relationships.</p>
-        </details>
-
         <details open>
           <summary>Can I customize everything?</summary>
-          <p>Absolutely! While the framework provides sensible defaults, every aspect can be customized through CSS
-            variables. The generative approach means your customizations propagate throughout the entire system
-            automatically.</p>
+          <p>Yes. Override the CSS custom properties — change <code>--primary</code> or <code>--button-radius</code> and it propagates everywhere those tokens are used.</p>
         </details>
 
-        <h3 id="progress"><a href="#progress" aria-label="Link to Progress section">#</a> Progress Indicators</h3>
+        <h3 id="progress"><a href="#progress" aria-label="Link to Progress section">#</a> Progress &amp; Meter</h3>
         <p>Upload progress: <progress value="67" max="100">67%</progress></p>
         <p>Storage usage: <meter min="0" max="1" low="0.3" high="0.7" optimum="0.2" value="0.6">60% used</meter></p>
-        <p>Disk space: <meter min="0" max="100" low="20" high="80" optimum="10" value="85">85% used</meter></p>
         <p>Battery level: <meter min="0" max="100" low="20" high="80" optimum="90" value="15">15% remaining</meter></p>
 
-        <h3 id="dialog"><a href="#dialog" aria-label="Link to Dialog section">#</a> Dialog Example</h3>
+        <h3 id="dialog"><a href="#dialog" aria-label="Link to Dialog section">#</a> Dialog</h3>
         <button data-dialog-trigger onclick="document.getElementById('demo-dialog').showModal()">Open Dialog</button>
-
-        <dialog id="demo-dialog" data-dialog-target>
+        <dialog id="demo-dialog">
           <header>
             <h4>Example Dialog</h4>
-            <button onclick="document.getElementById('demo-dialog').close()" data-close aria-label="Close">×</button>
+            <button onclick="document.getElementById('demo-dialog').close()" aria-label="Close">×</button>
           </header>
           <div>
-            <p>This is a native HTML dialog element styled by the framework. It includes backdrop blur and proper focus
-              management.</p>
+            <p>A native HTML dialog element styled by the baseline, with a dimmed backdrop and proper focus management.</p>
           </div>
           <footer>
             <button data-variant="secondary" onclick="document.getElementById('demo-dialog').close()">Cancel</button>
@@ -460,11 +391,10 @@ if (savedTheme) {
           </footer>
         </dialog>
 
-        <h3 id="interaction-state"><a href="#interaction-state" aria-label="Link to Interaction State section">#</a>
-          Interaction State</h3>
-        <p>Loading state: <span data-loading>Processing...</span></p>
-        <p>Success state: <span data-success>✓ Saved successfully</span></p>
-        <p>Error state: <span data-error>✗ Something went wrong</span></p>
+        <h3 id="interaction-state"><a href="#interaction-state" aria-label="Link to Interaction State section">#</a> State</h3>
+        <p>Loading: <span data-loading>Processing...</span></p>
+        <p>Success: <span data-success>Saved successfully</span></p>
+        <p>Error: <span data-error>Something went wrong</span></p>
       </article>
     </section>
 
@@ -472,20 +402,11 @@ if (savedTheme) {
     <section id="forms">
       <header>
         <h2><a href="#forms" aria-label="Link to Forms section">#</a> Forms</h2>
-        <p>Complete form styling with accessibility and mobile-first design.</p>
-        <nav data-scroll="horizontal">
-          <ul>
-            <li><a href="#form-elements">Form Elements</a></li>
-            <li><a href="#button-variants">Button Variants</a></li>
-            <li><a href="#form-layouts">Form Layouts</a></li>
-          </ul>
-        </nav>
+        <p>Complete form styling with accessible focus states.</p>
       </header>
 
       <article>
-        <h3 id="form-elements"><a href="#form-elements" aria-label="Link to Form Elements section">#</a> Complete Form
-          Example</h3>
-
+        <h3 id="form-elements"><a href="#form-elements" aria-label="Link to Form Elements section">#</a> Form Example</h3>
         <form>
           <fieldset>
             <legend>Contact Information</legend>
@@ -496,34 +417,17 @@ if (savedTheme) {
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="website">Website (optional)</label>
-            <input type="url" id="website" name="website">
-          </fieldset>
-
-          <fieldset>
-            <legend>Preferences</legend>
-
-            <label for="framework">Favorite Framework</label>
+            <label for="framework">Favorite Stylesheet</label>
             <select id="framework" name="framework">
               <option value="">Choose one...</option>
               <option value="acorn">Acorn CSS</option>
               <option value="other">Something else</option>
             </select>
 
-            <label for="experience">Experience Level</label>
-            <input data-accent type="range" id="experience" name="experience" min="1" max="10" value="5">
-
             <fieldset>
               <legend>Interests</legend>
               <label><input data-accent type="checkbox" name="interests" value="design"> Design Systems</label>
               <label><input data-accent type="checkbox" name="interests" value="accessibility"> Accessibility</label>
-              <label><input data-accent type="checkbox" name="interests" value="performance"> Performance</label>
-            </fieldset>
-
-            <fieldset>
-              <legend>Newsletter</legend>
-              <label><input data-accent type="radio" name="newsletter" value="yes"> Yes, send updates</label>
-              <label><input data-accent type="radio" name="newsletter" value="no" checked> No, thanks</label>
             </fieldset>
 
             <label for="message">Message</label>
@@ -531,40 +435,32 @@ if (savedTheme) {
           </fieldset>
 
           <p data-button-group>
-          <button type="submit">Send Message</button>
-          <button type="reset" data-variant="secondary">Clear Form</button>
+            <button type="submit">Send Message</button>
+            <button type="reset" data-variant="secondary">Clear Form</button>
           </p>
         </form>
 
-        <h3 id="button-variants"><a href="#button-variants" aria-label="Link to Button Variants section">#</a> Button
-          Variants</h3>
-
-        <h4>Standard Variants</h4>
+        <h3 id="button-variants"><a href="#button-variants" aria-label="Link to Button Variants section">#</a> Button Variants</h3>
+        <h4>Standard</h4>
         <p data-button-group>
           <button>Primary</button>
           <button data-variant="secondary">Secondary</button>
           <button data-variant="tertiary">Tertiary</button>
           <button data-variant="link">Link</button>
         </p>
-
-        <h4>Disabled States</h4>
+        <h4>Disabled</h4>
         <p data-button-group>
           <button disabled>Primary</button>
           <button disabled data-variant="secondary">Secondary</button>
-          <button disabled data-variant="tertiary">Tertiary</button>
-          <button disabled data-variant="link">Link</button>
         </p>
-
-        <h4>Destructive Actions</h4>
+        <h4>Destructive</h4>
         <p data-button-group>
           <button data-destructive>Delete Item</button>
           <button data-destructive data-variant="secondary">Remove User</button>
-          <button data-destructive data-variant="tertiary">Cancel Account</button>
           <button data-destructive data-variant="link">Discard Changes</button>
         </p>
 
-        <h3 id="form-layouts"><a href="#form-layouts" aria-label="Link to Form Layouts section">#</a> Inline Form Layout
-        </h3>
+        <h3 id="form-layouts"><a href="#form-layouts" aria-label="Link to Form Layouts section">#</a> Inline Form</h3>
         <form data-inline-form>
           <div>
             <label for="search">Search</label>
@@ -579,22 +475,13 @@ if (savedTheme) {
     <section id="tables">
       <header>
         <h2><a href="#tables" aria-label="Link to Tables section">#</a> Tables</h2>
-        <p>Responsive tables that transform into cards on mobile using container queries.</p>
-        <nav data-scroll="horizontal">
-          <ul>
-            <li><a href="#basic-table">Basic Table</a></li>
-            <li><a href="#responsive-table">Mobile-Responsive</a></li>
-            <li><a href="#table-variants">Table Variants</a></li>
-          </ul>
-        </nav>
+        <p>Tables styled by default. Wrap one in <code>data-table</code> for horizontal scroll on narrow screens.</p>
       </header>
 
       <article>
-        <h3 id="basic-table"><a href="#basic-table" aria-label="Link to Basic Table section">#</a> Basic Table</h3>
-
         <div data-table>
           <table>
-            <caption>Basic Table Example</caption>
+            <caption>Team</caption>
             <thead>
               <tr>
                 <th>Name</th>
@@ -621,43 +508,6 @@ if (savedTheme) {
             </tbody>
           </table>
         </div>
-
-        <h3 id="responsive-table"><a href="#responsive-table" aria-label="Link to Responsive Table section">#</a>
-          Mobile-Responsive Table</h3>
-
-        <div data-table>
-          <table>
-            <caption>Framework Comparison</caption>
-            <thead>
-              <tr>
-                <th data-sortable>Framework</th>
-                <th data-sortable>Type</th>
-                <th data-sortable>Size (gzipped)</th>
-                <th>Features</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Framework">Acorn CSS</td>
-                <td data-label="Type">Classless</td>
-                <td data-label="Size">~8KB</td>
-                <td data-label="Features">Generative design, container queries, accessibility</td>
-              </tr>
-              <tr>
-                <td data-label="Framework">Tailwind CSS</td>
-                <td data-label="Type">Utility-first</td>
-                <td data-label="Size">~15KB</td>
-                <td data-label="Features">Utility classes, customization, JIT compilation</td>
-              </tr>
-              <tr>
-                <td data-label="Framework">Bootstrap</td>
-                <td data-label="Type">Component-based</td>
-                <td data-label="Size">~25KB</td>
-                <td data-label="Features">Components, grid system, JavaScript plugins</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </article>
     </section>
 
@@ -665,222 +515,68 @@ if (savedTheme) {
     <section id="media">
       <header>
         <h2><a href="#media" aria-label="Link to Media section">#</a> Media Elements</h2>
-        <p>Images, video, and embedded content with responsive behavior.</p>
-        <nav data-scroll="horizontal">
-          <ul>
-            <li><a href="#images">Images</a></li>
-            <li><a href="#alignment">Image Alignment</a></li>
-            <li><a href="#galleries">Media Galleries</a></li>
-            <li><a href="#video">Video & Audio</a></li>
-          </ul>
-        </nav>
+        <p>Images, video, and embedded content, responsive by default.</p>
       </header>
 
       <article>
         <h3 id="images"><a href="#images" aria-label="Link to Images section">#</a> Responsive Images</h3>
-        <p>Images are responsive by default and can be sized using data attributes:</p>
-
         <figure>
           <img src="/carina-nebula-webb.jpg" alt="Carina Nebula captured by James Webb telescope">
-          <figcaption>The Carina Nebula as captured by the James Webb Space Telescope. <cite>NASA, ESA, CSA, and
-              STScI</cite></figcaption>
+          <figcaption>The Carina Nebula as captured by the James Webb Space Telescope. <cite>NASA, ESA, CSA, and STScI</cite></figcaption>
         </figure>
 
-        <h3 id="alignment"><a href="#alignment" aria-label="Link to Image Alignment section">#</a> Image Alignment
-          Options</h3>
-        <p>Images can float left or right on larger screens: <img src="/carina-nebula-webb-square.jpg"
-            alt="Square crop of Carina Nebula" data-align="right" style="max-width: 200px;"> This text wraps around the
-          right-aligned image on desktop but stacks normally on mobile devices. The framework handles this responsive
-          behavior automatically using container queries.</p>
+        <h3 id="alignment-demo"><a href="#alignment-demo" aria-label="Link to Image Alignment section">#</a> Image Alignment</h3>
+        <p>Images float with <code>data-align</code>: <img src="/carina-nebula-webb-square.jpg" alt="Square crop of Carina Nebula" data-align="right" style="max-width: 200px;"> this text wraps around the right-aligned image on wider screens and stacks normally on narrow ones. Use <code>data-align="left"</code>, <code>"right"</code>, or <code>"center"</code> for in-flow placement.</p>
 
-        <p>Anim, nisi ad pariatur. Pariatur exercitation adipiscing tempor est amet aute. Adipiscing tempor est amet,
-          aute dolor. Amet aute dolor enim anim est esse. Dolor enim anim est, esse laborum sint. Est esse laborum sint,
-          id. Sint, id duis ea cupidatat. Ea cupidatat qui non sed sed proident. Qui non sed, sed proident. Sed proident
-          sed elit ad.</p>
-
-        <p>Left-aligned images work similarly: <img src="/carina-nebula-webb-square.jpg"
-            alt="Square crop of Carina Nebula" data-align="left" style="max-width: 200px;"> The image floats to the left
-          on
-          larger screens while maintaining proper spacing and readability.</p>
-
-        <p>Commodo occaecat sed aute eiusmod, et culpa. Aute eiusmod et culpa magna cupidatat tempor consectetur. Et
-          culpa magna cupidatat tempor, consectetur. Cupidatat tempor consectetur elit ut. Consectetur elit ut eiusmod
-          nisi exercitation. Ut eiusmod nisi exercitation fugiat incididunt, est ex. Exercitation fugiat incididunt est
-          ex. Incididunt est ex cupidatat irure non ex ex. Ex cupidatat irure non ex ex. Irure non ex ex aliquip nisi.
-        </p>
-
-        <p>Center-aligned images work similarly: <img src="/carina-nebula-webb-square.jpg"
-            alt="Square crop of Carina Nebula" data-align="center" style="max-width: 200px;"> The image is centered on
-          larger screens while maintaining proper spacing and readability.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet aute dolor enim anim est esse. Dolor enim anim
-          est, esse laborum sint. Est esse laborum sint, id. Sint, id duis ea cupidatat. Ea cupidatat qui non sed sed
-          proident. Qui non sed, sed proident. Sed proident sed elit ad.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet aute dolor enim anim est esse. Dolor enim anim
-          est, esse laborum sint. Est esse laborum sint, id. Sint, id duis ea cupidatat. Ea cupidatat qui non sed sed
-          proident. Qui non sed, sed proident. Sed proident sed elit ad.</p>
+        <p>Anim, nisi ad pariatur. Pariatur exercitation adipiscing tempor est amet aute. Adipiscing tempor est amet, aute dolor. Amet aute dolor enim anim est esse. Dolor enim anim est, esse laborum sint. Est esse laborum sint, id duis ea cupidatat.</p>
       </article>
 
-      <figure data-container="full">
+      <figure data-align="full">
         <img src="/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Stellar death captured by Webb telescope">
-        <figcaption>Full-width image using <code>data-align="full"</code>. <cite>NASA's Webb Captures Dying Star's
-            Final Performance</cite></figcaption>
+        <figcaption>Full-width image using <code>data-align="full"</code>. <cite>NASA's Webb Captures a Dying Star's Final Performance</cite></figcaption>
       </figure>
 
       <article>
         <h3 id="galleries"><a href="#galleries" aria-label="Link to Media Galleries section">#</a> Media Gallery</h3>
-        <p>Use <code>data-gallery</code> for responsive image grids:</p>
-
+        <p>Use <code>data-gallery</code> for a responsive image grid:</p>
         <div data-gallery>
           <img src="/carina-nebula-webb.jpg" alt="Carina Nebula">
           <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula square crop">
           <img src="/stellar-death-s-ing-miri-nircam-sidebyside.jpg" alt="Stellar death">
           <img src="/carina-nebula-webb-neg.jpg" alt="Carina Nebula inverted">
-          <img src="/carina-nebula-webb.jpg" alt="Carina Nebula">
-          <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula square crop">
         </div>
 
-        <h3 id="video"><a href="#video" aria-label="Link to Video section">#</a> Video and Audio</h3>
-        <p>Video elements with responsive aspect ratios:</p>
-
+        <h3 id="video"><a href="#video" aria-label="Link to Video section">#</a> Video</h3>
+        <p>Wrap embeds in <code>data-embed</code> for a responsive 16:9 aspect ratio:</p>
         <div data-embed>
           <video controls>
             <source src="/cross-a-mountain.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
-
-        <div data-embed>
-          <object data="/cross-a-mountain.mp4"></object>
-        </div>
-
-        <div data-embed>
-          <embed src="/cross-a-mountain.mp4">
-        </div>
-
-        <p>Audio elements for podcasts and music:</p>
-        <audio controls>
-          <source src="/sample-audio.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-
-        <figure>
-          <picture>
-            <source media="(min-width: 768px)" srcset="/carina-nebula-webb.jpg">
-            <source media="(min-width: 480px)" srcset="/carina-nebula-webb-square.jpg">
-            <img src="/carina-nebula-webb-square.jpg" alt="Carina Nebula responsive image">
-          </picture>
-          <figcaption>Responsive picture element with art direction</figcaption>
-        </figure>
-      </article>
-    </section>
-
-    <!-- Grid Placeholder -->
-    <section id="grid">
-      <header>
-        <h2><a href="#grid" aria-label="Link to grid section">#</a> Documentation</h2>
-        <p>Simple grid system demo.</p>
-      </header>
-    </section>
-
-    <!-- Documentation Placeholder -->
-    <section id="documentation">
-      <header>
-        <h2><a href="#documentation" aria-label="Link to Documentation section">#</a> Documentation</h2>
-        <p>Complete guides and API reference coming soon.</p>
-        <nav data-scroll="horizontal">
-          <ul>
-            <li><a href="#coming-soon">Coming Soon</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#community">Community</a></li>
-          </ul>
-        </nav>
-      </header>
-
-      <article>
-        <h3 id="coming-soon"><a href="#coming-soon" aria-label="Link to Coming Soon section">#</a> Coming Soon</h3>
-        <ul>
-          <li><strong>Installation Guide:</strong> npm package, CDN links, and direct download</li>
-          <li><strong>Customization Docs:</strong> Complete variable reference and examples</li>
-          <li><strong>Component Library:</strong> All available patterns and data attributes</li>
-          <li><strong>Migration Guide:</strong> Moving from other frameworks</li>
-          <li><strong>Advanced Usage:</strong> Extending the framework and building themes</li>
-        </ul>
-
-        <h3 id="resources"><a href="#resources" aria-label="Link to Resources section">#</a> Resources</h3>
-        <p>Essential links and references:</p>
-
-        <nav data-scroll="horizontal">
-          <ul>
-            <li><a href="https://github.com/jomurgel/acorn.css">GitHub Repository</a></li>
-            <li><a href="https://www.npmjs.com/package/acorn.css">npm Package</a></li>
-            <li><a href="https://unpkg.com/acorn.css@latest/dist/">CDN Links</a></li>
-            <li><a href="#changelog">Changelog</a> (coming soon)</li>
-          </ul>
-        </nav>
-
-        <h3 id="community"><a href="#community" aria-label="Link to Community section">#</a> Community</h3>
-        <p>Connect with other developers using Acorn CSS:</p>
-
-        <ul>
-          <li><a href="https://github.com/jomurgel/acorn.css/discussions">GitHub Discussions</a></li>
-          <li><a href="https://github.com/jomurgel/acorn.css/issues">Report Issues</a></li>
-          <li><a href="https://twitter.com/jomurgel">Follow on Twitter</a></li>
-        </ul>
-
-        <details>
-          <summary>Frequently Asked Questions</summary>
-          <dl>
-            <dt>Why classless?</dt>
-            <dd>Classless frameworks let you focus on semantic HTML while providing beautiful defaults. Perfect for
-              prototypes, documentation sites, and projects where you want to write less CSS.</dd>
-
-            <dt>How does the generative system work?</dt>
-            <dd>Mathematical relationships generate entire design systems from 5 core variables. Change one hue and
-              get a complete color palette with proper contrast ratios automatically.</dd>
-
-            <dt>Is it accessible?</dt>
-            <dd>Yes! The framework follows WCAG guidelines with proper focus states, semantic markup requirements, and
-              support for assistive technologies.</dd>
-
-            <dt>Can I use it with JavaScript frameworks?</dt>
-            <dd>Absolutely! Since it's classless, it works with any framework - React, Vue, Svelte, or vanilla HTML.
-            </dd>
-          </dl>
-        </details>
-
-        <p>Follow the <a href="https://github.com/jomurgel/acorn.css">GitHub repository</a> for updates and release
-          announcements.</p>
       </article>
     </section>
   </main>
 
   <footer data-text="center">
     <hr>
-    <p>Made with ❤️ by <a href="https://jomurgel.com">jomurgel</a> · © 2022-2025</p>
+    <p>Built by <a href="https://jomurgel.com">jomurgel</a> · © 2022–2026</p>
   </footer>
 
   <script>
-    // Dark mode toggle functionality
     function toggleTheme() {
       const html = document.documentElement;
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       const icon = document.getElementById('theme-icon');
-
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-
-      // Update icon
       icon.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
     }
 
-    // Check for saved theme preference or default to light mode
     document.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('theme') || 'light';
       const icon = document.getElementById('theme-icon');
-
       document.documentElement.setAttribute('data-theme', savedTheme);
       icon.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
     });
