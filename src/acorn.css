@@ -1,49 +1,63 @@
-//--------------------------------------------------------------
-// Acorn CSS - A lightweight, semantic HTML framework
-// Version 2.0
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* Acorn CSS — a lightweight, classless CSS baseline. */
+/* Styles semantic HTML out of the box: the stylesheet you start with. */
+/* Version 3.0 */
+/* -------------------------------------------------------------- */
 
 :root {
-  //--------------------------------------------------------------
-  // TYPOGRAPHY
-  //--------------------------------------------------------------
+  /* -------------------------------------------------------------- */
+  /* TYPOGRAPHY */
+  /* -------------------------------------------------------------- */
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
     Cantarell, Noto Sans, sans-serif;
   --font-mono: Consolas, Monaco, 'Courier New', monospace;
 
-  // Type scale (1.25 ratio)
-  --text-xs: 0.75rem;    // 12px
-  --text-sm: 0.875rem;   // 14px
-  --text-base: 1rem;     // 16px
-  --text-lg: 1.25rem;    // 20px
-  --text-xl: 1.5rem;     // 24px
-  --text-2xl: 2rem;      // 32px
-  --text-3xl: 2.5rem;    // 40px
+  /* Type scale (1.25 ratio). Small sizes stay fixed for readable body */
+  /* copy; display sizes scale fluidly with the viewport via clamp(). */
+  /* Each clamp keeps a rem term so text still honors zoom (WCAG 1.4.4). */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px (fixed body) */
+  --text-lg: clamp(1.125rem, 1.083rem + 0.208vw, 1.25rem); /* 18 → 20px */
+  --text-xl: clamp(1.25rem, 1.167rem + 0.417vw, 1.5rem); /* 20 → 24px */
+  --text-2xl: clamp(1.5rem, 1.333rem + 0.833vw, 2rem); /* 24 → 32px */
+  --text-3xl: clamp(1.875rem, 1.667rem + 1.042vw, 2.5rem); /* 30 → 40px */
 
-  //--------------------------------------------------------------
-  // SPACING (Rule of 2 progression)
-  //--------------------------------------------------------------
-  --space-1: 0.5rem;   // 8px
-  --space-2: 1rem;     // 16px (base)
-  --space-3: 2rem;     // 32px
-  --space-4: 4rem;     // 64px
-  --space-5: 8rem;     // 128px
+  /* -------------------------------------------------------------- */
+  /* SPACING (Rule of 2 progression) */
+  /* -------------------------------------------------------------- */
+  /* Deliberately coarse — each step doubles. Fine-grained spacing is */
+  /* layout tuning and belongs in the consuming site's CSS, not the */
+  /* baseline. This keeps Acorn about content, not layout. */
+  --space-1: 0.5rem; /* 8px */
+  --space-2: 1rem; /* 16px (base) */
+  --space-3: 2rem; /* 32px */
+  --space-4: 4rem; /* 64px */
+  --space-5: 8rem; /* 128px */
 
-  //--------------------------------------------------------------
-  // COLORS - Light Mode (default)
-  //--------------------------------------------------------------
-  --primary: #41aaea;
-  --primary-light: #6ec3f8;
-  --primary-dark: #186797;
+  /* -------------------------------------------------------------- */
+  /* COLORS - Light Mode (default) */
+  /* -------------------------------------------------------------- */
+  /* CMYK identity. Cyan/magenta are capped at the brightest shade that */
+  /* still passes WCAG AA with white text; the brighter pops live in the */
+  /* -light shades, the gold, highlights, and accents. */
+  --primary: #0b779f; /* cyan — verified 4.64:1 on paper (AA) */
+  --primary-light: #2fa6d2; /* brighter cyan for hover/accents (non-text) */
+  --primary-dark: #0a6080;
 
-  --secondary: #e0a81e;
-  --secondary-light: #edc151;
+  --secondary: #f4bb1a; /* yellow/gold (pairs with dark text) */
+  --secondary-light: #fcd34d;
+  --secondary-dark: #b8860b;
 
-  --accent: #ee2d6d;
+  --accent: #e62e6b; /* bright signature magenta/pink (highlights) */
   --accent-light: #f4759f;
-  --accent-dark: #7f062e;
+  --accent-dark: #b01550; /* for pink-as-text + white-on-pink contexts */
 
-  // Neutrals - Light Mode
+  /* Pink used as small text (footnote refs): needs a dark pink on light */
+  /* paper, a light pink on dark. Overridden in the dark theme below. */
+  --footnote-ref: var(--accent-dark);
+
+  /* Neutrals - Light Mode */
   --white: #f5f5f5;
   --off-white: #efefef;
   --light-gray: #cecece;
@@ -51,38 +65,41 @@
   --dark-gray: #212121;
   --black: #151513;
 
-  // Semantic
+  /* Semantic */
   --success: #00c807;
   --error: #ff003e;
   --warning: #ffcc00;
 
-  //--------------------------------------------------------------
-  // LAYOUT
-  //--------------------------------------------------------------
-  --container-narrow: 45rem;   // 720px - reading width
-  --container-default: 60rem;  // 960px - standard
-  --container-wide: 80rem;     // 1280px - wide layouts
+  /* -------------------------------------------------------------- */
+  /* LAYOUT */
+  /* -------------------------------------------------------------- */
+  --container-narrow: 45rem; /* 720px - reading width */
+  --container-default: 60rem; /* 960px - standard */
+  --container-wide: 80rem; /* 1280px - wide layouts */
 
-  --border-radius: 0.25rem;    // 4px
+  --border-radius: 0.25rem; /* 4px */
+  --button-radius: 1.5625rem; /* 25px — buttons round independently of --border-radius */
   --line-height: 1.5;
 }
 
-// Dark mode colors
+/* Dark mode colors */
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --primary: #6ec3f8;
-  --primary-light: #8fd4ff;
-  --primary-dark: #41aaea;
+  --primary: #34b0e0; /* brighter cyan reads well on dark */
+  --primary-light: #5cc8f5;
+  --primary-dark: #0e80ab;
 
-  --secondary: #edc151;
-  --secondary-light: #f4d482;
+  --secondary: #f7c843;
+  --secondary-light: #ffe07a;
+  --secondary-dark: #d39e1a;
 
-  --accent: #f4759f;
+  --accent: #ff5b8f; /* brighter pink on dark */
   --accent-light: #ffb3ce;
-  --accent-dark: #ee2d6d;
+  --accent-dark: #e62e6b;
+  --footnote-ref: var(--accent); /* light pink reads on the dark bg */
 
-  // Neutrals - Dark Mode (inverted)
+  /* Neutrals - Dark Mode (inverted) */
   --white: #151513;
   --off-white: #212121;
   --light-gray: #3a3a3a;
@@ -90,7 +107,7 @@
   --dark-gray: #cecece;
   --black: #f5f5f5;
 
-  // Semantic (brighter for dark backgrounds)
+  /* Semantic (brighter for dark backgrounds) */
   --success: #00ff0a;
   --error: #ff4a6e;
   --warning: #ffd700;
@@ -108,9 +125,9 @@
   color-scheme: light;
 }
 
-//--------------------------------------------------------------
-// RESET & BASE
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* RESET & BASE */
+/* -------------------------------------------------------------- */
 
 *,
 *::before,
@@ -144,9 +161,9 @@ body {
   color: var(--white);
 }
 
-//--------------------------------------------------------------
-// TYPOGRAPHY
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* TYPOGRAPHY */
+/* -------------------------------------------------------------- */
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -180,12 +197,19 @@ p {
   margin-bottom: var(--space-3);
 }
 
-// Inline text elements
+/* Inline text elements */
 strong, b { font-weight: 700; }
 em, i { font-style: italic; }
 small { font-size: var(--text-sm); }
 del, s { text-decoration: line-through; }
 ins, u { text-decoration: underline; }
+dfn { font-style: italic; }
+
+abbr[title] {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
+}
 
 sub, sup {
   font-size: var(--text-xs);
@@ -200,11 +224,14 @@ sub { bottom: -0.25em; }
 mark {
   background-color: var(--accent);
   border-radius: var(--border-radius);
-  color: var(--white);
+  /* Pure black for max contrast on the bright pink highlight in BOTH */
+  /* themes (~5:1 light, ~7:1 dark — passes AA). var(--black) would flip */
+  /* with the theme and fail; near-black #151513 lands just under 4.5:1. */
+  color: #000;
   padding: 0.125rem 0.25rem;
 }
 
-// Links
+/* Links */
 a {
   color: var(--primary);
   text-decoration: underline;
@@ -218,9 +245,9 @@ a {
   }
 }
 
-//--------------------------------------------------------------
-// LISTS
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* LISTS */
+/* -------------------------------------------------------------- */
 
 ul, ol {
   margin-bottom: var(--space-3);
@@ -234,7 +261,25 @@ li {
   margin-bottom: var(--space-1);
 }
 
-// Description lists
+/* Task lists (markdown `- [ ]` / `- [x]`). Parsers emit class-based */
+/* markup; we style those plus a :has() fallback. Drop the bullet and */
+/* pull the checkbox into the gutter so items line up. */
+ul.contains-task-list,
+ul:has(> li > input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 0;
+}
+
+.task-list-item,
+li:has(> input[type="checkbox"]:first-child) {
+  list-style: none;
+}
+
+li > input[type="checkbox"]:first-child {
+  margin-right: var(--space-1);
+}
+
+/* Description lists */
 dl {
   display: grid;
   gap: var(--space-1) var(--space-3);
@@ -250,9 +295,9 @@ dd {
   margin: 0;
 }
 
-//--------------------------------------------------------------
-// BLOCKQUOTE & CITATIONS
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* BLOCKQUOTE & CITATIONS */
+/* -------------------------------------------------------------- */
 
 blockquote {
   border-left: var(--space-1) solid var(--primary);
@@ -283,9 +328,100 @@ cite {
   font-style: italic;
 }
 
-//--------------------------------------------------------------
-// CODE & PRE
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* FOOTNOTES */
+/* -------------------------------------------------------------- */
+/* Deliberate, documented exception to the classless rule: Markdown */
+/* footnote output is class-based and varies by parser, so we style */
+/* the de-facto class outputs (markdown-it, GitHub/remark, PHP */
+/* Markdown Extra) alongside semantic fallbacks (role="doc-endnotes", */
+/* id^="fn"). Acorn's job is to style what real content emits — and */
+/* real content emits these. */
+
+/* Inline reference marker in the body copy (a superscript link). */
+/* `sup` itself is already positioned by the typography section. */
+.footnote-ref a,
+a[data-footnote-ref],
+sup[id^="fnref"] a {
+  color: var(--footnote-ref);
+  font-weight: 600;
+  padding: 0 0.15em;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+/* The endnotes block at the bottom of the content. Set apart with a */
+/* rule above it, smaller and quieter than the body — like the small */
+/* print it is. */
+.footnotes,
+[data-footnotes],
+section[role="doc-endnotes"] {
+  border-top: 2px solid var(--light-gray);
+  color: var(--gray);
+  font-size: var(--text-sm);
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+
+  /* Some parsers emit their own separator rule; ours already divides */
+  /* the section, so suppress the duplicate. */
+  hr {
+    display: none;
+  }
+
+  /* A heading some parsers add ("Footnotes"); keep it modest. */
+  :is(h1, h2, h3, h4, h5, h6),
+  [id="footnote-label"] {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-2);
+  }
+
+  ol {
+    margin-bottom: 0;
+  }
+
+  li {
+    margin-bottom: var(--space-1);
+  }
+
+  /* Notes are tight; the list spacing separates them, not the body */
+  /* paragraph margin. Keep a small gap only for multi-paragraph notes. */
+  p {
+    margin-bottom: var(--space-1);
+  }
+
+  li > p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Highlight the note you just jumped to, so it's easy to find. */
+  li:target {
+    background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+  }
+}
+
+/* The "return to reference" arrow inside an endnote. */
+.footnote-backref,
+a[data-footnote-backref],
+.footnotes a[role="doc-backlink"] {
+  color: var(--footnote-ref);
+  margin-left: var(--space-1);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+/* -------------------------------------------------------------- */
+/* CODE & PRE */
+/* -------------------------------------------------------------- */
 
 code, kbd, samp {
   background-color: var(--off-white);
@@ -318,9 +454,9 @@ pre {
   }
 }
 
-//--------------------------------------------------------------
-// HORIZONTAL RULE
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* HORIZONTAL RULE */
+/* -------------------------------------------------------------- */
 
 hr {
   border: none;
@@ -329,9 +465,9 @@ hr {
   max-width: 15%;
 }
 
-//--------------------------------------------------------------
-// LAYOUT & STRUCTURE
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* LAYOUT & STRUCTURE */
+/* -------------------------------------------------------------- */
 
 main {
   margin: 0 auto;
@@ -349,7 +485,8 @@ footer {
   margin-bottom: var(--space-3);
 }
 
-// Container utilities
+/* Containers — constrain a REGION to a reading width. Width only; */
+/* block-level breakouts (wide/full) live under [data-align] below. */
 [data-container] {
   margin-left: auto;
   margin-right: auto;
@@ -357,32 +494,16 @@ footer {
 }
 
 [data-container="narrow"] {
-  margin-left: auto;
-  margin-right: auto;
   max-width: var(--container-narrow);
 }
 
-[data-container="wide"] {
-  left: 50%;
-  max-width: var(--container-wide);
-  position: relative;
-  transform: translateX(-50%);
-  width: 100vw;
-}
-
-[data-container="full"] {
-  left: 50%;
-  max-width: 100vw;
-  position: relative;
-  transform: translateX(-50%);
-  width: 100vw;
-}
-
-// Alignment utilities
+/* Block alignment — place/size a BLOCK in the flow. Mirrors the */
+/* WordPress/Gutenberg align model: left/right float with wrap, center */
+/* centers, wide/full break out past the reading measure. */
 [data-align="center"] {
   display: block;
-  margin: 0 auto var(--space-2);
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 [data-align="left"] {
@@ -397,9 +518,27 @@ footer {
   max-width: 50%;
 }
 
-//--------------------------------------------------------------
-// MEDIA
-//--------------------------------------------------------------
+[data-align="wide"] {
+  left: 50%;
+  margin-bottom: var(--space-2);
+  max-width: var(--container-wide);
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+[data-align="full"] {
+  left: 50%;
+  margin-bottom: var(--space-2);
+  max-width: 100vw;
+  position: relative;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+
+/* -------------------------------------------------------------- */
+/* MEDIA */
+/* -------------------------------------------------------------- */
 
 img, video, canvas, svg {
   border-radius: var(--border-radius);
@@ -419,12 +558,12 @@ figcaption {
   max-width: var(--container-default);
 }
 
-// Embedded content wrapper
+/* Embedded content wrapper */
 [data-embed] {
   border-radius: var(--border-radius);
   margin: var(--space-3) 0;
   overflow: hidden;
-  padding-top: 56.25%; // 16:9 aspect ratio
+  padding-top: 56.25%; /* 16:9 aspect ratio */
   position: relative;
 
   iframe,
@@ -440,7 +579,7 @@ figcaption {
   }
 }
 
-// Media galleries
+/* Media galleries */
 [data-gallery] {
   display: grid;
   gap: var(--space-2);
@@ -457,9 +596,9 @@ figcaption {
   }
 }
 
-//--------------------------------------------------------------
-// NAVIGATION
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* NAVIGATION */
+/* -------------------------------------------------------------- */
 
 nav {
   margin-bottom: var(--space-3);
@@ -478,7 +617,7 @@ nav {
   }
 
   a {
-    border-radius: var(--border-radius);
+    border-radius: var(--button-radius);
     display: block;
     padding: var(--space-1) var(--space-2);
     text-decoration: none;
@@ -495,7 +634,7 @@ nav {
     }
   }
 
-  // Horizontal scrolling navigation
+  /* Horizontal scrolling navigation */
   &[data-scroll="horizontal"] {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
@@ -516,9 +655,9 @@ nav {
   }
 }
 
-//--------------------------------------------------------------
-// TABLES
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* TABLES */
+/* -------------------------------------------------------------- */
 
 table {
   border-collapse: collapse;
@@ -543,15 +682,15 @@ tbody tr:hover {
   background-color: var(--off-white);
 }
 
-// Table wrapper for overflow
+/* Table wrapper for overflow */
 [data-table] {
   margin-bottom: var(--space-3);
   overflow-x: auto;
 }
 
-//--------------------------------------------------------------
-// FORMS
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* FORMS */
+/* -------------------------------------------------------------- */
 
 form {
   margin-bottom: var(--space-3);
@@ -647,7 +786,7 @@ input[type="radio"] {
 input[type="file"]::file-selector-button {
   background-color: var(--primary);
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius);
   color: var(--white);
   cursor: pointer;
   font-weight: 600;
@@ -659,9 +798,9 @@ input[type="file"]::file-selector-button {
   }
 }
 
-//--------------------------------------------------------------
-// BUTTONS
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* BUTTONS */
+/* -------------------------------------------------------------- */
 [data-button-group] {
   display: flex;
   flex-flow: row wrap;
@@ -673,7 +812,7 @@ input[type="submit"],
 input[type="button"],
 input[type="reset"],
 [data-button] {
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius);
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
@@ -683,7 +822,7 @@ input[type="reset"],
   text-decoration: none;
   transition: all 0.15s ease;
 
-  // Primary (default)
+  /* Primary (default) */
   background-color: var(--primary);
   border: 2px solid var(--primary);
   color: var(--white);
@@ -700,7 +839,7 @@ input[type="reset"],
     pointer-events: none;
   }
 
-  // Secondary (outlined)
+  /* Secondary (outlined) */
   &[data-variant="secondary"] {
     background-color: transparent;
     border: 2px solid var(--primary);
@@ -717,7 +856,7 @@ input[type="reset"],
     }
   }
 
-  // Tertiary (text with padding)
+  /* Tertiary (text with padding) */
   &[data-variant="tertiary"] {
     background-color: transparent;
     border: 2px solid transparent;
@@ -735,7 +874,7 @@ input[type="reset"],
     }
   }
 
-  // Link (styled like a link)
+  /* Link (styled like a link) */
   &[data-variant="link"] {
     background-color: transparent;
     border: none;
@@ -753,9 +892,9 @@ input[type="reset"],
     }
   }
 
-  // Destructive modifier (works with all variants)
+  /* Destructive modifier (works with all variants) */
   &[data-destructive] {
-    // Primary destructive
+    /* Primary destructive */
     background-color: var(--error);
     border-color: var(--error);
     color: var(--white);
@@ -765,7 +904,7 @@ input[type="reset"],
       border-color: var(--accent-dark);
     }
 
-    // Secondary destructive
+    /* Secondary destructive */
     &[data-variant="secondary"] {
       background-color: transparent;
       border-color: var(--error);
@@ -777,7 +916,7 @@ input[type="reset"],
       }
     }
 
-    // Tertiary destructive
+    /* Tertiary destructive */
     &[data-variant="tertiary"] {
       background-color: transparent;
       border-color: transparent;
@@ -789,7 +928,7 @@ input[type="reset"],
       }
     }
 
-    // Link destructive
+    /* Link destructive */
     &[data-variant="link"] {
       background-color: transparent;
       border: none;
@@ -802,11 +941,11 @@ input[type="reset"],
   }
 }
 
-//--------------------------------------------------------------
-// INTERACTIVE ELEMENTS
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* INTERACTIVE ELEMENTS */
+/* -------------------------------------------------------------- */
 
-// Details/Summary
+/* Details/Summary */
 details {
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius);
@@ -832,7 +971,7 @@ details {
   }
 }
 
-// Dialog
+/* Dialog */
 dialog {
   background-color: var(--white);
   border: none;
@@ -867,7 +1006,7 @@ dialog {
   }
 }
 
-// Progress & Meter
+/* Progress & Meter */
 progress {
   appearance: none;
   background-color: var(--off-white);
@@ -878,7 +1017,7 @@ progress {
   overflow: hidden;
   width: 100%;
 
-  // WebKit/Blink
+  /* WebKit/Blink */
   &::-webkit-progress-bar {
     background-color: var(--off-white);
     border-radius: var(--border-radius);
@@ -890,7 +1029,7 @@ progress {
     transition: width 0.3s ease;
   }
 
-  // Firefox
+  /* Firefox */
   &::-moz-progress-bar {
     background-color: var(--primary);
     border-radius: var(--border-radius);
@@ -907,7 +1046,7 @@ meter {
   overflow: hidden;
   width: 100%;
 
-  // WebKit/Blink
+  /* WebKit/Blink */
   &::-webkit-meter-bar {
     background-color: var(--off-white);
     border-radius: var(--border-radius);
@@ -928,14 +1067,14 @@ meter {
     border-radius: var(--border-radius);
   }
 
-  // Firefox
+  /* Firefox */
   &::-moz-meter-bar {
     background-color: var(--success);
     border-radius: var(--border-radius);
   }
 
-  // Firefox doesn't support optimum/suboptimum states well,
-  // so we use a general approach
+  /* Firefox doesn't support optimum/suboptimum states well, */
+  /* so we use a general approach */
   &:-moz-meter-optimum::-moz-meter-bar {
     background-color: var(--success);
   }
@@ -949,11 +1088,11 @@ meter {
   }
 }
 
-//--------------------------------------------------------------
-// UTILITIES
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* UTILITIES */
+/* -------------------------------------------------------------- */
 
-// Visibility
+/* Visibility */
 [hidden] {
   display: none !important;
 }
@@ -970,10 +1109,10 @@ meter {
   width: 1px !important;
 }
 
-// Skip link (for accessibility)
+/* Skip link (for accessibility) */
 [data-skip-link] {
   background-color: var(--primary);
-  border-radius: var(--border-radius);
+  border-radius: var(--button-radius);
   color: var(--white);
   font-weight: 600;
   left: var(--space-2);
@@ -988,12 +1127,12 @@ meter {
   }
 }
 
-// Text alignment
+/* Text alignment */
 [data-text="center"] { text-align: center; }
 [data-text="left"] { text-align: left; }
 [data-text="right"] { text-align: right; }
 
-// State utilities
+/* State utilities */
 [data-loading] {
   cursor: wait;
   opacity: 0.6;
@@ -1009,16 +1148,16 @@ meter {
   color: var(--success);
 }
 
-//--------------------------------------------------------------
-// ACCESSIBILITY
-//--------------------------------------------------------------
+/* -------------------------------------------------------------- */
+/* ACCESSIBILITY */
+/* -------------------------------------------------------------- */
 
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-// Reduced motion
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1026,5 +1165,110 @@ meter {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* -------------------------------------------------------------- */
+/* PRINT */
+/* -------------------------------------------------------------- */
+
+@media print {
+  /* Force ink-friendly black-on-white regardless of light/dark theme */
+  /* (literal colors, not theme vars, so dark mode can't print blank). */
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    background: #fff;
+    font-size: 12pt;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  /* Use the full page width on paper; undo any breakouts and floats. */
+  main,
+  [data-container],
+  [data-align] {
+    float: none;
+    left: auto;
+    max-width: none;
+    transform: none;
+    width: auto;
+  }
+
+  /* Drop chrome that means nothing on paper. */
+  nav,
+  [data-skip-link] {
+    display: none !important;
+  }
+
+  /* Legible code without a dark fill. */
+  pre,
+  code,
+  kbd,
+  samp {
+    border: 1px solid #ccc !important;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  /* Spell out external URLs so links survive on paper. Internal */
+  /* #anchors and footnote refs are left alone. */
+  a[href^="http"]::after,
+  a[target="_blank"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+    word-break: break-all;
+  }
+
+  /* Emphasis without an ink block. */
+  mark {
+    text-decoration: underline;
+  }
+
+  /* Spell out abbreviations on paper. */
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /* Pagination: don't strand headings or split atomic blocks. */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  blockquote,
+  figure,
+  li,
+  pre,
+  table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  /* Footnotes print as real endnotes; a hard rule sets them off. */
+  .footnotes,
+  [data-footnotes],
+  section[role="doc-endnotes"] {
+    border-top: 1px solid #000;
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "acorn.css",
-  "version": "1.0.2",
-  "description": "A lightweight, semantic HTML framework. Just ~18KB of thoughtful CSS.",
+  "version": "3.0.0",
+  "description": "A lightweight, classless CSS baseline that styles semantic HTML out of the box — the stylesheet you start with.",
   "license": "MIT",
   "author": "Jo Murgel",
   "type": "module",
@@ -23,33 +23,35 @@
   "files": [
     "dist/acorn.css",
     "dist/acorn.min.css",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vite build && npm run build:css",
-    "build:css": "sass src/index.scss dist/acorn.css --style=expanded && sass src/index.scss dist/acorn.min.css --style=compressed",
+    "build:css": "mkdir -p dist && cp src/acorn.css dist/acorn.css && esbuild src/acorn.css --minify --outfile=dist/acorn.min.css",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "prepublishOnly": "npm run clean && npm run build"
+    "prepublishOnly": "npm run clean && npm run build:css"
   },
   "browserslist": [
     "defaults"
   ],
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "sass": "^1.57.1",
+    "esbuild": "^0.25.4",
     "vite": "^6.3.5"
   },
   "keywords": [
     "css",
-    "framework",
-    "semantic",
     "classless",
-    "lightweight",
+    "semantic",
     "html",
     "stylesheet",
-    "design-system"
+    "baseline",
+    "lightweight",
+    "markdown",
+    "accessible",
+    "dark-mode"
   ],
   "repository": {
     "type": "git",

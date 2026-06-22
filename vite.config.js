@@ -1,17 +1,7 @@
 import { defineConfig } from "vite";
-import autoprefixer from 'autoprefixer'
 
-export default defineConfig(({ mode }) => {
-  const config = {
-    base: mode === 'development' ? '/' : '/acorn.css/',
-    css: {
-      postcss: {
-        plugins: [
-          autoprefixer() // add options if needed
-        ],
-      }
-    }
-  };
-
-  return config;
-});
+// Vite is used only to develop and build the demo page. The framework
+// itself is plain CSS in src/acorn.css and needs no build to consume.
+export default defineConfig(({ mode }) => ({
+  base: mode === "development" ? "/" : "/acorn.css/",
+}));
